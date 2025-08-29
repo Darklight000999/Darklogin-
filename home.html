@@ -3,97 +3,322 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home | darklight000999</title>
+  <title>darklight000999 | Home</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background: linear-gradient(120deg, #2193b0, #6dd5ed);
-      color: #fff;
-      transition: all 0.5s ease;
+    :root {
+      --bg: #e0e0e0;
+      --text: #333;
+      --shadow-light: #ffffff;
+      --shadow-dark: #b3b3b3;
+      --accent: #3498db;
     }
-    header {
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      display: flex;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    /* Sidebar */
+    aside.sidebar {
+      width: 250px;
+      background: var(--bg);
+      box-shadow: inset 8px 8px 16px var(--shadow-dark),
+                  inset -8px -8px 16px var(--shadow-light);
+      display: flex;
+      flex-direction: column;
+      padding: 20px 10px;
+      transition: all 0.3s ease;
+      z-index: 100;
+    }
+
+    .brand {
+      text-align: center;
+      font-weight: 600;
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+
+    nav.menu ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    nav.menu li {
+      background: var(--bg);
+      margin: 8px 0;
+      padding: 12px;
+      border-radius: 12px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 15px 25px;
-      background: rgba(0,0,0,0.3);
-      backdrop-filter: blur(8px);
-    }
-    header h1 {
-      margin: 0;
-      font-size: 22px;
-      font-weight: bold;
-    }
-    button.logout-btn {
-      padding: 8px 16px;
-      border: none;
-      border-radius: 20px;
       cursor: pointer;
-      background: #ff4d4d;
-      color: white;
-      font-weight: bold;
-      transition: 0.3s;
+      box-shadow: 6px 6px 12px var(--shadow-dark),
+                  -6px -6px 12px var(--shadow-light);
+      transition: all 0.2s ease;
     }
-    button.logout-btn:hover {
-      background: #e60000;
-      transform: scale(1.05);
+
+    nav.menu li:hover {
+      transform: scale(1.02);
+      color: var(--accent);
     }
-    main {
-      padding: 40px;
+
+    nav.menu li .left span {
+      margin-left: 6px;
+    }
+
+    .badge {
+      background: var(--accent);
+      color: #fff;
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-size: 12px;
+    }
+
+    .sidebar-bottom {
+      margin-top: auto;
       text-align: center;
+    }
+
+    .logout {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      background: var(--bg);
+      box-shadow: 6px 6px 12px var(--shadow-dark),
+                  -6px -6px 12px var(--shadow-light);
+    }
+
+    /* Overlay (mobile) */
+    .overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 90;
+    }
+
+    /* Main Content */
+    main.main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 20px;
+      background: var(--bg);
+      box-shadow: 6px 6px 12px var(--shadow-dark),
+                  -6px -6px 12px var(--shadow-light);
+    }
+
+    .menu-btn {
+      font-size: 20px;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .brand span {
+      margin: 0 6px;
+    }
+
+    .content {
+      padding: 20px;
+      flex: 1;
+    }
+
+    .section {
+      display: none;
+    }
+    .section.active {
+      display: block;
+      animation: fadeIn 0.4s ease;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(10px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    h2 {
+      margin-top: 0;
+    }
+
+    /* Chat */
+    .chat-wrap {
+      display: flex;
+      flex-direction: column;
+      height: 70vh;
+      background: var(--bg);
+      border-radius: 16px;
+      box-shadow: inset 8px 8px 16px var(--shadow-dark),
+                  inset -8px -8px 16px var(--shadow-light);
+      overflow: hidden;
+    }
+    .chat-header {
+      padding: 10px;
+      font-weight: 600;
+      background: var(--accent);
+      color: #fff;
+      text-align: center;
+    }
+    .chat-messages {
+      flex: 1;
+      padding: 10px;
+      overflow-y: auto;
+    }
+    .chat-input {
+      display: flex;
+      border-top: 1px solid #ccc;
+    }
+    .chat-input input {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      outline: none;
+      background: var(--bg);
+    }
+    .chat-input button {
+      padding: 10px;
+      border: none;
+      background: var(--accent);
+      color: #fff;
+      cursor: pointer;
+    }
+
+    /* Responsive */
+    @media(max-width: 768px) {
+      aside.sidebar {
+        position: fixed;
+        left: -260px;
+        top: 0; bottom: 0;
+        height: 100%;
+      }
+      aside.sidebar.active {
+        left: 0;
+      }
+      .overlay.show {
+        display: block;
+      }
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Welcome to darklight000999</h1>
-    <button class="logout-btn" onclick="logout()">Logout</button>
-  </header>
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div class="brand">🌑 darklight000999</div>
+    <nav class="menu">
+      <ul id="menu-items">
+        <li data-target="home" onclick="onNav(this)"><div class="left">🏠 <span>Home</span></div><span class="badge" id="count-home">0</span></li>
+        <li data-target="youtube" onclick="onNav(this)"><div class="left">🎬 <span>YouTube Videos</span></div><span class="badge" id="count-youtube">0</span></li>
+        <li data-target="notes" onclick="onNav(this)"><div class="left">📑 <span>PDF & Notes</span></div><span class="badge" id="count-notes">0</span></li>
+        <li data-target="commands" onclick="onNav(this)"><div class="left">🧰 <span>Hacking Commands</span></div><span class="badge" id="count-commands">0</span></li>
+        <li data-target="hacking" onclick="onNav(this)"><div class="left">🧪 <span>Hacking</span></div><span class="badge" id="count-hacking">0</span></li>
+        <li data-target="live" onclick="onNav(this)"><div class="left">🎥 <span>Live Class</span></div><span class="badge" id="count-live">0</span></li>
+        <li data-target="support" onclick="onNav(this)"><div class="left">🆘 <span>Contact & Support</span></div><span class="badge" id="count-support">0</span></li>
+        <li data-target="chat" onclick="onNav(this)"><div class="left">💬 <span>Chat</span></div><span class="badge" id="count-chat">0</span></li>
+      </ul>
 
-  <main>
-    <!-- 👇 यहां अपना पूरा वेबसाइट का HTML डाल सकते हो -->
-    <h2>This is your secured Home Page 🎉</h2>
-    <p>Only logged-in users can see this page.</p>
+      <h3 style="margin:10px 0 6px;">Admin Panel</h3>
+      <ul id="admin-items" style="display:none">
+        <li data-target="upload" onclick="onNav(this)"><div class="left">📂 <span>Upload Manager</span></div><span class="badge" id="count-upload">0</span></li>
+        <li data-target="students" onclick="onNav(this)"><div class="left">👥 <span>Manage Students</span></div><span class="badge" id="count-students">10</span></li>
+        <li data-target="announce" onclick="onNav(this)"><div class="left">📢 <span>Announcements</span></div><span class="badge" id="count-announce">0</span></li>
+        <li data-target="analytics" onclick="onNav(this)"><div class="left">📊 <span>Analytics</span></div><span class="badge" id="count-analytics">0</span></li>
+      </ul>
+    </nav>
+    <div class="sidebar-bottom">
+      <button class="logout" onclick="logout()">🚪 Logout</button>
+    </div>
+  </aside>
+
+  <!-- overlay -->
+  <div id="overlay" class="overlay" onclick="toggleSidebar(false)"></div>
+
+  <!-- Main -->
+  <main class="main" id="main">
+    <div class="topbar">
+      <button class="menu-btn" onclick="toggleSidebar(true)">☰</button>
+      <div class="brand">darklight000999</div>
+      <span class="welcome" id="welcome">Welcome Guest</span>
+    </div>
+
+    <div class="content">
+      <section id="home" class="section active"><h2>Welcome to darklight000999</h2></section>
+      <section id="youtube" class="section"><h2>🎬 YouTube Videos</h2><div id="youtube-list" class="grid"></div></section>
+      <section id="notes" class="section"><h2>📑 PDF & Notes</h2><div id="notes-list" class="grid"></div></section>
+      <section id="commands" class="section"><h2>🧰 Hacking Commands</h2><div id="commands-list" class="grid"></div></section>
+      <section id="hacking" class="section"><h2>🧪 Hacking Section</h2></section>
+      <section id="live" class="section"><h2>🎥 Live Class</h2><div id="live-list" class="grid"></div></section>
+      <section id="support" class="section"><h2>🆘 Contact & Support</h2><div id="support-list" class="grid"></div></section>
+
+      <section id="upload" class="section">
+        <h2>📂 Upload Manager (Admin Only)</h2>
+        <div id="upload-form" style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px">
+          <select id="upload-category">
+            <option value="youtube">YouTube</option>
+            <option value="notes">Notes</option>
+            <option value="commands">Commands</option>
+            <option value="live">Live</option>
+            <option value="support">Support</option>
+          </select>
+          <input id="upload-title" placeholder="Title">
+          <input id="upload-link" placeholder="Link / URL">
+          <button onclick="uploadContent()">Upload</button>
+        </div>
+      </section>
+
+      <section id="students" class="section"><h2>👥 Manage Students</h2><ul id="student-list"></ul></section>
+      <section id="announce" class="section"><h2>📢 Announcements</h2></section>
+      <section id="analytics" class="section"><h2>📊 Analytics</h2><p id="stats" class="muted"></p></section>
+
+      <section id="chat" class="section">
+        <div class="chat-wrap">
+          <div class="chat-header">Chat</div>
+          <div id="messages" class="chat-messages"></div>
+          <div class="chat-input">
+            <input id="msgBox" placeholder="Type a message..." onkeydown="if(event.key==='Enter')sendMessage()">
+            <button onclick="sendMessage()">Send</button>
+          </div>
+        </div>
+      </section>
+    </div>
   </main>
 
-  <!-- Firebase SDK -->
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
-    import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js";
-
-    // Firebase config
-    const firebaseConfig = {
-      apiKey: "AIzaSyB8Ydj__jisqUsU1NGTXruCGsTi7wmIw8o",
-      authDomain: "elegant-moment-470412-h3.firebaseapp.com",
-      projectId: "elegant-moment-470412-h3",
-      storageBucket: "elegant-moment-470412-h3.firebasestorage.app",
-      messagingSenderId: "948629350861",
-      appId: "1:948629350861:web:5d9e141e3bce27dd657c84"
-    };
-
-    // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
-
-    // ✅ Check if user is logged in
-    onAuthStateChanged(auth, (user) => {
-      if (!user) {
-        // ❌ Not logged in → redirect
-        window.location.href = "login.html";
-      }
-    });
-
-    // ✅ Logout function
-    function logout() {
-      signOut(auth).then(() => {
-        window.location.href = "login.html";
-      });
+  <script>
+    function toggleSidebar(show){
+      document.getElementById('sidebar').classList.toggle('active', show);
+      document.getElementById('overlay').classList.toggle('show', show);
     }
-
-    // Make logout global
-    window.logout = logout;
+    function onNav(el){
+      document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
+      document.getElementById(el.dataset.target).classList.add('active');
+      toggleSidebar(false);
+    }
+    function logout(){
+      alert("Logging out...");
+      window.location.href="index.html";
+    }
+    function sendMessage(){
+      const box = document.getElementById("msgBox");
+      if(!box.value.trim()) return;
+      const msg = document.createElement("div");
+      msg.textContent = box.value;
+      document.getElementById("messages").appendChild(msg);
+      box.value="";
+    }
   </script>
 </body>
 </html>
