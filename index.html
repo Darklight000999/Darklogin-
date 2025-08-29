@@ -187,22 +187,13 @@
       const password = document.getElementById("password").value;
       auth.signInWithEmailAndPassword(email, password)
         .then(userCredential => {
-          // ✅ Success → Redirect to your Netlify site
-          window.location.href = "https://darklight000999.github.io/Nots-pdfclass897/";
+          // ✅ Success → Redirect to HOME page (secure)
+          window.location.href = "home.html";
         })
         .catch(error => {
           alert("❌ " + error.message);
         });
     }
-
-    // Optional: Check user state
-    auth.onAuthStateChanged(user => {
-      if (user) {
-        console.log("User logged in: ", user.email);
-      } else {
-        console.log("No user logged in.");
-      }
-    });
   </script>
 </body>
 </html>
