@@ -2,8 +2,9 @@
 <html lang="hi">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 <title>darklight000999 | Home</title>
+<meta name="theme-color" content="#0f1220" />
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
 <style>
   :root{
@@ -30,15 +31,12 @@
     linear-gradient(180deg, #0a0e1a, #0b1020);
     overflow:hidden;
   }
-
-  /* animated subtle color drift */
   body::before{
     content:"";position:fixed;inset:-20%;z-index:-1;
     background: conic-gradient(from 180deg, #1c2760, #0f2346, #0c3d5a, #10253d, #1c2760);
     filter: blur(140px) saturate(120%); opacity:.25; animation: drift 30s linear infinite;
   }
   @keyframes drift{ to{ transform: rotate(1turn);} }
-
   .app{display:flex;height:100%;min-width:0}
 
   /* Sidebar */
@@ -116,9 +114,7 @@
   .embed-wrap > iframe, .embed-wrap > div.embed-guard{
     position:absolute;inset:0;width:100%;height:100%;border:0
   }
-  .embed-guard{
-    pointer-events:none;background:transparent; /* click-through allowed */
-  }
+  .embed-guard{ pointer-events:none;background:transparent }
 
   /* Chat */
   .chat{
@@ -158,7 +154,6 @@
   /* Basic “no-download” UX attempts */
   img, video{ -webkit-user-drag:none; user-select:none }
   body{ -webkit-user-select:none; -ms-user-select:none; user-select:none }
-  body.disable-select *{ user-select:none !important }
 
   /* Mobile */
   @media (max-width: 900px){
@@ -222,22 +217,22 @@
     <div class="content">
 
       <!-- HOME -->
-<section id="home" class="section active">
-  <h2>🏠 Home</h2>
-  <p class="muted">आपका Blogger पेज सीधे अंदर दिख रहा है (पूरा स्क्रॉल कर सकते हैं)।</p>
+      <section id="home" class="section active">
+        <h2>🏠 Home</h2>
+        <p class="muted">आपका Blogger पेज सीधे अंदर दिख रहा है (पूरा स्क्रॉल कर सकते हैं)।</p>
 
-  <div class="embed-wrap" id="homeEmbed" 
-       style="width:100%; height:90vh; border-radius:12px; overflow:hidden; box-shadow:0 0 15px rgba(0,0,0,0.4);">
-    <iframe
-      sandbox="allow-scripts allow-forms allow-same-origin"
-      referrerpolicy="no-referrer"
-      src="https://darklight000999new205.blogspot.com/2025/08/darklight000999.html"
-      style="width:100%; height:100%; border:none;"
-      allowfullscreen 
-      loading="lazy"></iframe>
-    <div class="embed-guard"></div>
-  </div>
-</section>
+        <div class="embed-wrap" id="homeEmbed" 
+            style="width:100%; height:90vh; border-radius:12px; overflow:hidden; box-shadow:0 0 15px rgba(0,0,0,0.4);">
+          <iframe
+            sandbox="allow-scripts allow-forms allow-same-origin"
+            referrerpolicy="no-referrer"
+            src="https://darklight000999new205.blogspot.com/2025/08/darklight000999.html"
+            style="width:100%; height:100%; border:none;"
+            allowfullscreen 
+            loading="lazy"></iframe>
+          <div class="embed-guard"></div>
+        </div>
+      </section>
 
       <!-- YOUTUBE -->
       <section id="youtube" class="section">
@@ -397,7 +392,7 @@
   </div>
 </div>
 
-<!-- Firebase (Modular) -->
+<!-- Firebase (Modular v11) -->
 <script type="module">
   /* ---------------- Firebase Setup ---------------- */
   import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
@@ -437,9 +432,7 @@
     const snap = await getDoc(sref);
     if(!snap.exists()){
       await setDoc(sref, { uid:user.uid, email:user.email||"", blocked:false, createdAt: serverTimestamp() });
-    }
-    else{
-      // if blocked -> show overlay + stop interaction
+    } else {
       const data = snap.data();
       if(data.blocked){
         document.getElementById("blocker").classList.add("show");
@@ -485,7 +478,7 @@
   window.logout = function(){ signOut(auth).then(()=> window.location.href="index.html"); };
 
   /* ---------------- Content Store (Firestore) ----------------
-     Collections used:
+     Collections:
      - content {category, title, link, desc, createdAt, author}
      - announcements {title, desc, media, createdAt, author}
      - messages {uid, email, text, createdAt}
@@ -504,8 +497,8 @@
   }
 
   async function fetchContent(category){
-    const q = query(collection(db,"content"), where("category","==",category), orderBy("createdAt","desc"));
-    const snap = await getDocs(q);
+    const qRef = query(collection(db,"content"), where("category","==",category), orderBy("createdAt","desc"));
+    const snap = await getDocs(qRef);
     return snap.docs.map(d=>({id:d.id, ...d.data()}));
   }
 
@@ -526,9 +519,9 @@
     renderCommands(await fetchContent("commands"));
     // Hacking
     renderHacking(await fetchContent("hacking"));
-    // Live (latest first)
+    // Live
     renderLive(await fetchContent("live"));
-    // Support link (take latest one)
+    // Support (latest)
     renderSupport(await fetchContent("support"));
     // Students / Analytics
     renderStudents(await getDocs(collection(db,"students")));
@@ -540,12 +533,14 @@
     items.forEach(x=>{
       const card = document.createElement("div");
       card.className="card";
+      const embed = toYouTubeEmbed(x.link);
       card.innerHTML = `
         <h4>${escapeHtml(x.title)}</h4>
+        ${embed ? `
         <div class="embed-wrap ratio-16x9">
-          <iframe src="${toYouTubeEmbed(x.link)}" allowfullscreen loading="lazy" referrerpolicy="no-referrer"></iframe>
+          <iframe src="${embed}" allowfullscreen loading="lazy" referrerpolicy="no-referrer"></iframe>
           <div class="embed-guard"></div>
-        </div>
+        </div>` : `<a class="btn btn-secondary" href="${x.link}" target="_blank" rel="noopener noreferrer">Open</a>`}
         ${x.desc?`<p class="muted">${escapeHtml(x.desc)}</p>`:""}
       `;
       wrap.appendChild(card);
@@ -607,15 +602,17 @@
   function renderLive(items){
     const wrap = document.getElementById("liveWrap");
     wrap.innerHTML="";
-    items.forEach((x,i)=>{
+    items.forEach((x)=>{
       const card=document.createElement("div");
       card.className="card";
+      const embed = toYouTubeEmbed(x.link);
       card.innerHTML = `
         <h4>${escapeHtml(x.title)}</h4>
+        ${embed ? `
         <div class="embed-wrap ratio-16x9">
-          <iframe src="${toYouTubeEmbed(x.link)}" allowfullscreen loading="lazy" referrerpolicy="no-referrer"></iframe>
+          <iframe src="${embed}" allowfullscreen loading="lazy" referrerpolicy="no-referrer"></iframe>
           <div class="embed-guard"></div>
-        </div>
+        </div>` : `<a class="btn btn-secondary" href="${x.link}" target="_blank" rel="noopener noreferrer">Open</a>`}
         ${x.desc?`<p class="muted">${escapeHtml(x.desc)}</p>`:""}
       `;
       wrap.appendChild(card);
@@ -655,8 +652,8 @@
   }
 
   function listenAnnouncements(){
-    const q = query(collection(db,"announcements"), orderBy("createdAt","desc"));
-    onSnapshot(q, (snap)=>{
+    const qRef = query(collection(db,"announcements"), orderBy("createdAt","desc"));
+    onSnapshot(qRef, (snap)=>{
       const list = document.getElementById("anList");
       list.innerHTML="";
       snap.forEach(docu=>{
@@ -690,8 +687,8 @@
 
   /* ---------------- Chat ---------------- */
   function listenChat(){
-    const q = query(collection(db,"messages"), orderBy("createdAt","asc"));
-    onSnapshot(q, (snap)=>{
+    const qRef = query(collection(db,"messages"), orderBy("createdAt","asc"));
+    onSnapshot(qRef, (snap)=>{
       const body = document.getElementById("chatBody");
       body.innerHTML="";
       snap.forEach(d=>{
@@ -749,7 +746,6 @@
     if(!CURRENT_USER || CURRENT_USER.email!==ADMIN_EMAIL) return;
     await updateDoc(doc(db,"students",uid), { blocked: !currentlyBlocked });
     if(uid===CURRENT_USER.uid && !currentlyBlocked){
-      // admin blocked self? rare, but handle
       document.getElementById("blocker").classList.add("show");
     }
   };
@@ -759,14 +755,15 @@
     return str.replace(/[&<>"']/g, s=>({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;" }[s]));
   }
   function toYouTubeEmbed(url=""){
-    const m = url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|live\/|shorts\/|embed\/|playlist\?list=|.*[?&]v=))([A-Za-z0-9_\-]{6,})/i);
-    const list = url.match(/[?&]list=([A-Za-z0-9_\-]+)/i);
-    if(list && url.includes("playlist")) return `https://www.youtube.com/embed/videoseries?list=${list[1]}`;
+    const playlist = url.match(/[?&]list=([A-Za-z0-9_\-]+)/i);
+    if(playlist && /playlist|videoseries/i.test(url)) {
+      return `https://www.youtube.com/embed/videoseries?list=${playlist[1]}`;
+    }
+    const m = url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|live\/|shorts\/|embed\/|.*[?&]v=))([A-Za-z0-9_\-]{6,})/i);
     if(m) return `https://www.youtube.com/embed/${m[1]}`;
     return url.includes("youtube.com/embed")?url:"";
   }
   function noteViewer(url=""){
-    // Google Drive/viewer fallback
     if(/\.pdf(\?|$)/i.test(url)) return `https://drive.google.com/viewerng/viewer?embedded=true&url=${encodeURIComponent(url)}`;
     return url;
   }
