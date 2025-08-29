@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login | darklight000999</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"/>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      transition: background 0.5s, color 0.5s;
+      overflow: hidden;
+    }
+    .background {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(180deg, #2193b0, #6dd5ed);
+      top: 0;
+      left: 0;
+      z-index: -1;
+      overflow: hidden;
+    }
+    .wave {
+      position: absolute;
+      bottom: 0;
+      width: 200%;
+      height: 200px;
+      background: rgba(255,255,255,0.3);
+      border-radius: 100%;
+      animation: wave 8s linear infinite;
+    }
+    .wave:nth-child(2) {
+      bottom: 20px;
+      animation: wave 12s linear infinite reverse;
+    }
+    @keyframes wave {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .theme-toggle {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: rgba(255,255,255,0.2);
+      border: none;
+      padding: 8px 16px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+      backdrop-filter: blur(10px);
+      color: #333;
+    }
+    .login-container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(255,255,255,0.2);
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+      backdrop-filter: blur(12px);
+      text-align: center;
+      width: 320px;
+    }
+    .logo-ring {
+      position: relative;
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 20px;
+    }
+    .logo-ring::before {
+      content: "";
+      position: absolute;
+      top: -8px; left: -8px;
+      width: 136px; height: 136px;
+      border-radius: 50%;
+      background: conic-gradient(red, orange, yellow, lime, cyan, blue, violet, red);
+      animation: rotate 3s linear infinite;
+      z-index: 0;
+    }
+    .logo-ring img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      position: relative;
+      z-index: 1;
+    }
+    @keyframes rotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    h2 {
+      margin: 10px 0;
+      font-weight: 600;
+      color: #333;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 8px;
+    }
+    .login-btn {
+      width: 100%;
+      padding: 12px;
+      margin-top: 15px;
+      border: none;
+      border-radius: 25px;
+      background: linear-gradient(90deg, #2193b0, #6dd5ed);
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .login-btn:hover {
+      transform: scale(1.05);
+    }
+    body.dark {
+      background: #121212;
+      color: white;
+    }
+    body.dark .login-container {
+      background: rgba(0,0,0,0.6);
+    }
+    body.dark .theme-toggle {
+      background: rgba(255,255,255,0.1);
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <div class="background">
+    <div class="wave"></div>
+    <div class="wave"></div>
+  </div>
+
+  <button class="theme-toggle" onclick="toggleTheme()">🌑 Dark</button>
+
+  <div class="login-container">
+    <div class="logo-ring">
+      <img src="Screenshot_20250821_142735.jpg" alt="Logo">
+    </div>
+    <h2>darklight000999</h2>
+    <input type="email" id="email" placeholder="Enter Email" required />
+    <input type="password" id="password" placeholder="Enter Password" required />
+    <button class="login-btn" onclick="login()">🔑 Login</button>
+  </div>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+
+  <script>
+    // Theme Toggle
+    function toggleTheme() {
+      document.body.classList.toggle("dark");
+      const btn = document.querySelector(".theme-toggle");
+      btn.textContent = document.body.classList.contains("dark") ? "🌞 Light" : "🌑 Dark";
+    }
+
+    // ✅ आपकी Firebase Config (आपके द्वारा दी हुई)
+    const firebaseConfig = {
+      apiKey: "AIzaSyB8Ydj__jisqUsU1NGTXruCGsTi7wmIw8o",
+      authDomain: "elegant-moment-470412-h3.firebaseapp.com",
+      projectId: "elegant-moment-470412-h3",
+      storageBucket: "elegant-moment-470412-h3.firebasestorage.app",
+      messagingSenderId: "948629350861",
+      appId: "1:948629350861:web:5d9e141e3bce27dd657c84"
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+
+    // Login Function
+    function login() {
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+      auth.signInWithEmailAndPassword(email, password)
+        .then(userCredential => {
+          alert("Welcome " + userCredential.user.email);
+          window.location.href = "dashboard.html"; // लॉगिन सफल तो dashboard भेजो
+        })
+        .catch(error => {
+          alert(error.message);
+        });
+    }
+
+    // State Check
+    auth.onAuthStateChanged(user => {
+      if (user) {
+        console.log("User logged in: ", user.email);
+      } else {
+        console.log("No user logged in.");
+      }
+    });
+  </script>
+</body>
+</html>
