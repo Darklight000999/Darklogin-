@@ -13,7 +13,9 @@
       margin: 0;
       font-family: 'Poppins', sans-serif;
       background: #f2f2f2;
+      transition: background 0.5s, color 0.5s;
     }
+
     .login-container {
       position: absolute;
       top: 50%;
@@ -25,18 +27,49 @@
       box-shadow: 0 8px 25px rgba(0,0,0,0.15);
       text-align: center;
       width: 300px;
+      transition: background 0.5s, color 0.5s;
     }
-    .login-container img {
-      width: 120px;
-      height: 120px;
+
+    /* 🔥 Logo + RGB Ring */
+    .logo-ring {
+      position: relative;
+      width: 130px;
+      height: 130px;
+      margin: 0 auto 15px;
+    }
+    .logo-ring::before {
+      content: "";
+      position: absolute;
+      top: -5px; left: -5px;
+      width: 140px; height: 140px;
       border-radius: 50%;
-      margin-bottom: 15px;
+      background: conic-gradient(red, orange, yellow, lime, cyan, blue, violet, red);
+      animation: rotate 3s linear infinite;
+      z-index: 0;
     }
+    .logo-ring img {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      position: relative;
+      z-index: 1;
+    }
+    @keyframes rotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
     h2 {
-      margin: 5px 0 15px 0;
+      margin: 5px 0 5px 0;
       font-weight: 600;
       color: #333;
     }
+
+    p.subtitle {
+      margin: 0 0 15px 0;
+      color: gray;
+    }
+
     input {
       width: 100%;
       padding: 12px;
@@ -46,7 +79,9 @@
       background: #f1f1f1;
       text-align: center;
       font-size: 14px;
+      outline: none;
     }
+
     .login-btn {
       width: 100%;
       padding: 12px;
@@ -63,6 +98,7 @@
     .login-btn:hover {
       background: #ddd;
     }
+
     .forgot {
       margin-top: 12px;
       display: block;
@@ -71,24 +107,53 @@
       cursor: pointer;
       text-decoration: none;
     }
+
+    /* 🌑/🌞 Theme Toggle */
     .theme-icon {
       position: absolute;
       top: 10px;
       right: 10px;
-      font-size: 20px;
+      font-size: 22px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    /* Dark Mode */
+    body.dark {
+      background: #121212;
+      color: #fff;
+    }
+    body.dark .login-container {
+      background: #1e1e1e;
+      color: #fff;
+    }
+    body.dark input {
+      background: #333;
+      color: #fff;
+    }
+    body.dark .login-btn {
+      background: #333;
+      color: #fff;
+    }
+    body.dark .login-btn:hover {
+      background: #444;
     }
   </style>
 </head>
 <body>
+  <div class="theme-icon" onclick="toggleTheme()">🌑</div>
+
   <div class="login-container">
-    <div class="theme-icon">🌞</div>
-    <img src="1000058324.png" alt="Logo">
+    <div class="logo-ring">
+      <img src="1000058324.png" alt="Logo">
+    </div>
     <h2>darklight000999</h2>
-    <p style="margin:0; color:gray;">LOGIN</p>
+    <p class="subtitle">LOGIN</p>
+
     <input type="email" id="email" placeholder="Username" required />
     <input type="password" id="password" placeholder="Password" required />
     <button class="login-btn" onclick="login()">Login</button>
-    <a class="forgot" onclick="alert('Password reset process add karo yaha!')">Forgot Password? click here</a>
+    <a class="forgot" onclick="alert('👉 यहाँ Password Reset Code लगाओ!')">Forgot Password? click here</a>
   </div>
 
   <!-- Firebase SDK -->
@@ -96,6 +161,13 @@
   <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
 
   <script>
+    // ✅ Theme Toggle
+    function toggleTheme() {
+      document.body.classList.toggle("dark");
+      const btn = document.querySelector(".theme-icon");
+      btn.textContent = document.body.classList.contains("dark") ? "🌞" : "🌑";
+    }
+
     // ✅ Firebase Config
     const firebaseConfig = {
       apiKey: "AIzaSyB8Ydj__jisqUsU1NGTXruCGsTi7wmIw8o",
@@ -110,13 +182,12 @@
     firebase.initializeApp(firebaseConfig);
     const auth = firebase.auth();
 
-    // Login Function
+    // ✅ Login Function
     function login() {
       const email = document.getElementById("email").value;
       const password = document.getElementById("password").value;
       auth.signInWithEmailAndPassword(email, password)
         .then(userCredential => {
-          // ✅ Success → Redirect to HOME page (secure)
           window.location.href = "home.html";
         })
         .catch(error => {
