@@ -32,12 +32,25 @@
   }
 body::before {
   content: "";
-  position: fixed; top: 0; left: 0;
-  width: 200%; height: 200%;
-  background: linear-gradient(-45deg, #ff0040, #0040ff, #00ffbf, #ff8000);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(-45deg, 
+    #ff0040,   /* Red */
+    #0040ff,   /* Blue */
+    #00ffbf,   /* Cyan */
+    #ff8000,   /* Orange */
+    #800080,   /* Purple */
+    #ff00ff,   /* Magenta/Pink */
+    #40e0d0,   /* Turquoise */
+    #8a2be2    /* BlueViolet */
+  );
   background-size: 400% 400%;
   animation: smoothBg 30s ease infinite;
   z-index: -1;
+}
 }
 
 @keyframes smoothBg {
