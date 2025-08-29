@@ -30,10 +30,21 @@
     linear-gradient(180deg, #0a0e1a, #0b1020);
     overflow:hidden;
   }
-  body::before{
-    content:"";position:fixed;inset:-20%;z-index:-1;
-    background: conic-gradient(from 180deg, #1c2760, #0f2346, #0c3d5a, #10253d, #1c2760);
-    filter: blur(140px) saturate(120%); opacity:.25; animation: drift 30s linear infinite;
+body::before {
+  content: "";
+  position: fixed; top: 0; left: 0;
+  width: 200%; height: 200%;
+  background: linear-gradient(-45deg, #ff0040, #0040ff, #00ffbf, #ff8000);
+  background-size: 400% 400%;
+  animation: smoothBg 30s ease infinite;
+  z-index: -1;
+}
+
+@keyframes smoothBg {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
   }
   @keyframes drift{ to{ transform: rotate(1turn);} }
 
