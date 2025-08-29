@@ -1,324 +1,815 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>darklight000999 | Home</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg: #e0e0e0;
-      --text: #333;
-      --shadow-light: #ffffff;
-      --shadow-dark: #b3b3b3;
-      --accent: #3498db;
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+<title>darklight000999 | Home</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#0f1220;
+    --card:#14182a;
+    --muted:#8ea0b5;
+    --text:#eaf2ff;
+    --brand:#6dd5ed;
+    --brand2:#2193b0;
+    --accent:#8a7dff;
+    --danger:#ff5757;
+    --success:#1ecb84;
+    --glass:rgba(255,255,255,.06);
+    --glass-strong:rgba(255,255,255,.12);
+    --shadow: 0 10px 30px rgba(0,0,0,.45);
+    --radius:16px;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;font-family:'Poppins',sans-serif;color:var(--text);background:
+    radial-gradient(1200px 800px at 10% -10%, #1b2040 0, transparent 60%),
+    radial-gradient(900px 600px at 110% 10%, #0a4250 0, transparent 60%),
+    linear-gradient(180deg, #0a0e1a, #0b1020);
+    overflow:hidden;
+  }
 
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      display: flex;
-      height: 100vh;
-      overflow: hidden;
-    }
+  /* animated subtle color drift */
+  body::before{
+    content:"";position:fixed;inset:-20%;z-index:-1;
+    background: conic-gradient(from 180deg, #1c2760, #0f2346, #0c3d5a, #10253d, #1c2760);
+    filter: blur(140px) saturate(120%); opacity:.25; animation: drift 30s linear infinite;
+  }
+  @keyframes drift{ to{ transform: rotate(1turn);} }
 
-    /* Sidebar */
-    aside.sidebar {
-      width: 250px;
-      background: var(--bg);
-      box-shadow: inset 8px 8px 16px var(--shadow-dark),
-                  inset -8px -8px 16px var(--shadow-light);
-      display: flex;
-      flex-direction: column;
-      padding: 20px 10px;
-      transition: all 0.3s ease;
-      z-index: 100;
-    }
+  .app{display:flex;height:100%;min-width:0}
 
-    .brand {
-      text-align: center;
-      font-weight: 600;
-      font-size: 18px;
-      margin-bottom: 20px;
-    }
+  /* Sidebar */
+  .sidebar{
+    width:280px;min-width:260px;max-width:90vw;padding:16px;
+    background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+    backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    border-right:1px solid rgba(255,255,255,.08);
+    box-shadow: var(--shadow);
+    overflow:auto;
+  }
+  .brandbar{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+  .brand-logo{width:40px;height:40px;border-radius:50%;object-fit:cover;box-shadow:0 4px 14px rgba(0,0,0,.5)}
+  .brandname{font-weight:700;letter-spacing:.3px}
+  .theme-toggle{margin-left:auto;border:none;border-radius:999px;padding:8px 14px;cursor:pointer;
+    background:linear-gradient(90deg,var(--brand2),var(--brand));color:#001018;font-weight:700}
+  .logo-box{display:flex;justify-content:center;margin:10px 0 8px}
+  .logo-img{width:72px;height:72px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.2)}
 
-    nav.menu ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
+  nav.menu ul{list-style:none;margin:0;padding:0}
+  nav.menu li{
+    display:flex;align-items:center;justify-content:space-between;gap:10px;
+    padding:11px 12px;margin:7px 0;border-radius:12px;cursor:pointer;
+    background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);
+    transition:.2s transform, .2s background;
+  }
+  nav.menu li:hover{transform:translateY(-2px);background:rgba(255,255,255,.07)}
+  nav.menu li .left{display:flex;align-items:center;gap:8px}
+  .badge{font-size:12px;padding:2px 8px;border-radius:999px;background:var(--accent);color:#0a0e1a}
+  .section-title{font-size:12px;opacity:.8;margin:10px 2px 6px}
 
-    nav.menu li {
-      background: var(--bg);
-      margin: 8px 0;
-      padding: 12px;
-      border-radius: 12px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      cursor: pointer;
-      box-shadow: 6px 6px 12px var(--shadow-dark),
-                  -6px -6px 12px var(--shadow-light);
-      transition: all 0.2s ease;
-    }
+  .sidebar-bottom{margin-top:12px}
+  .logout{
+    width:100%;padding:10px;border:none;border-radius:12px;cursor:pointer;
+    background:linear-gradient(90deg,#f56,#d33);color:white;font-weight:700;
+  }
 
-    nav.menu li:hover {
-      transform: scale(1.02);
-      color: var(--accent);
-    }
+  /* Main */
+  .main{flex:1;min-width:0;display:flex;flex-direction:column;overflow:hidden}
+  .topbar{
+    display:flex;align-items:center;gap:12px;padding:12px 16px;
+    background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+    border-bottom:1px solid rgba(255,255,255,.08);backdrop-filter: blur(12px);
+  }
+  .menu-btn{display:none}
+  .brand-inline{display:flex;align-items:center;gap:10px;font-weight:700}
+  .welcome{margin-left:auto;opacity:.9}
 
-    nav.menu li .left span {
-      margin-left: 6px;
-    }
+  .content{flex:1;overflow:auto;padding:18px;display:block}
+  .section{display:none;animation:fade .25s ease}
+  .section.active{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 
-    .badge {
-      background: var(--accent);
-      color: #fff;
-      padding: 2px 8px;
-      border-radius: 12px;
-      font-size: 12px;
-    }
+  /* Cards / grids */
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+  .card{
+    background:var(--glass);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);
+    box-shadow:var(--shadow);padding:14px
+  }
+  .card h3{margin:0 0 8px}
+  .muted{color:var(--muted)}
+  .btn{
+    border:none;border-radius:12px;padding:10px 14px;font-weight:700;cursor:pointer;
+    background:linear-gradient(90deg,var(--brand2),var(--brand));color:#001018
+  }
+  .btn-secondary{background:rgba(255,255,255,.1);color:var(--text);border:1px solid rgba(255,255,255,.15)}
+  .row{display:flex;gap:10px;flex-wrap:wrap}
 
-    .sidebar-bottom {
-      margin-top: auto;
-      text-align: center;
-    }
+  /* Embeds */
+  .embed-wrap{
+    position:relative;border-radius:var(--radius);overflow:hidden;background:#000;
+    border:1px solid rgba(255,255,255,.12);box-shadow:var(--shadow)
+  }
+  .embed-wrap.ratio-16x9{padding-top:56.25%}
+  .embed-wrap > iframe, .embed-wrap > div.embed-guard{
+    position:absolute;inset:0;width:100%;height:100%;border:0
+  }
+  .embed-guard{
+    pointer-events:none;background:transparent; /* click-through allowed */
+  }
 
-    .logout {
-      padding: 10px 20px;
-      border: none;
-      border-radius: 12px;
-      cursor: pointer;
-      background: var(--bg);
-      box-shadow: 6px 6px 12px var(--shadow-dark),
-                  -6px -6px 12px var(--shadow-light);
-    }
+  /* Chat */
+  .chat{
+    display:flex;flex-direction:column;height:60vh;background:var(--glass);
+    border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);overflow:hidden
+  }
+  .chat-head{padding:10px 14px;background:rgba(255,255,255,.08);font-weight:700}
+  .chat-body{flex:1;overflow:auto;padding:12px}
+  .msg{max-width:70%;margin:8px 0;padding:10px 12px;border-radius:14px;box-shadow:var(--shadow)}
+  .me{margin-left:auto;background:linear-gradient(90deg,var(--brand2),var(--brand));color:#001018}
+  .other{background:rgba(255,255,255,.08)}
+  .meta{font-size:11px;opacity:.8;margin-bottom:4px}
+  .chat-send{display:flex;gap:8px;padding:10px;border-top:1px solid rgba(255,255,255,.08)}
+  .chat-send input{flex:1;padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,.15);background:rgba(0,0,0,.2);color:var(--text)}
+  .chat-send button{padding:12px 16px}
 
-    /* Overlay (mobile) */
-    .overlay {
-      display: none;
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0,0,0,0.5);
-      z-index: 90;
-    }
+  /* Upload / forms */
+  .form-row{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0}
+  .form-row input, .form-row select, .form-row textarea{
+    flex:1;min-width:220px;padding:10px;border-radius:12px;border:1px solid rgba(255,255,255,.15);
+    background:rgba(255,255,255,.06);color:var(--text)
+  }
+  textarea{min-height:90px;resize:vertical}
 
-    /* Main Content */
-    main.main {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      overflow-y: auto;
-    }
+  /* Overlay for mobile sidebar */
+  .overlay{display:none}
+  .overlay.show{display:block;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:90}
 
-    .topbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 12px 20px;
-      background: var(--bg);
-      box-shadow: 6px 6px 12px var(--shadow-dark),
-                  -6px -6px 12px var(--shadow-light);
-    }
+  /* Block / warning */
+  .blocker, .warn{
+    position:fixed;inset:0;background:rgba(10,14,20,.9);color:#fff;display:none;place-items:center;z-index:9999;
+    padding:20px;text-align:center
+  }
+  .blocker.show, .warn.show{display:grid}
+  .warn .card{max-width:520px}
 
-    .menu-btn {
-      font-size: 20px;
-      background: none;
-      border: none;
-      cursor: pointer;
-    }
+  /* Basic “no-download” UX attempts */
+  img, video{ -webkit-user-drag:none; user-select:none }
+  body{ -webkit-user-select:none; -ms-user-select:none; user-select:none }
+  body.disable-select *{ user-select:none !important }
 
-    .brand span {
-      margin: 0 6px;
-    }
-
-    .content {
-      padding: 20px;
-      flex: 1;
-    }
-
-    .section {
-      display: none;
-    }
-    .section.active {
-      display: block;
-      animation: fadeIn 0.4s ease;
-    }
-
-    @keyframes fadeIn {
-      from {opacity: 0; transform: translateY(10px);}
-      to {opacity: 1; transform: translateY(0);}
-    }
-
-    h2 {
-      margin-top: 0;
-    }
-
-    /* Chat */
-    .chat-wrap {
-      display: flex;
-      flex-direction: column;
-      height: 70vh;
-      background: var(--bg);
-      border-radius: 16px;
-      box-shadow: inset 8px 8px 16px var(--shadow-dark),
-                  inset -8px -8px 16px var(--shadow-light);
-      overflow: hidden;
-    }
-    .chat-header {
-      padding: 10px;
-      font-weight: 600;
-      background: var(--accent);
-      color: #fff;
-      text-align: center;
-    }
-    .chat-messages {
-      flex: 1;
-      padding: 10px;
-      overflow-y: auto;
-    }
-    .chat-input {
-      display: flex;
-      border-top: 1px solid #ccc;
-    }
-    .chat-input input {
-      flex: 1;
-      padding: 10px;
-      border: none;
-      outline: none;
-      background: var(--bg);
-    }
-    .chat-input button {
-      padding: 10px;
-      border: none;
-      background: var(--accent);
-      color: #fff;
-      cursor: pointer;
-    }
-
-    /* Responsive */
-    @media(max-width: 768px) {
-      aside.sidebar {
-        position: fixed;
-        left: -260px;
-        top: 0; bottom: 0;
-        height: 100%;
-      }
-      aside.sidebar.active {
-        left: 0;
-      }
-      .overlay.show {
-        display: block;
-      }
-    }
-  </style>
+  /* Mobile */
+  @media (max-width: 900px){
+    .menu-btn{display:inline-flex;border:1px solid rgba(255,255,255,.2);border-radius:10px;padding:8px}
+    .sidebar{position:fixed;left:-100%;top:0;bottom:0;z-index:100}
+    .sidebar.active{left:0}
+  }
+</style>
 </head>
-<body>
+<body oncontextmenu="return false;">
+<div class="app">
   <!-- Sidebar -->
   <aside class="sidebar" id="sidebar">
-    <div class="brand">🌑 darklight000999</div>
+    <div class="brandbar">
+      <img class="brand-logo" src="Screenshot_20250821_142735.jpg" alt="logo" onerror="this.src='https://via.placeholder.com/80x80?text=DL'">
+      <div class="brandname">darklight000999</div>
+      <button class="theme-toggle" id="themeBtn" onclick="toggleTheme()">🌑 Dark</button>
+    </div>
+    <div class="logo-box">
+      <img class="logo-img" src="Screenshot_20250821_142735.jpg" alt="Logo" onerror="this.src='https://via.placeholder.com/80x80?text=DL'">
+    </div>
+
     <nav class="menu">
+      <div class="section-title">Menu</div>
       <ul id="menu-items">
-        <li data-target="home" onclick="onNav(this)"><div class="left">🏠 <span>Home</span></div><span class="badge" id="count-home">0</span></li>
-        <li data-target="youtube" onclick="onNav(this)"><div class="left">🎬 <span>YouTube Videos</span></div><span class="badge" id="count-youtube">0</span></li>
+        <li data-target="home" onclick="onNav(this)"><div class="left">🏠 <span>Home</span></div><span class="badge" id="count-home">1</span></li>
+        <li data-target="youtube" onclick="onNav(this)"><div class="left">🎬 <span>YouTube Videos</span></div><span class="badge" id="count-youtube">1</span></li>
         <li data-target="notes" onclick="onNav(this)"><div class="left">📑 <span>PDF & Notes</span></div><span class="badge" id="count-notes">0</span></li>
         <li data-target="commands" onclick="onNav(this)"><div class="left">🧰 <span>Hacking Commands</span></div><span class="badge" id="count-commands">0</span></li>
         <li data-target="hacking" onclick="onNav(this)"><div class="left">🧪 <span>Hacking</span></div><span class="badge" id="count-hacking">0</span></li>
         <li data-target="live" onclick="onNav(this)"><div class="left">🎥 <span>Live Class</span></div><span class="badge" id="count-live">0</span></li>
-        <li data-target="support" onclick="onNav(this)"><div class="left">🆘 <span>Contact & Support</span></div><span class="badge" id="count-support">0</span></li>
+        <li data-target="support" onclick="onNav(this)"><div class="left">🆘 <span>Contact & Support</span></div><span class="badge" id="count-support">1</span></li>
         <li data-target="chat" onclick="onNav(this)"><div class="left">💬 <span>Chat</span></div><span class="badge" id="count-chat">0</span></li>
       </ul>
 
-      <h3 style="margin:10px 0 6px;">Admin Panel</h3>
+      <div class="section-title">Admin Panel</div>
       <ul id="admin-items" style="display:none">
-        <li data-target="upload" onclick="onNav(this)"><div class="left">📂 <span>Upload Manager</span></div><span class="badge" id="count-upload">0</span></li>
-        <li data-target="students" onclick="onNav(this)"><div class="left">👥 <span>Manage Students</span></div><span class="badge" id="count-students">10</span></li>
-        <li data-target="announce" onclick="onNav(this)"><div class="left">📢 <span>Announcements</span></div><span class="badge" id="count-announce">0</span></li>
-        <li data-target="analytics" onclick="onNav(this)"><div class="left">📊 <span>Analytics</span></div><span class="badge" id="count-analytics">0</span></li>
+        <li data-target="upload" onclick="onNav(this)"><div class="left">📂 <span>Upload Manager</span></div></li>
+        <li data-target="premium" onclick="onNav(this)"><div class="left">👑 <span>Premium Plus 🏆</span></div></li>
+        <li data-target="announce" onclick="onNav(this)"><div class="left">📢 <span>Announcements</span></div></li>
+        <li data-target="analytics" onclick="onNav(this)"><div class="left">📊 <span>Analytics</span></div></li>
       </ul>
     </nav>
+
     <div class="sidebar-bottom">
       <button class="logout" onclick="logout()">🚪 Logout</button>
     </div>
   </aside>
 
-  <!-- overlay -->
+  <!-- Overlay (mobile) -->
   <div id="overlay" class="overlay" onclick="toggleSidebar(false)"></div>
 
   <!-- Main -->
   <main class="main" id="main">
     <div class="topbar">
       <button class="menu-btn" onclick="toggleSidebar(true)">☰</button>
-      <div class="brand">darklight000999</div>
+      <div class="brand-inline"><span>darklight000999</span></div>
       <span class="welcome" id="welcome">Welcome Guest</span>
     </div>
 
     <div class="content">
-      <section id="home" class="section active"><h2>Welcome to darklight000999</h2></section>
-      <section id="youtube" class="section"><h2>🎬 YouTube Videos</h2><div id="youtube-list" class="grid"></div></section>
-      <section id="notes" class="section"><h2>📑 PDF & Notes</h2><div id="notes-list" class="grid"></div></section>
-      <section id="commands" class="section"><h2>🧰 Hacking Commands</h2><div id="commands-list" class="grid"></div></section>
-      <section id="hacking" class="section"><h2>🧪 Hacking Section</h2></section>
-      <section id="live" class="section"><h2>🎥 Live Class</h2><div id="live-list" class="grid"></div></section>
-      <section id="support" class="section"><h2>🆘 Contact & Support</h2><div id="support-list" class="grid"></div></section>
 
-      <section id="upload" class="section">
-        <h2>📂 Upload Manager (Admin Only)</h2>
-        <div id="upload-form" style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px">
-          <select id="upload-category">
-            <option value="youtube">YouTube</option>
-            <option value="notes">Notes</option>
-            <option value="commands">Commands</option>
-            <option value="live">Live</option>
-            <option value="support">Support</option>
-          </select>
-          <input id="upload-title" placeholder="Title">
-          <input id="upload-link" placeholder="Link / URL">
-          <button onclick="uploadContent()">Upload</button>
+      <!-- HOME -->
+      <section id="home" class="section active">
+        <h2>🏠 Home</h2>
+        <p class="muted">आपका Blogger पेज सीधे अंदर दिख रहा है।</p>
+        <div class="embed-wrap ratio-16x9" id="homeEmbed">
+          <iframe
+            sandbox="allow-scripts allow-forms allow-same-origin"
+            referrerpolicy="no-referrer"
+            src="https://darklight000999new205.blogspot.com/2025/08/darklight000999.html"
+            allowfullscreen loading="lazy"></iframe>
+          <div class="embed-guard"></div>
         </div>
       </section>
 
-      <section id="students" class="section"><h2>👥 Manage Students</h2><ul id="student-list"></ul></section>
-      <section id="announce" class="section"><h2>📢 Announcements</h2></section>
-      <section id="analytics" class="section"><h2>📊 Analytics</h2><p id="stats" class="muted"></p></section>
+      <!-- YOUTUBE -->
+      <section id="youtube" class="section">
+        <h2>🎬 YouTube Videos</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>Official Playlist</h3>
+            <div class="embed-wrap ratio-16x9">
+              <iframe
+                src="https://www.youtube.com/embed/videoseries?list=PL9reQPbLfmEXG7m6txArrDbusSm1blBlk"
+                title="YouTube playlist" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                referrerpolicy="no-referrer"
+                allowfullscreen loading="lazy"></iframe>
+              <div class="embed-guard"></div>
+            </div>
+          </div>
 
-      <section id="chat" class="section">
-        <div class="chat-wrap">
-          <div class="chat-header">Chat</div>
-          <div id="messages" class="chat-messages"></div>
-          <div class="chat-input">
-            <input id="msgBox" placeholder="Type a message..." onkeydown="if(event.key==='Enter')sendMessage()">
-            <button onclick="sendMessage()">Send</button>
+          <div class="card">
+            <h3>Admin Uploads</h3>
+            <div id="ytList" class="grid"></div>
           </div>
         </div>
       </section>
+
+      <!-- NOTES -->
+      <section id="notes" class="section">
+        <h2>📑 PDF & Notes</h2>
+        <p class="muted">यहाँ shared PDFs/Notes दिखेंगे — डाउनलोड, राइट-क्लिक, सेलेक्ट आदि disabled (best-effort).</p>
+        <div id="notesList" class="grid"></div>
+      </section>
+
+      <!-- COMMANDS -->
+      <section id="commands" class="section">
+        <h2>🧰 Hacking Commands</h2>
+        <div id="cmdList" class="grid"></div>
+      </section>
+
+      <!-- HACKING -->
+      <section id="hacking" class="section">
+        <h2>🧪 Hacking</h2>
+        <p class="muted">Ethical hacking research, tools, references — Admin द्वारा add की गई सामग्री।</p>
+        <div id="hackList" class="grid"></div>
+      </section>
+
+      <!-- LIVE -->
+      <section id="live" class="section">
+        <h2>🎥 Live Class</h2>
+        <div id="liveWrap" class="grid"></div>
+      </section>
+
+      <!-- SUPPORT -->
+      <section id="support" class="section">
+        <h2>🆘 Contact & Support</h2>
+        <div class="card">
+          <p>🔗 <b>यहाँ Google Sites लिंक डालें (हिंदी):</b></p>
+          <p class="muted">उदा: https://sites.google.com/your-site</p>
+          <div id="supportEmbed" class="embed-wrap ratio-16x9" style="display:none">
+            <iframe id="supportIframe" sandbox="allow-scripts allow-forms allow-same-origin" referrerpolicy="no-referrer"></iframe>
+            <div class="embed-guard"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CHAT -->
+      <section id="chat" class="section">
+        <h2>💬 Chat</h2>
+        <div class="chat">
+          <div class="chat-head">Class Chat</div>
+          <div id="chatBody" class="chat-body"></div>
+          <div class="chat-send">
+            <input id="chatInput" placeholder="Type a message..." maxlength="500" />
+            <button class="btn" onclick="sendMessage()">Send</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- UPLOAD (Admin) -->
+      <section id="upload" class="section">
+        <h2>📂 Upload Manager (Admin Only)</h2>
+        <div class="card">
+          <div class="form-row">
+            <select id="upCategory">
+              <option value="youtube">YouTube</option>
+              <option value="notes">Notes</option>
+              <option value="commands">Commands</option>
+              <option value="hacking">Hacking</option>
+              <option value="live">Live</option>
+              <option value="support">Support</option>
+            </select>
+            <input id="upTitle" placeholder="Title" />
+            <input id="upLink" placeholder="Link / URL (YouTube, PDF, Site...)" />
+          </div>
+          <div class="form-row">
+            <textarea id="upDesc" placeholder="Description (optional)"></textarea>
+          </div>
+          <div class="row">
+            <button class="btn" onclick="uploadContent()">Upload</button>
+            <button class="btn btn-secondary" onclick="refreshAll()">Refresh</button>
+          </div>
+          <p class="muted" style="margin-top:6px">
+            दृश्य-मात्र नीति: डाउनलोड/स्क्रीनशॉट रोकने के सर्वोत्तम प्रयास लगे हैं—पूर्ण रूप से रोकना ब्राउज़र स्तर पर संभव नहीं।
+          </p>
+        </div>
+      </section>
+
+      <!-- PREMIUM -->
+      <section id="premium" class="section">
+        <h2>👑 Premium Plus 🏆</h2>
+        <div class="card">
+          <p>🔗 <b>यहाँ Google Play Store ऐप लिंक (हिंदी) डालें:</b></p>
+          <p class="muted">उदा: https://play.google.com/store/apps/details?id=your.app</p>
+        </div>
+      </section>
+
+      <!-- ANNOUNCEMENTS -->
+      <section id="announce" class="section">
+        <h2>📢 Announcements (Admin)</h2>
+        <div class="card">
+          <div class="form-row">
+            <input id="anTitle" placeholder="Title" />
+            <input id="anMedia" placeholder="Image/Video URL (optional)" />
+          </div>
+          <div class="form-row">
+            <textarea id="anDesc" placeholder="Description"></textarea>
+          </div>
+          <button class="btn" onclick="postAnnouncement()">Post Announcement</button>
+        </div>
+        <div id="anList" class="grid" style="margin-top:12px"></div>
+      </section>
+
+      <!-- ANALYTICS -->
+      <section id="analytics" class="section">
+        <h2>📊 Analytics</h2>
+        <div class="card">
+          <p class="muted">सभी Students की सूची — Admin अस्थायी रूप से Block/Unblock कर सकता है।</p>
+          <div id="studentsList" class="grid"></div>
+        </div>
+      </section>
+
     </div>
   </main>
+</div>
 
-  <script>
-    function toggleSidebar(show){
-      document.getElementById('sidebar').classList.toggle('active', show);
-      document.getElementById('overlay').classList.toggle('show', show);
+<!-- Blocked user overlay -->
+<div id="blocker" class="blocker"><div>
+  <h2>Access Restricted</h2>
+  <p>आपका अकाउंट अस्थायी रूप से ब्लॉक है। कृपया एडमिन से संपर्क करें।</p>
+  <button class="btn" onclick="logout()">Logout</button>
+</div></div>
+
+<!-- Warning overlay (visibility / devtools attempts) -->
+<div id="warn" class="warn">
+  <div class="card">
+    <h3>सुरक्षा सूचना</h3>
+    <p>कंटेन्ट की सुरक्षा हेतु राइट-क्लिक/सेलेक्शन/रिकॉर्डिंग निष्क्रिय करने का प्रयास किया गया है।</p>
+    <button class="btn" onclick="document.getElementById('warn').classList.remove('show')">ठीक है</button>
+  </div>
+</div>
+
+<!-- Firebase (Modular) -->
+<script type="module">
+  /* ---------------- Firebase Setup ---------------- */
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+  import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+  import {
+    getFirestore, collection, addDoc, getDocs, onSnapshot, query, orderBy, serverTimestamp,
+    setDoc, doc, getDoc, updateDoc, where
+  } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyB8Ydj__jisqUsU1NGTXruCGsTi7wmIw8o",
+    authDomain: "elegant-moment-470412-h3.firebaseapp.com",
+    projectId: "elegant-moment-470412-h3",
+    storageBucket: "elegant-moment-470412-h3.firebasestorage.app",
+    messagingSenderId: "948629350861",
+    appId: "1:948629350861:web:5d9e141e3bce27dd657c84"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const db = getFirestore(app);
+
+  const ADMIN_EMAIL = "darklightrkshackers@gmail.com";
+  let CURRENT_USER = null;
+
+  /* ---------------- Auth Guard ---------------- */
+  onAuthStateChanged(auth, async (user) => {
+    if(!user){
+      window.location.href = "index.html";
+      return;
     }
-    function onNav(el){
-      document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
-      document.getElementById(el.dataset.target).classList.add('active');
-      toggleSidebar(false);
+    CURRENT_USER = user;
+    document.getElementById("welcome").textContent = "Welcome " + (user.email || "User");
+
+    // create/update student record
+    const sref = doc(db, "students", user.uid);
+    const snap = await getDoc(sref);
+    if(!snap.exists()){
+      await setDoc(sref, { uid:user.uid, email:user.email||"", blocked:false, createdAt: serverTimestamp() });
     }
-    function logout(){
-      alert("Logging out...");
-      window.location.href="index.html";
+    else{
+      // if blocked -> show overlay + stop interaction
+      const data = snap.data();
+      if(data.blocked){
+        document.getElementById("blocker").classList.add("show");
+      }
     }
-    function sendMessage(){
-      const box = document.getElementById("msgBox");
-      if(!box.value.trim()) return;
-      const msg = document.createElement("div");
-      msg.textContent = box.value;
-      document.getElementById("messages").appendChild(msg);
-      box.value="";
+
+    // show admin panel
+    if(user.email === ADMIN_EMAIL){
+      document.getElementById("admin-items").style.display = "block";
+    }else{
+      document.getElementById("admin-items").style.display = "none";
     }
-  </script>
+
+    // live listeners
+    listenAnnouncements();
+    listenChat();
+    // initial renders
+    await refreshAll();
+  });
+
+  /* ---------------- UI Helpers ---------------- */
+  window.toggleTheme = function(){
+    const t = document.getElementById("themeBtn");
+    if(t.textContent.includes("Dark")){ t.textContent="☀️ Light"; }
+    else{ t.textContent="🌑 Dark"; }
+    document.body.classList.toggle("disable-select"); // small visual toggle
+    document.getElementById('warn').classList.add('show');
+  };
+
+  window.toggleSidebar = function(open){
+    const sb=document.getElementById("sidebar");
+    const ov=document.getElementById("overlay");
+    if(open){ sb.classList.add("active"); ov.classList.add("show"); }
+    else{ sb.classList.remove("active"); ov.classList.remove("show"); }
+  };
+
+  window.onNav = function(el){
+    document.querySelectorAll(".section").forEach(s => s.classList.remove("active"));
+    document.getElementById(el.dataset.target).classList.add("active");
+    toggleSidebar(false);
+  };
+
+  window.logout = function(){ signOut(auth).then(()=> window.location.href="index.html"); };
+
+  /* ---------------- Content Store (Firestore) ----------------
+     Collections used:
+     - content {category, title, link, desc, createdAt, author}
+     - announcements {title, desc, media, createdAt, author}
+     - messages {uid, email, text, createdAt}
+     - students {uid, email, blocked}
+  ------------------------------------------------------------ */
+
+  async function addContent(category, title, link, desc){
+    if(!CURRENT_USER || CURRENT_USER.email!==ADMIN_EMAIL) return alert("Admin only");
+    if(!category || !title || !link) return alert("कृपया जरूरी फ़ील्ड भरें");
+    await addDoc(collection(db,"content"), {
+      category, title, link, desc:desc||"", createdAt: serverTimestamp(),
+      author: CURRENT_USER.email
+    });
+    alert("Uploaded");
+    await refreshAll();
+  }
+
+  async function fetchContent(category){
+    const q = query(collection(db,"content"), where("category","==",category), orderBy("createdAt","desc"));
+    const snap = await getDocs(q);
+    return snap.docs.map(d=>({id:d.id, ...d.data()}));
+  }
+
+  window.uploadContent = async function(){
+    const cat = document.getElementById("upCategory").value.trim();
+    const title = document.getElementById("upTitle").value.trim();
+    const link = document.getElementById("upLink").value.trim();
+    const desc = document.getElementById("upDesc").value.trim();
+    addContent(cat, title, link, desc);
+  };
+
+  window.refreshAll = async function(){
+    // YouTube extra
+    renderYT(await fetchContent("youtube"));
+    // Notes
+    renderNotes(await fetchContent("notes"));
+    // Commands
+    renderCommands(await fetchContent("commands"));
+    // Hacking
+    renderHacking(await fetchContent("hacking"));
+    // Live (latest first)
+    renderLive(await fetchContent("live"));
+    // Support link (take latest one)
+    renderSupport(await fetchContent("support"));
+    // Students / Analytics
+    renderStudents(await getDocs(collection(db,"students")));
+  };
+
+  function renderYT(items){
+    const wrap = document.getElementById("ytList");
+    wrap.innerHTML="";
+    items.forEach(x=>{
+      const card = document.createElement("div");
+      card.className="card";
+      card.innerHTML = `
+        <h4>${escapeHtml(x.title)}</h4>
+        <div class="embed-wrap ratio-16x9">
+          <iframe src="${toYouTubeEmbed(x.link)}" allowfullscreen loading="lazy" referrerpolicy="no-referrer"></iframe>
+          <div class="embed-guard"></div>
+        </div>
+        ${x.desc?`<p class="muted">${escapeHtml(x.desc)}</p>`:""}
+      `;
+      wrap.appendChild(card);
+    });
+    document.getElementById("count-youtube").textContent = String(1 + items.length);
+  }
+
+  function renderNotes(items){
+    const wrap = document.getElementById("notesList");
+    wrap.innerHTML="";
+    items.forEach(x=>{
+      const card = document.createElement("div");
+      card.className="card";
+      const view = noteViewer(x.link);
+      card.innerHTML = `
+        <h4>${escapeHtml(x.title)}</h4>
+        <div class="embed-wrap ratio-16x9">
+          <iframe src="${view}" sandbox="allow-scripts allow-same-origin" referrerpolicy="no-referrer"></iframe>
+          <div class="embed-guard"></div>
+        </div>
+        ${x.desc?`<p class="muted">${escapeHtml(x.desc)}</p>`:""}
+      `;
+      wrap.appendChild(card);
+    });
+    document.getElementById("count-notes").textContent = String(items.length);
+  }
+
+  function renderCommands(items){
+    const wrap = document.getElementById("cmdList");
+    wrap.innerHTML="";
+    items.forEach(x=>{
+      const card=document.createElement("div");
+      card.className="card";
+      card.innerHTML = `
+        <h4>${escapeHtml(x.title)}</h4>
+        <pre style="white-space:pre-wrap;background:rgba(0,0,0,.25);padding:10px;border-radius:12px;border:1px solid rgba(255,255,255,.12)">${escapeHtml(x.desc||x.link)}</pre>
+      `;
+      wrap.appendChild(card);
+    });
+    document.getElementById("count-commands").textContent = String(items.length);
+  }
+
+  function renderHacking(items){
+    const wrap = document.getElementById("hackList");
+    wrap.innerHTML="";
+    items.forEach(x=>{
+      const card=document.createElement("div");
+      card.className="card";
+      card.innerHTML = `
+        <h4>${escapeHtml(x.title)}</h4>
+        ${x.link?`<a class="btn btn-secondary" href="${x.link}" target="_blank" rel="noopener noreferrer">Open</a>`:""}
+        ${x.desc?`<p class="muted" style="margin-top:8px">${escapeHtml(x.desc)}</p>`:""}
+      `;
+      wrap.appendChild(card);
+    });
+    document.getElementById("count-hacking").textContent = String(items.length);
+  }
+
+  function renderLive(items){
+    const wrap = document.getElementById("liveWrap");
+    wrap.innerHTML="";
+    items.forEach((x,i)=>{
+      const card=document.createElement("div");
+      card.className="card";
+      card.innerHTML = `
+        <h4>${escapeHtml(x.title)}</h4>
+        <div class="embed-wrap ratio-16x9">
+          <iframe src="${toYouTubeEmbed(x.link)}" allowfullscreen loading="lazy" referrerpolicy="no-referrer"></iframe>
+          <div class="embed-guard"></div>
+        </div>
+        ${x.desc?`<p class="muted">${escapeHtml(x.desc)}</p>`:""}
+      `;
+      wrap.appendChild(card);
+    });
+    document.getElementById("count-live").textContent = String(items.length);
+  }
+
+  function renderSupport(items){
+    const latest = items[0];
+    const wrap = document.getElementById("supportEmbed");
+    const iframe = document.getElementById("supportIframe");
+    if(latest && latest.link){
+      iframe.src = latest.link;
+      wrap.style.display = "block";
+      document.getElementById("count-support").textContent = "1";
+    } else {
+      wrap.style.display = "none";
+      document.getElementById("count-support").textContent = "1";
+    }
+  }
+
+  /* ---------------- Announcements ---------------- */
+  async function postAnnouncement(){
+    if(!CURRENT_USER || CURRENT_USER.email!==ADMIN_EMAIL) return alert("Admin only");
+    const title = document.getElementById("anTitle").value.trim();
+    const desc  = document.getElementById("anDesc").value.trim();
+    const media = document.getElementById("anMedia").value.trim();
+    if(!title || !desc) return alert("Title और Description आवश्यक हैं");
+    await addDoc(collection(db,"announcements"), {
+      title, desc, media: media||"", createdAt: serverTimestamp(),
+      author: CURRENT_USER.email
+    });
+    document.getElementById("anTitle").value="";
+    document.getElementById("anDesc").value="";
+    document.getElementById("anMedia").value="";
+    alert("Announcement posted");
+  }
+
+  function listenAnnouncements(){
+    const q = query(collection(db,"announcements"), orderBy("createdAt","desc"));
+    onSnapshot(q, (snap)=>{
+      const list = document.getElementById("anList");
+      list.innerHTML="";
+      snap.forEach(docu=>{
+        const a = docu.data();
+        const card = document.createElement("div");
+        card.className="card";
+        card.innerHTML = `
+          <h3>${escapeHtml(a.title)}</h3>
+          ${a.media ? mediaEmbed(a.media) : ""}
+          <p>${escapeHtml(a.desc)}</p>
+          <p class="muted">by ${escapeHtml(a.author||"Admin")}</p>
+        `;
+        list.appendChild(card);
+      });
+    });
+  }
+
+  function mediaEmbed(url){
+    const yt = toYouTubeEmbed(url);
+    if(yt){
+      return `<div class="embed-wrap ratio-16x9"><iframe src="${yt}" allowfullscreen loading="lazy"></iframe><div class="embed-guard"></div></div>`;
+    }
+    if(/\.(png|jpg|jpeg|gif|webp)$/i.test(url)){
+      return `<img src="${url}" alt="media" style="width:100%;border-radius:12px;border:1px solid rgba(255,255,255,.12)" />`;
+    }
+    if(/\.(mp4|webm|ogg)$/i.test(url)){
+      return `<video src="${url}" controls style="width:100%;border-radius:12px"></video>`;
+    }
+    return `<a class="btn btn-secondary" href="${url}" target="_blank" rel="noopener">Open Link</a>`;
+  }
+
+  /* ---------------- Chat ---------------- */
+  function listenChat(){
+    const q = query(collection(db,"messages"), orderBy("createdAt","asc"));
+    onSnapshot(q, (snap)=>{
+      const body = document.getElementById("chatBody");
+      body.innerHTML="";
+      snap.forEach(d=>{
+        const m = d.data();
+        const mine = (CURRENT_USER && m.uid===CURRENT_USER.uid);
+        const div = document.createElement("div");
+        div.className = "msg " + (mine?"me":"other");
+        const time = m.createdAt?.toDate ? m.createdAt.toDate() : new Date();
+        div.innerHTML = `
+          <div class="meta">${escapeHtml(m.email||"User")} • ${formatTime(time)}</div>
+          <div>${escapeHtml(m.text||"")}</div>
+        `;
+        body.appendChild(div);
+      });
+      body.scrollTop = body.scrollHeight;
+    });
+  }
+
+  window.sendMessage = async function(){
+    const box = document.getElementById("chatInput");
+    const txt = box.value.trim();
+    if(!txt || !CURRENT_USER) return;
+    await addDoc(collection(db,"messages"), {
+      uid: CURRENT_USER.uid,
+      email: CURRENT_USER.email || "User",
+      text: txt,
+      createdAt: serverTimestamp()
+    });
+    box.value="";
+  };
+
+  /* ---------------- Analytics: Students ---------------- */
+  function renderStudents(snap){
+    const grid = document.getElementById("studentsList");
+    grid.innerHTML="";
+    snap.forEach(docu=>{
+      const s = docu.data();
+      const card = document.createElement("div");
+      card.className="card";
+      card.innerHTML = `
+        <h4>${escapeHtml(s.email||"Unknown")}</h4>
+        <p class="muted">UID: ${escapeHtml(s.uid||docu.id)}</p>
+        <p>Status: ${s.blocked?'<span style="color:var(--danger)">Blocked</span>':'<span style="color:var(--success)">Active</span>'}</p>
+        ${CURRENT_USER && CURRENT_USER.email===ADMIN_EMAIL ? `
+          <div class="row">
+            <button class="btn btn-secondary" onclick="toggleBlock('${docu.id}', ${!!s.blocked})">${s.blocked?'Unblock':'Block'}</button>
+          </div>` : ''
+        }
+      `;
+      grid.appendChild(card);
+    });
+  }
+
+  window.toggleBlock = async function(uid, currentlyBlocked){
+    if(!CURRENT_USER || CURRENT_USER.email!==ADMIN_EMAIL) return;
+    await updateDoc(doc(db,"students",uid), { blocked: !currentlyBlocked });
+    if(uid===CURRENT_USER.uid && !currentlyBlocked){
+      // admin blocked self? rare, but handle
+      document.getElementById("blocker").classList.add("show");
+    }
+  };
+
+  /* ---------------- Small Utils ---------------- */
+  function escapeHtml(str=""){
+    return str.replace(/[&<>"']/g, s=>({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;" }[s]));
+  }
+  function toYouTubeEmbed(url=""){
+    const m = url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|live\/|shorts\/|embed\/|playlist\?list=|.*[?&]v=))([A-Za-z0-9_\-]{6,})/i);
+    const list = url.match(/[?&]list=([A-Za-z0-9_\-]+)/i);
+    if(list && url.includes("playlist")) return `https://www.youtube.com/embed/videoseries?list=${list[1]}`;
+    if(m) return `https://www.youtube.com/embed/${m[1]}`;
+    return url.includes("youtube.com/embed")?url:"";
+  }
+  function noteViewer(url=""){
+    // Google Drive/viewer fallback
+    if(/\.pdf(\?|$)/i.test(url)) return `https://drive.google.com/viewerng/viewer?embedded=true&url=${encodeURIComponent(url)}`;
+    return url;
+  }
+  function formatTime(d){ const t=new Date(d); return t.toLocaleString(); }
+
+  // “No-screenshot/record” best effort signals
+  document.addEventListener('keydown', (e)=>{
+    if(e.key==="PrintScreen" || (e.ctrlKey && e.key.toLowerCase()==="p")){ e.preventDefault(); document.getElementById('warn').classList.add('show'); }
+  });
+  document.addEventListener('visibilitychange', ()=>{
+    if(document.hidden){ document.getElementById('warn').classList.add('show'); }
+  });
+
+  /* ---------------- Expose for HTML buttons ---------------- */
+  window.postAnnouncement = postAnnouncement;
+
+</script>
+
+<!--
+  ==========================
+  Firestore Security Rules (Suggestion)
+  ==========================
+  rules_version = '2';
+  service cloud.firestore {
+    match /databases/{database}/documents {
+      function isAdmin() {
+        return request.auth != null && request.auth.token.email == 'darklightrkshackers@gmail.com';
+      }
+      match /students/{uid} {
+        allow read: if request.auth != null;
+        allow write: if isAdmin() || (request.auth != null && request.auth.uid == uid);
+      }
+      match /messages/{doc} {
+        allow read: if request.auth != null;
+        allow create: if request.auth != null;
+        allow update, delete: if false;
+      }
+      match /content/{doc} {
+        allow read: if request.auth != null;
+        allow create, update, delete: if isAdmin();
+      }
+      match /announcements/{doc} {
+        allow read: if request.auth != null;
+        allow create, update, delete: if isAdmin();
+      }
+    }
+  }
+-->
 </body>
 </html>
