@@ -6,6 +6,7 @@
   <title>darklight000999 | Home</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
+    /* ---- आपकी styling वही रहेगी ---- */
     :root {
       --bg: #e0e0e0;
       --text: #333;
@@ -13,206 +14,34 @@
       --shadow-dark: #b3b3b3;
       --accent: #3498db;
     }
-
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      display: flex;
-      height: 100vh;
-      overflow: hidden;
-    }
-
-    /* Sidebar */
-    aside.sidebar {
-      width: 250px;
-      background: var(--bg);
-      box-shadow: inset 8px 8px 16px var(--shadow-dark),
-                  inset -8px -8px 16px var(--shadow-light);
-      display: flex;
-      flex-direction: column;
-      padding: 20px 10px;
-      transition: all 0.3s ease;
-      z-index: 100;
-    }
-
-    .brand {
-      text-align: center;
-      font-weight: 600;
-      font-size: 18px;
-      margin-bottom: 20px;
-    }
-
-    nav.menu ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    nav.menu li {
-      background: var(--bg);
-      margin: 8px 0;
-      padding: 12px;
-      border-radius: 12px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      cursor: pointer;
-      box-shadow: 6px 6px 12px var(--shadow-dark),
-                  -6px -6px 12px var(--shadow-light);
-      transition: all 0.2s ease;
-    }
-
-    nav.menu li:hover {
-      transform: scale(1.02);
-      color: var(--accent);
-    }
-
-    nav.menu li .left span {
-      margin-left: 6px;
-    }
-
-    .badge {
-      background: var(--accent);
-      color: #fff;
-      padding: 2px 8px;
-      border-radius: 12px;
-      font-size: 12px;
-    }
-
-    .sidebar-bottom {
-      margin-top: auto;
-      text-align: center;
-    }
-
-    .logout {
-      padding: 10px 20px;
-      border: none;
-      border-radius: 12px;
-      cursor: pointer;
-      background: var(--bg);
-      box-shadow: 6px 6px 12px var(--shadow-dark),
-                  -6px -6px 12px var(--shadow-light);
-    }
-
-    /* Overlay (mobile) */
-    .overlay {
-      display: none;
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0,0,0,0.5);
-      z-index: 90;
-    }
-
-    /* Main Content */
-    main.main {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      overflow-y: auto;
-    }
-
-    .topbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 12px 20px;
-      background: var(--bg);
-      box-shadow: 6px 6px 12px var(--shadow-dark),
-                  -6px -6px 12px var(--shadow-light);
-    }
-
-    .menu-btn {
-      font-size: 20px;
-      background: none;
-      border: none;
-      cursor: pointer;
-    }
-
-    .brand span {
-      margin: 0 6px;
-    }
-
-    .content {
-      padding: 20px;
-      flex: 1;
-    }
-
-    .section {
-      display: none;
-    }
-    .section.active {
-      display: block;
-      animation: fadeIn 0.4s ease;
-    }
-
-    @keyframes fadeIn {
-      from {opacity: 0; transform: translateY(10px);}
-      to {opacity: 1; transform: translateY(0);}
-    }
-
-    h2 {
-      margin-top: 0;
-    }
-
+    body {margin:0;font-family:'Poppins',sans-serif;background:var(--bg);color:var(--text);display:flex;height:100vh;overflow:hidden;}
+    aside.sidebar {width:250px;background:var(--bg);box-shadow:inset 8px 8px 16px var(--shadow-dark),inset -8px -8px 16px var(--shadow-light);display:flex;flex-direction:column;padding:20px 10px;transition:all 0.3s ease;z-index:100;}
+    .brand{text-align:center;font-weight:600;font-size:18px;margin-bottom:20px;}
+    nav.menu ul{list-style:none;padding:0;margin:0;}
+    nav.menu li{background:var(--bg);margin:8px 0;padding:12px;border-radius:12px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;box-shadow:6px 6px 12px var(--shadow-dark),-6px -6px 12px var(--shadow-light);transition:all 0.2s ease;}
+    nav.menu li:hover{transform:scale(1.02);color:var(--accent);}
+    nav.menu li .left span{margin-left:6px;}
+    .badge{background:var(--accent);color:#fff;padding:2px 8px;border-radius:12px;font-size:12px;}
+    .sidebar-bottom{margin-top:auto;text-align:center;}
+    .logout{padding:10px 20px;border:none;border-radius:12px;cursor:pointer;background:var(--bg);box-shadow:6px 6px 12px var(--shadow-dark),-6px -6px 12px var(--shadow-light);}
+    .overlay{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);z-index:90;}
+    main.main{flex:1;display:flex;flex-direction:column;overflow-y:auto;}
+    .topbar{display:flex;align-items:center;justify-content:space-between;padding:12px 20px;background:var(--bg);box-shadow:6px 6px 12px var(--shadow-dark),-6px -6px 12px var(--shadow-light);}
+    .menu-btn{font-size:20px;background:none;border:none;cursor:pointer;}
+    .brand span{margin:0 6px;}
+    .content{padding:20px;flex:1;}
+    .section{display:none;}
+    .section.active{display:block;animation:fadeIn 0.4s ease;}
+    @keyframes fadeIn{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+    h2{margin-top:0;}
     /* Chat */
-    .chat-wrap {
-      display: flex;
-      flex-direction: column;
-      height: 70vh;
-      background: var(--bg);
-      border-radius: 16px;
-      box-shadow: inset 8px 8px 16px var(--shadow-dark),
-                  inset -8px -8px 16px var(--shadow-light);
-      overflow: hidden;
-    }
-    .chat-header {
-      padding: 10px;
-      font-weight: 600;
-      background: var(--accent);
-      color: #fff;
-      text-align: center;
-    }
-    .chat-messages {
-      flex: 1;
-      padding: 10px;
-      overflow-y: auto;
-    }
-    .chat-input {
-      display: flex;
-      border-top: 1px solid #ccc;
-    }
-    .chat-input input {
-      flex: 1;
-      padding: 10px;
-      border: none;
-      outline: none;
-      background: var(--bg);
-    }
-    .chat-input button {
-      padding: 10px;
-      border: none;
-      background: var(--accent);
-      color: #fff;
-      cursor: pointer;
-    }
-
-    /* Responsive */
-    @media(max-width: 768px) {
-      aside.sidebar {
-        position: fixed;
-        left: -260px;
-        top: 0; bottom: 0;
-        height: 100%;
-      }
-      aside.sidebar.active {
-        left: 0;
-      }
-      .overlay.show {
-        display: block;
-      }
-    }
+    .chat-wrap{display:flex;flex-direction:column;height:70vh;background:var(--bg);border-radius:16px;box-shadow:inset 8px 8px 16px var(--shadow-dark),inset -8px -8px 16px var(--shadow-light);overflow:hidden;}
+    .chat-header{padding:10px;font-weight:600;background:var(--accent);color:#fff;text-align:center;}
+    .chat-messages{flex:1;padding:10px;overflow-y:auto;}
+    .chat-input{display:flex;border-top:1px solid #ccc;}
+    .chat-input input{flex:1;padding:10px;border:none;outline:none;background:var(--bg);}
+    .chat-input button{padding:10px;border:none;background:var(--accent);color:#fff;cursor:pointer;}
+    @media(max-width:768px){aside.sidebar{position:fixed;left:-260px;top:0;bottom:0;height:100%;}aside.sidebar.active{left:0;}.overlay.show{display:block;}}
   </style>
 </head>
 <body>
@@ -230,8 +59,8 @@
         <li data-target="support" onclick="onNav(this)"><div class="left">🆘 <span>Contact & Support</span></div><span class="badge" id="count-support">0</span></li>
         <li data-target="chat" onclick="onNav(this)"><div class="left">💬 <span>Chat</span></div><span class="badge" id="count-chat">0</span></li>
       </ul>
-
-      <h3 style="margin:10px 0 6px;">Admin Panel</h3>
+      <!-- Admin panel (default hidden) -->
+      <h3 id="admin-title" style="margin:10px 0 6px;display:none">Admin Panel</h3>
       <ul id="admin-items" style="display:none">
         <li data-target="upload" onclick="onNav(this)"><div class="left">📂 <span>Upload Manager</span></div><span class="badge" id="count-upload">0</span></li>
         <li data-target="students" onclick="onNav(this)"><div class="left">👥 <span>Manage Students</span></div><span class="badge" id="count-students">10</span></li>
@@ -257,33 +86,16 @@
 
     <div class="content">
       <section id="home" class="section active"><h2>Welcome to darklight000999</h2></section>
-      <section id="youtube" class="section"><h2>🎬 YouTube Videos</h2><div id="youtube-list" class="grid"></div></section>
-      <section id="notes" class="section"><h2>📑 PDF & Notes</h2><div id="notes-list" class="grid"></div></section>
-      <section id="commands" class="section"><h2>🧰 Hacking Commands</h2><div id="commands-list" class="grid"></div></section>
+      <section id="youtube" class="section"><h2>🎬 YouTube Videos</h2></section>
+      <section id="notes" class="section"><h2>📑 PDF & Notes</h2></section>
+      <section id="commands" class="section"><h2>🧰 Hacking Commands</h2></section>
       <section id="hacking" class="section"><h2>🧪 Hacking Section</h2></section>
-      <section id="live" class="section"><h2>🎥 Live Class</h2><div id="live-list" class="grid"></div></section>
-      <section id="support" class="section"><h2>🆘 Contact & Support</h2><div id="support-list" class="grid"></div></section>
-
-      <section id="upload" class="section">
-        <h2>📂 Upload Manager (Admin Only)</h2>
-        <div id="upload-form" style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px">
-          <select id="upload-category">
-            <option value="youtube">YouTube</option>
-            <option value="notes">Notes</option>
-            <option value="commands">Commands</option>
-            <option value="live">Live</option>
-            <option value="support">Support</option>
-          </select>
-          <input id="upload-title" placeholder="Title">
-          <input id="upload-link" placeholder="Link / URL">
-          <button onclick="uploadContent()">Upload</button>
-        </div>
-      </section>
-
-      <section id="students" class="section"><h2>👥 Manage Students</h2><ul id="student-list"></ul></section>
+      <section id="live" class="section"><h2>🎥 Live Class</h2></section>
+      <section id="support" class="section"><h2>🆘 Contact & Support</h2></section>
+      <section id="upload" class="section"><h2>📂 Upload Manager (Admin Only)</h2></section>
+      <section id="students" class="section"><h2>👥 Manage Students</h2></section>
       <section id="announce" class="section"><h2>📢 Announcements</h2></section>
-      <section id="analytics" class="section"><h2>📊 Analytics</h2><p id="stats" class="muted"></p></section>
-
+      <section id="analytics" class="section"><h2>📊 Analytics</h2></section>
       <section id="chat" class="section">
         <div class="chat-wrap">
           <div class="chat-header">Chat</div>
@@ -297,21 +109,58 @@
     </div>
   </main>
 
-  <script>
-    function toggleSidebar(show){
+  <!-- Firebase Scripts -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+    import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+
+    // 🔐 Firebase config
+    const firebaseConfig = {
+      apiKey: "YOUR-API-KEY",
+      authDomain: "YOUR-PROJECT-ID.firebaseapp.com",
+      projectId: "YOUR-PROJECT-ID",
+      storageBucket: "YOUR-PROJECT-ID.appspot.com",
+      messagingSenderId: "YOUR-SENDER-ID",
+      appId: "YOUR-APP-ID"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    // ✅ Auth Check
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        document.getElementById("welcome").textContent = "Welcome " + (user.displayName || user.email);
+
+        // 🎯 सिर्फ Admin Email पर Admin Panel दिखाओ
+        if(user.email === "darklightrkshackers@gmail.com"){
+          document.getElementById("admin-title").style.display = "block";
+          document.getElementById("admin-items").style.display = "block";
+        }
+
+      } else {
+        window.location.href = "index.html"; // login पर redirect
+      }
+    });
+
+    // ✅ Logout function
+    window.logout = function(){
+      signOut(auth).then(() => {
+        window.location.href = "index.html";
+      });
+    }
+
+    // UI Functions
+    window.toggleSidebar = function(show){
       document.getElementById('sidebar').classList.toggle('active', show);
       document.getElementById('overlay').classList.toggle('show', show);
     }
-    function onNav(el){
+    window.onNav = function(el){
       document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
       document.getElementById(el.dataset.target).classList.add('active');
       toggleSidebar(false);
     }
-    function logout(){
-      alert("Logging out...");
-      window.location.href="index.html";
-    }
-    function sendMessage(){
+    window.sendMessage = function(){
       const box = document.getElementById("msgBox");
       if(!box.value.trim()) return;
       const msg = document.createElement("div");
