@@ -1,29 +1,131 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>DarkLight000999 — Login</title>
+  <title>DarkLight000999 — Secure Login</title>
   <style>
-    body{font-family:Poppins,system-ui;background:#0b0b0b;color:#e9fdf5;display:flex;align-items:center;justify-content:center;height:100vh;margin:0}
-    .card{background:#111;padding:28px;border-radius:10px;border:1px solid #053;box-shadow:0 6px 30px rgba(0,255,153,0.06);width:360px}
-    button{background:#00ff99;border:none;padding:10px 14px;border-radius:6px;font-weight:700;cursor:pointer;color:#000}
-    .note{font-size:13px;color:#a6fbd3;margin-top:10px}
-    #status{margin-top:12px;color:#cfeee0;font-size:14px}
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@300;500;700&display=swap');
+
+    body {
+      font-family: 'Poppins', system-ui;
+      background: radial-gradient(circle at top, #0f2027, #09171c 80%);
+      color: #e9fdf5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .card {
+      background: rgba(17, 25, 40, 0.9);
+      backdrop-filter: blur(10px);
+      border-radius: 16px;
+      padding: 32px;
+      width: 380px;
+      text-align: center;
+      box-shadow: 0 0 25px rgba(0, 255, 153, 0.25);
+      border: 1px solid rgba(0, 255, 153, 0.3);
+    }
+
+    .card img {
+      width: 100px;
+      margin-bottom: 14px;
+      filter: drop-shadow(0 0 6px #00ffcc);
+    }
+
+    .card h2 {
+      font-family: 'Orbitron', sans-serif;
+      color: #00ffcc;
+      margin: 0 0 6px;
+      letter-spacing: 1px;
+    }
+
+    .subtitle {
+      color: #cfeee0;
+      font-size: 14px;
+      margin-bottom: 22px;
+    }
+
+    .input-box {
+      width: 100%;
+      padding: 12px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.07);
+      color: #e9fdf5;
+      font-size: 14px;
+      outline: none;
+    }
+
+    .input-box:focus {
+      border: 1px solid #00ff99;
+      box-shadow: 0 0 6px #00ffcc;
+    }
+
+    .btn {
+      background: linear-gradient(90deg, #00ff99, #00e6ff);
+      border: none;
+      padding: 12px;
+      border-radius: 8px;
+      width: 100%;
+      font-weight: 700;
+      cursor: pointer;
+      color: #000;
+      margin-top: 10px;
+      transition: 0.3s ease;
+    }
+
+    .btn:hover {
+      box-shadow: 0 0 15px #00ffcc;
+      transform: translateY(-2px);
+    }
+
+    .google-btn {
+      margin-top: 14px;
+      background: #fff;
+      color: #000;
+      font-weight: 600;
+    }
+
+    .forgot {
+      margin-top: 14px;
+      font-size: 13px;
+    }
+    .forgot a {
+      color: #ff4d6d;
+      text-decoration: none;
+    }
+    .forgot a:hover {
+      text-decoration: underline;
+    }
+
+    #status {
+      margin-top: 14px;
+      color: #a6fbd3;
+      font-size: 13px;
+    }
   </style>
 </head>
 <body>
   <div class="card">
-    <h2 style="margin:0 0 8px;color:#00ffcc">DarkLight000999</h2>
-    <p style="margin:0 0 18px;color:#cfeee0">Google से साइन इन करें ताकि आगे बढ़ सको</p>
+    <img src="1000058324.png" alt="DarkLight Logo">
+    <h2>DarkLight000999</h2>
+    <p class="subtitle">Cyber Security Division — Secure Access Portal</p>
 
-    <button id="btnGoogle">Sign in with Google</button>
+    <input type="text" placeholder="Username" class="input-box" />
+    <input type="password" placeholder="Password" class="input-box" />
+    <button class="btn">Login</button>
+
+    <button id="btnGoogle" class="btn google-btn">Sign in with Google</button>
     <div id="status">Ready</div>
-    <p class="note">अगर popup न खुले या redirect ना हो — DevTools (F12) में console की red error message copy करके यहाँ paste करो।</p>
+
+    <p class="forgot">Forgot Password? <a href="#">Click here</a></p>
   </div>
 
   <script type="module">
-    // ---------------- Firebase SDK (same version for both pages) ----------------
     import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
     import {
       getAuth,
@@ -34,7 +136,6 @@
       onAuthStateChanged
     } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
 
-    // ---------------- YOUR FIREBASE CONFIG (USE EXACT SAME IN home.html) ------------
     const firebaseConfig = {
       apiKey: "AIzaSyB8Ydj__jisqUsU1NGTXruCGsTi7wmIw8o",
       authDomain: "elegant-moment-470412-h3.firebaseapp.com",
@@ -44,7 +145,6 @@
       appId: "1:948629350861:web:5d9e141e3bce27dd657c84"
     };
 
-    // Init
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
     const provider = new GoogleAuthProvider();
@@ -52,7 +152,6 @@
     const statusEl = document.getElementById('status');
     function setStatus(t){ statusEl.innerText = t; console.log(t); }
 
-    // IMPORTANT: set persistence BEFORE signing in
     document.getElementById('btnGoogle').addEventListener('click', async () => {
       try {
         setStatus("Setting persistence...");
@@ -60,7 +159,6 @@
         setStatus("Opening Google sign-in...");
         const result = await signInWithPopup(auth, provider);
         setStatus("Signed in: " + (result.user?.email || 'unknown'));
-        // onAuthStateChanged will redirect to home
       } catch (err) {
         console.error("Sign-in error:", err);
         setStatus("Sign-in failed: " + (err?.code || err?.message || err));
@@ -68,7 +166,6 @@
       }
     });
 
-    // If already logged in, go to home (avoid redirect loop if already on home)
     onAuthStateChanged(auth, (user) => {
       if (user) {
         setStatus("Already logged in: " + (user.email || ""));
