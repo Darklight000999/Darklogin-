@@ -115,9 +115,9 @@
     <h2>DarkLight000999</h2>
     <p class="subtitle">Cyber Security Division — Secure Access Portal</p>
 
-    <input type="text" placeholder="Username" class="input-box" />
-    <input type="password" placeholder="Password" class="input-box" />
-    <button class="btn">Login</button>
+    <input type="text" id="email" placeholder="Username (Email)" class="input-box" />
+    <input type="password" id="password" placeholder="Password" class="input-box" />
+    <button id="btnLogin" class="btn">Login</button>
 
     <button id="btnGoogle" class="btn google-btn">Sign in with Google</button>
     <div id="status">Ready</div>
@@ -133,7 +133,8 @@
       signInWithPopup,
       setPersistence,
       browserLocalPersistence,
-      onAuthStateChanged
+      onAuthStateChanged,
+      signInWithEmailAndPassword
     } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
 
     const firebaseConfig = {
@@ -152,6 +153,30 @@
     const statusEl = document.getElementById('status');
     function setStatus(t){ statusEl.innerText = t; console.log(t); }
 
+    // -------- Username/Password Login --------
+    document.getElementById("btnLogin").addEventListener("click", async () => {
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value.trim();
+
+      if (!email || !password) {
+        setStatus("⚠️ Please enter both username and password.");
+        return;
+      }
+
+      try {
+        setStatus("Signing in...");
+        await setPersistence(auth, browserLocalPersistence);
+        const result = await signInWithEmailAndPassword(auth, email, password);
+        setStatus("✅ Signed in: " + result.user.email);
+        location.href = "home.html"; // redirect on success
+      } catch (err) {
+        console.error("Login error:", err);
+        setStatus("❌ Login failed: " + (err.code || err.message));
+        alert("Login failed: " + (err.message || err));
+      }
+    });
+
+    // -------- Google Login --------
     document.getElementById('btnGoogle').addEventListener('click', async () => {
       try {
         setStatus("Setting persistence...");
@@ -166,6 +191,7 @@
       }
     });
 
+    // -------- Auto Redirect if Already Logged in --------
     onAuthStateChanged(auth, (user) => {
       if (user) {
         setStatus("Already logged in: " + (user.email || ""));
