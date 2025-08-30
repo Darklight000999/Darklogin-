@@ -3,170 +3,204 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>darklight000999 | Home</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <title>DarkLight000999 - Cyber Security Experts</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
   <style>
-    /* ---- आपकी styling वही रहेगी ---- */
-    :root {
-      --bg: #e0e0e0;
-      --text: #333;
-      --shadow-light: #ffffff;
-      --shadow-dark: #b3b3b3;
-      --accent: #3498db;
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #0a0a0a;
+      color: #e0e0e0;
     }
-    body {margin:0;font-family:'Poppins',sans-serif;background:var(--bg);color:var(--text);display:flex;height:100vh;overflow:hidden;}
-    aside.sidebar {width:250px;background:var(--bg);box-shadow:inset 8px 8px 16px var(--shadow-dark),inset -8px -8px 16px var(--shadow-light);display:flex;flex-direction:column;padding:20px 10px;transition:all 0.3s ease;z-index:100;}
-    .brand{text-align:center;font-weight:600;font-size:18px;margin-bottom:20px;}
-    nav.menu ul{list-style:none;padding:0;margin:0;}
-    nav.menu li{background:var(--bg);margin:8px 0;padding:12px;border-radius:12px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;box-shadow:6px 6px 12px var(--shadow-dark),-6px -6px 12px var(--shadow-light);transition:all 0.2s ease;}
-    nav.menu li:hover{transform:scale(1.02);color:var(--accent);}
-    nav.menu li .left span{margin-left:6px;}
-    .badge{background:var(--accent);color:#fff;padding:2px 8px;border-radius:12px;font-size:12px;}
-    .sidebar-bottom{margin-top:auto;text-align:center;}
-    .logout{padding:10px 20px;border:none;border-radius:12px;cursor:pointer;background:var(--bg);box-shadow:6px 6px 12px var(--shadow-dark),-6px -6px 12px var(--shadow-light);}
-    .overlay{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);z-index:90;}
-    main.main{flex:1;display:flex;flex-direction:column;overflow-y:auto;}
-    .topbar{display:flex;align-items:center;justify-content:space-between;padding:12px 20px;background:var(--bg);box-shadow:6px 6px 12px var(--shadow-dark),-6px -6px 12px var(--shadow-light);}
-    .menu-btn{font-size:20px;background:none;border:none;cursor:pointer;}
-    .brand span{margin:0 6px;}
-    .content{padding:20px;flex:1;}
-    .section{display:none;}
-    .section.active{display:block;animation:fadeIn 0.4s ease;}
-    @keyframes fadeIn{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
-    h2{margin-top:0;}
-    /* Chat */
-    .chat-wrap{display:flex;flex-direction:column;height:70vh;background:var(--bg);border-radius:16px;box-shadow:inset 8px 8px 16px var(--shadow-dark),inset -8px -8px 16px var(--shadow-light);overflow:hidden;}
-    .chat-header{padding:10px;font-weight:600;background:var(--accent);color:#fff;text-align:center;}
-    .chat-messages{flex:1;padding:10px;overflow-y:auto;}
-    .chat-input{display:flex;border-top:1px solid #ccc;}
-    .chat-input input{flex:1;padding:10px;border:none;outline:none;background:var(--bg);}
-    .chat-input button{padding:10px;border:none;background:var(--accent);color:#fff;cursor:pointer;}
-    @media(max-width:768px){aside.sidebar{position:fixed;left:-260px;top:0;bottom:0;height:100%;}aside.sidebar.active{left:0;}.overlay.show{display:block;}}
+    .neon {
+      color: #00ffcc;
+      text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc;
+    }
+    .card {
+      background: #111;
+      border: 1px solid #00ffcc33;
+      border-radius: 12px;
+      padding: 20px;
+      transition: transform 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      border-color: #00ffcc;
+    }
+    .btn-neon {
+      background: #00ffcc;
+      color: #000;
+      font-weight: bold;
+      padding: 10px 20px;
+      border-radius: 8px;
+      transition: 0.3s;
+    }
+    .btn-neon:hover {
+      background: #00ffaa;
+      box-shadow: 0 0 20px #00ffaa;
+    }
   </style>
 </head>
 <body>
-  <!-- Sidebar -->
-  <aside class="sidebar" id="sidebar">
-    <div class="brand">🌑 darklight000999</div>
-    <nav class="menu">
-      <ul id="menu-items">
-        <li data-target="home" onclick="onNav(this)"><div class="left">🏠 <span>Home</span></div><span class="badge" id="count-home">0</span></li>
-        <li data-target="youtube" onclick="onNav(this)"><div class="left">🎬 <span>YouTube Videos</span></div><span class="badge" id="count-youtube">0</span></li>
-        <li data-target="notes" onclick="onNav(this)"><div class="left">📑 <span>PDF & Notes</span></div><span class="badge" id="count-notes">0</span></li>
-        <li data-target="commands" onclick="onNav(this)"><div class="left">🧰 <span>Hacking Commands</span></div><span class="badge" id="count-commands">0</span></li>
-        <li data-target="hacking" onclick="onNav(this)"><div class="left">🧪 <span>Hacking</span></div><span class="badge" id="count-hacking">0</span></li>
-        <li data-target="live" onclick="onNav(this)"><div class="left">🎥 <span>Live Class</span></div><span class="badge" id="count-live">0</span></li>
-        <li data-target="support" onclick="onNav(this)"><div class="left">🆘 <span>Contact & Support</span></div><span class="badge" id="count-support">0</span></li>
-        <li data-target="chat" onclick="onNav(this)"><div class="left">💬 <span>Chat</span></div><span class="badge" id="count-chat">0</span></li>
-      </ul>
-      <!-- Admin panel (default hidden) -->
-      <h3 id="admin-title" style="margin:10px 0 6px;display:none">Admin Panel</h3>
-      <ul id="admin-items" style="display:none">
-        <li data-target="upload" onclick="onNav(this)"><div class="left">📂 <span>Upload Manager</span></div><span class="badge" id="count-upload">0</span></li>
-        <li data-target="students" onclick="onNav(this)"><div class="left">👥 <span>Manage Students</span></div><span class="badge" id="count-students">10</span></li>
-        <li data-target="announce" onclick="onNav(this)"><div class="left">📢 <span>Announcements</span></div><span class="badge" id="count-announce">0</span></li>
-        <li data-target="analytics" onclick="onNav(this)"><div class="left">📊 <span>Analytics</span></div><span class="badge" id="count-analytics">0</span></li>
-      </ul>
+
+  <!-- 🔹 Navbar -->
+  <header class="flex justify-between items-center p-5 bg-black fixed top-0 w-full shadow-lg z-50">
+    <h1 class="text-2xl font-bold neon">DarkLight000999</h1>
+    <nav class="space-x-6">
+      <a href="#home" class="hover:text-teal-400">Home</a>
+      <a href="#about" class="hover:text-teal-400">About</a>
+      <a href="#services" class="hover:text-teal-400">Services</a>
+      <a href="#portfolio" class="hover:text-teal-400">Portfolio</a>
+      <a href="#blog" class="hover:text-teal-400">Blog</a>
+      <a href="#contact" class="hover:text-teal-400">Contact</a>
     </nav>
-    <div class="sidebar-bottom">
-      <button class="logout" onclick="logout()">🚪 Logout</button>
+  </header>
+
+  <!-- 🔹 Hero Section -->
+  <section id="home" class="h-screen flex flex-col justify-center items-center text-center bg-gradient-to-b from-black to-gray-900">
+    <h2 class="text-5xl font-bold neon">Securing the Digital Future</h2>
+    <p class="mt-4 text-lg text-gray-300">We Protect, You Progress</p>
+    <button class="btn-neon mt-6">Get Secured</button>
+  </section>
+
+  <!-- 🔹 About -->
+  <section id="about" class="py-20 px-10 text-center">
+    <h2 class="text-3xl font-bold neon mb-6">About Us</h2>
+    <p class="max-w-2xl mx-auto text-gray-400">
+      We are a team of cybersecurity experts providing ethical hacking, penetration testing, and security consulting.
+    </p>
+  </section>
+
+  <!-- 🔹 Services -->
+  <section id="services" class="py-20 px-10 bg-gray-950">
+    <h2 class="text-3xl font-bold neon text-center mb-10">Our Services</h2>
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="card">Penetration Testing</div>
+      <div class="card">Vulnerability Assessment</div>
+      <div class="card">Network Security</div>
+      <div class="card">Web App Security</div>
+      <div class="card">Cyber Forensics</div>
+      <div class="card">Training & Workshops</div>
     </div>
-  </aside>
+  </section>
 
-  <!-- overlay -->
-  <div id="overlay" class="overlay" onclick="toggleSidebar(false)"></div>
+  <!-- 🔹 Why Choose Us -->
+  <section class="py-20 px-10 text-center">
+    <h2 class="text-3xl font-bold neon mb-10">Why Choose Us?</h2>
+    <div class="grid md:grid-cols-4 gap-6">
+      <div class="card">Trusted Experts</div>
+      <div class="card">24/7 Support</div>
+      <div class="card">100% Confidentiality</div>
+      <div class="card">Certified Ethical Hackers</div>
+    </div>
+  </section>
 
-  <!-- Main -->
-  <main class="main" id="main">
-    <div class="topbar">
-      <button class="menu-btn" onclick="toggleSidebar(true)">☰</button>
-      <div class="brand">darklight000999</div>
-      <span class="welcome" id="welcome">Welcome Guest</span>
+  <!-- 🔹 Portfolio -->
+  <section id="portfolio" class="py-20 px-10 bg-gray-950 text-center">
+    <h2 class="text-3xl font-bold neon mb-6">Portfolio</h2>
+    <p>Secured 50+ Companies, Prevented 5000+ Attacks</p>
+  </section>
+
+  <!-- 🔹 Testimonials -->
+  <section class="py-20 px-10 text-center">
+    <h2 class="text-3xl font-bold neon mb-6">Testimonials</h2>
+    <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+      <div class="card">"DarkLight000999 saved our company from a huge cyber attack!" – Client A</div>
+      <div class="card">"Professional, fast, and reliable cybersecurity services." – Client B</div>
+    </div>
+  </section>
+
+  <!-- 🔹 Contact -->
+  <section id="contact" class="py-20 px-10 bg-gray-950">
+    <h2 class="text-3xl font-bold neon text-center mb-6">Contact Us</h2>
+    <form class="max-w-xl mx-auto space-y-4">
+      <input type="text" placeholder="Name" class="w-full p-3 rounded bg-black border border-gray-700">
+      <input type="email" placeholder="Email" class="w-full p-3 rounded bg-black border border-gray-700">
+      <textarea placeholder="Message" rows="4" class="w-full p-3 rounded bg-black border border-gray-700"></textarea>
+      <button type="submit" class="btn-neon w-full">Send Message</button>
+    </form>
+  </section>
+
+  <!-- 🔹 Admin & User Panel -->
+  <section class="py-20 px-10 text-center">
+    <div id="userPanel" style="display:none;">
+      <h2 class="text-2xl font-bold neon mb-4">Available Courses</h2>
+      <div id="coursesList"></div>
     </div>
 
-    <div class="content">
-      <section id="home" class="section active"><h2>Welcome to darklight000999</h2></section>
-      <section id="youtube" class="section"><h2>🎬 YouTube Videos</h2></section>
-      <section id="notes" class="section"><h2>📑 PDF & Notes</h2></section>
-      <section id="commands" class="section"><h2>🧰 Hacking Commands</h2></section>
-      <section id="hacking" class="section"><h2>🧪 Hacking Section</h2></section>
-      <section id="live" class="section"><h2>🎥 Live Class</h2></section>
-      <section id="support" class="section"><h2>🆘 Contact & Support</h2></section>
-      <section id="upload" class="section"><h2>📂 Upload Manager (Admin Only)</h2></section>
-      <section id="students" class="section"><h2>👥 Manage Students</h2></section>
-      <section id="announce" class="section"><h2>📢 Announcements</h2></section>
-      <section id="analytics" class="section"><h2>📊 Analytics</h2></section>
-      <section id="chat" class="section">
-        <div class="chat-wrap">
-          <div class="chat-header">Chat</div>
-          <div id="messages" class="chat-messages"></div>
-          <div class="chat-input">
-            <input id="msgBox" placeholder="Type a message..." onkeydown="if(event.key==='Enter')sendMessage()">
-            <button onclick="sendMessage()">Send</button>
-          </div>
-        </div>
-      </section>
+    <div id="adminPanel" style="display:none;">
+      <h2 class="text-2xl font-bold neon mb-4">Admin Panel</h2>
+      <button class="btn-neon" onclick="addCourse()">Add Course</button>
+      <button class="btn-neon" onclick="logout()">Logout</button>
     </div>
-  </main>
+  </section>
 
-  <!-- Firebase Scripts -->
+  <!-- 🔹 Footer -->
+  <footer class="py-6 bg-black text-center text-gray-400">
+    <div class="mb-3">
+      <a href="#home" class="mx-2 hover:text-teal-400">Home</a>|
+      <a href="#about" class="mx-2 hover:text-teal-400">About</a>|
+      <a href="#services" class="mx-2 hover:text-teal-400">Services</a>|
+      <a href="#contact" class="mx-2 hover:text-teal-400">Contact</a>
+    </div>
+    <p>© 2025 DarkLight000999 | All Rights Reserved</p>
+  </footer>
+
+  <!-- 🔹 Firebase SDK -->
   <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-    import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-app.js";
+    import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-auth.js";
+    import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-firestore.js";
 
-    // 🔐 Firebase config
+    // ⚡ तुम्हारा Firebase Config यहां डालो
     const firebaseConfig = {
-      apiKey: "YOUR-API-KEY",
-      authDomain: "YOUR-PROJECT-ID.firebaseapp.com",
-      projectId: "YOUR-PROJECT-ID",
-      storageBucket: "YOUR-PROJECT-ID.appspot.com",
-      messagingSenderId: "YOUR-SENDER-ID",
-      appId: "YOUR-APP-ID"
+      apiKey: "YOUR_API_KEY",
+      authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+      projectId: "YOUR_PROJECT_ID",
+      storageBucket: "YOUR_PROJECT_ID.appspot.com",
+      messagingSenderId: "YOUR_SENDER_ID",
+      appId: "YOUR_APP_ID"
     };
 
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
+    const db = getFirestore(app);
 
-    // ✅ Auth Check
-    onAuthStateChanged(auth, (user) => {
+    const adminEmail = "darklightrkshackers@gmail.com";
+
+    onAuthStateChanged(auth, async (user) => {
       if (user) {
-        document.getElementById("welcome").textContent = "Welcome " + (user.displayName || user.email);
-
-        // 🎯 सिर्फ Admin Email पर Admin Panel दिखाओ
-        if(user.email === "darklightrkshackers@gmail.com"){
-          document.getElementById("admin-title").style.display = "block";
-          document.getElementById("admin-items").style.display = "block";
+        if (user.email === adminEmail) {
+          document.getElementById("adminPanel").style.display = "block";
+        } else {
+          document.getElementById("userPanel").style.display = "block";
+          // Courses Firestore से लाना
+          const querySnapshot = await getDocs(collection(db, "courses"));
+          let list = "";
+          querySnapshot.forEach((doc) => {
+            const data = doc.data();
+            list += `<div class="card my-4"><h3 class="text-xl font-bold">${data.title}</h3><p>${data.description}</p><a href="${data.link}" target="_blank" class="btn-neon mt-2 inline-block">Start</a></div>`;
+          });
+          document.getElementById("coursesList").innerHTML = list;
         }
-
       } else {
-        window.location.href = "index.html"; // login पर redirect
+        window.location.href = "index.html";
       }
     });
 
-    // ✅ Logout function
-    window.logout = function(){
+    function logout() {
       signOut(auth).then(() => {
         window.location.href = "index.html";
       });
     }
 
-    // UI Functions
-    window.toggleSidebar = function(show){
-      document.getElementById('sidebar').classList.toggle('active', show);
-      document.getElementById('overlay').classList.toggle('show', show);
-    }
-    window.onNav = function(el){
-      document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
-      document.getElementById(el.dataset.target).classList.add('active');
-      toggleSidebar(false);
-    }
-    window.sendMessage = function(){
-      const box = document.getElementById("msgBox");
-      if(!box.value.trim()) return;
-      const msg = document.createElement("div");
-      msg.textContent = box.value;
-      document.getElementById("messages").appendChild(msg);
-      box.value="";
+    function addCourse() {
+      alert("Admin course adding functionality यहाँ implement होगा।");
     }
   </script>
 </body>
