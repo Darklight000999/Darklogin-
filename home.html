@@ -7,20 +7,37 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
 <style>
   :root{
-    --bg:#0f1220;
-    --card:#14182a;
-    --muted:#8ea0b5;
-    --text:#eaf2ff;
-    --brand:#6dd5ed;
-    --brand2:#2193b0;
-    --accent:#8a7dff;
-    --danger:#ff5757;
-    --success:#1ecb84;
-    --glass:rgba(255,255,255,.06);
-    --glass-strong:rgba(255,255,255,.12);
-    --shadow: 0 10px 30px rgba(0,0,0,.45);
-    --radius:16px;
-  }
+    /* 🔥 सिर्फ h1 (darklight000999) के लिए Animated Gradient + Red Outline */
+header h1 {
+  font-weight: bold;
+  background: linear-gradient(
+    270deg, 
+    rgb(255,120,120),   /* हल्का लाल */
+    rgb(255,220,120),   /* हल्का ऑरेंज */
+    rgb(120,220,255),   /* हल्का नीला */
+    rgb(220,120,255)    /* हल्का पर्पल */
+  );
+  background-size: 600% 600%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textGradient 8s ease infinite;
+
+  /* Red Outline / Glow */
+  text-shadow: 
+    -1px -1px 0 #ff0000,
+     1px -1px 0 #ff0000,
+    -1px  1px 0 #ff0000,
+     1px  1px 0 #ff0000,
+     0 0 6px #ff0000;
+}
+
+/* Gradient Animation Keyframes */
+@keyframes textGradient {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+    
 html, body {
   height: 100%;
   margin: 0;
