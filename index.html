@@ -1,143 +1,41 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-  <title>Login | darklight000999</title>
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"/>
-
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>DarkLight000999 — Login</title>
   <style>
-    * { transition: all 0.5s ease-in-out; box-sizing: border-box; }
-    body {
-      margin: 0; font-family: 'Poppins', sans-serif;
-      display: flex; justify-content: center; align-items: center;
-      height: 100vh; color: #000; overflow: hidden;
-    }
-
-    /* 🌌 Infinite Smooth BG */
-    body::before {
-      content: ""; position: fixed; top: 0; left: 0;
-      width: 200%; height: 200%;
-      background: linear-gradient(-45deg, #ff0040, #0040ff, #00ffbf, #ff8000);
-      background-size: 400% 400%; animation: smoothBg 30s ease infinite;
-      z-index: -1;
-    }
-    @keyframes smoothBg {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    .login-container {
-      background: rgba(255,255,255,0.6); backdrop-filter: blur(15px);
-      padding: 40px; border-radius: 20px; width: 320px; text-align: center;
-      box-shadow: 9px 9px 16px rgba(0,0,0,0.2), -9px -9px 16px rgba(255,255,255,0.4);
-    }
-
-    /* 🔥 RGB Logo Ring */
-    .logo-ring { position: relative; width: 130px; height: 130px; margin: 0 auto 15px; }
-    .logo-ring::before {
-      content: ""; position: absolute; top: -5px; left: -5px;
-      width: 140px; height: 140px; border-radius: 50%;
-      background: conic-gradient(red, orange, yellow, lime, cyan, blue, violet, red);
-      animation: rotate 3s linear infinite; z-index: 0;
-      box-shadow: 0 0 15px rgba(0,0,0,0.2);
-    }
-    .logo-ring img { width: 130px; height: 130px; border-radius: 50%; position: relative; z-index: 1; }
-    @keyframes rotate { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-
-    h2 { margin: 5px 0 5px 0; font-weight: 600; color: #000; }
-    p.subtitle { margin: 0 0 15px 0; color: gray; }
-
-    /* Inputs */
-    input {
-      width: 100%; padding: 12px; margin: 12px 0;
-      border: none; border-radius: 50px; background: #f0f0f0; text-align: center;
-      font-size: 14px; outline: none; color: #000;
-      box-shadow: inset 5px 5px 10px #bebebe, inset -5px -5px 10px #ffffff;
-    }
-    input:focus {
-      background: rgba(255,255,255,0.7);
-      box-shadow: 0 0 15px rgba(255,255,255,0.9), inset 2px 2px 5px rgba(0,0,0,0.1);
-    }
-
-    .login-btn {
-      width: 100%; padding: 12px; margin-top: 15px;
-      border: none; border-radius: 50px; background: #e0e0e0;
-      color: #007bff; font-size: 16px; font-weight: bold; cursor: pointer;
-      box-shadow: 5px 5px 10px #bebebe, -5px -5px 10px #ffffff;
-    }
-    .login-btn:hover {
-      color: #0056b3; background: #f0f0f0;
-      box-shadow: 0 0 15px rgba(0,0,0,0.1);
-    }
-
-    .forgot {
-      margin-top: 15px; display: block; font-size: 13px;
-      color: red; cursor: pointer; text-decoration: none;
-    }
-    .forgot:hover { color: darkred; transform: scale(1.05); }
-
-    /* 🌑/🌞 Toggle */
-    .theme-icon {
-      position: absolute; top: 15px; right: 20px;
-      font-size: 24px; cursor: pointer; user-select: none;
-    }
-
-    /* Dark Mode */
-    body.dark { color: #fff; }
-    body.dark::before {
-      background: linear-gradient(-45deg, #00111a, #330033, #001a33, #0d2600);
-      background-size: 400% 400%; animation: smoothBg 40s ease infinite;
-    }
-    body.dark .login-container {
-      background: rgba(20,20,20,0.6); backdrop-filter: blur(20px);
-      box-shadow: 9px 9px 16px rgba(0,0,0,0.8), -9px -9px 16px rgba(255,255,255,0.05);
-    }
-    body.dark h2 { color: #fff; }
-    body.dark p.subtitle { color: #bbb; }
-    body.dark input {
-      background: #222; color: #fff;
-      box-shadow: inset 5px 5px 10px #0f0f0f, inset -5px -5px 10px #2f2f2f;
-    }
-    body.dark input:focus {
-      background: rgba(255,255,255,0.1);
-      box-shadow: 0 0 15px rgba(255,255,255,0.4), inset 2px 2px 5px rgba(0,0,0,0.4);
-    }
-    body.dark .login-btn {
-      background: #1e1e1e; color: #4da3ff;
-      box-shadow: 5px 5px 10px #0f0f0f, -5px -5px 10px #2f2f2f;
-    }
-    body.dark .login-btn:hover { background: #222; color: #66b0ff; }
-    body.dark .forgot { color: #ff8080; }
-    body.dark .forgot:hover { color: #ff4d4d; }
+    body{font-family:Poppins,system-ui;background:#0b0b0b;color:#e9fdf5;display:flex;align-items:center;justify-content:center;height:100vh;margin:0}
+    .card{background:#111;padding:28px;border-radius:10px;border:1px solid #053;box-shadow:0 6px 30px rgba(0,255,153,0.06);width:360px}
+    button{background:#00ff99;border:none;padding:10px 14px;border-radius:6px;font-weight:700;cursor:pointer;color:#000}
+    .note{font-size:13px;color:#a6fbd3;margin-top:10px}
+    #status{margin-top:12px;color:#cfeee0;font-size:14px}
   </style>
 </head>
 <body>
-  <div class="theme-icon" onclick="toggleTheme()">🌑</div>
+  <div class="card">
+    <h2 style="margin:0 0 8px;color:#00ffcc">DarkLight000999</h2>
+    <p style="margin:0 0 18px;color:#cfeee0">Google से साइन इन करें ताकि आगे बढ़ सको</p>
 
-  <div class="login-container">
-    <div class="logo-ring">
-      <img src="1000058324.png" alt="Logo">
-    </div>
-    <h2>darklight000999</h2>
-    <p class="subtitle">LOGIN</p>
-
-    <input type="email" id="email" placeholder="Username" required />
-    <input type="password" id="password" placeholder="Password" required />
-    <button class="login-btn" onclick="login()">Login</button>
-    <a class="forgot" onclick="alert('👉 यहाँ Password Reset Code लगाओ!')">Forgot Password? click here</a>
+    <button id="btnGoogle">Sign in with Google</button>
+    <div id="status">Ready</div>
+    <p class="note">अगर popup न खुले या redirect ना हो — DevTools (F12) में console की red error message copy करके यहाँ paste करो।</p>
   </div>
 
-  <!-- Firebase SDKs (Modular v9+) -->
   <script type="module">
-    // Import Firebase
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
-    import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-auth.js";
+    // ---------------- Firebase SDK (same version for both pages) ----------------
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+    import {
+      getAuth,
+      GoogleAuthProvider,
+      signInWithPopup,
+      setPersistence,
+      browserLocalPersistence,
+      onAuthStateChanged
+    } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
 
-    // Firebase Config
+    // ---------------- YOUR FIREBASE CONFIG (USE EXACT SAME IN home.html) ------------
     const firebaseConfig = {
       apiKey: "AIzaSyB8Ydj__jisqUsU1NGTXruCGsTi7wmIw8o",
       authDomain: "elegant-moment-470412-h3.firebaseapp.com",
@@ -147,31 +45,41 @@
       appId: "1:948629350861:web:5d9e141e3bce27dd657c84"
     };
 
-    // Init Firebase
+    // Init
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
+    const provider = new GoogleAuthProvider();
 
-    // Login Function
-    window.login = function() {
-      const email = document.getElementById("email").value;
-      const password = document.getElementById("password").value;
+    const statusEl = document.getElementById('status');
+    function setStatus(t){ statusEl.innerText = t; console.log(t); }
 
-      signInWithEmailAndPassword(auth, email, password)
-        .then(() => {
-          alert("✅ Login Successful!");
-          window.location.href = "home.html";
-        })
-        .catch(error => {
-          alert("❌ " + error.message);
-        });
-    };
+    // IMPORTANT: set persistence BEFORE signing in
+    document.getElementById('btnGoogle').addEventListener('click', async () => {
+      try {
+        setStatus("Setting persistence...");
+        await setPersistence(auth, browserLocalPersistence);
+        setStatus("Opening Google sign-in...");
+        const result = await signInWithPopup(auth, provider);
+        setStatus("Signed in: " + (result.user?.email || 'unknown'));
+        // onAuthStateChanged will redirect to home
+      } catch (err) {
+        console.error("Sign-in error:", err);
+        setStatus("Sign-in failed: " + (err?.code || err?.message || err));
+        alert("Sign-in failed: " + (err?.message || err));
+      }
+    });
 
-    // Dark/Light Toggle
-    window.toggleTheme = function() {
-      document.body.classList.toggle("dark");
-      const btn = document.querySelector(".theme-icon");
-      btn.textContent = document.body.classList.contains("dark") ? "🌞" : "🌑";
-    };
+    // If already logged in, go to home (avoid redirect loop if already on home)
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setStatus("Already logged in: " + (user.email || ""));
+        if (!location.pathname.endsWith('home.html')) {
+          location.href = 'home.html';
+        }
+      } else {
+        setStatus("Not logged in");
+      }
+    });
   </script>
 </body>
 </html>
