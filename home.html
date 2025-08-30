@@ -19,125 +19,99 @@
     --glass:rgba(255,255,255,.06);
     --glass-strong:rgba(255,255,255,.12);
     --shadow: 0 10px 30px rgba(0,0,0,.45);
-    --radius:16px;
+    --radius:14px;
 
-    /* Sidebar new palette for neon gradient */
+    /* Sidebar palette */
     --sb-grad-left: #ff2a7a;
     --sb-grad-mid: #a24cff;
     --sb-grad-right:#1677ff;
     --sb-item-bg: rgba(255,255,255,0.03);
-    --sb-item-inner: rgba(0,0,0,0.45);
   }
   *{box-sizing:border-box}
   html,body{height:100%}
   body{
-    margin:0;font-family:'Poppins',sans-serif;color:var(--text);background:
-    radial-gradient(1200px 800px at 10% -10%, #1b2040 0, transparent 60%),
-    radial-gradient(900px 600px at 110% 10%, #0a4250 0, transparent 60%),
-    linear-gradient(180deg, #0a0e1a, #0b1020);
+    margin:0;font-family:'Poppins',sans-serif;color:var(--text);
+    background:
+      radial-gradient(1200px 800px at 10% -10%, #1b2040 0, transparent 60%),
+      radial-gradient(900px 600px at 110% 10%, #0a4250 0, transparent 60%),
+      linear-gradient(180deg, #0a0e1a, #0b1020);
     overflow:hidden;
   }
-
-  /* animated subtle color drift */
   body::before{
     content:"";position:fixed;inset:-20%;z-index:-1;
     background: conic-gradient(from 180deg, #1c2760, #0f2346, #0c3d5a, #10253d, #1c2760);
-    filter: blur(140px) saturate(120%); opacity:.25; animation: drift 30s linear infinite;
+    filter: blur(140px) saturate(120%); opacity:.22; animation: drift 30s linear infinite;
   }
   @keyframes drift{ to{ transform: rotate(1turn);} }
 
   .app{display:flex;height:100%;min-width:0}
 
-  /* Sidebar */
+/* ---------------- SIDEBAR (SLIM) ---------------- */
   .sidebar{
-    width:320px;min-width:260px;max-width:90vw;padding:20px 18px;
+    width:220px;            /* slim width */
+    min-width:200px;        /* mobile-safe */
+    padding:14px 12px;
     background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01));
-    backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
     border-right:1px solid rgba(255,255,255,.03);
-    box-shadow: 0 20px 50px rgba(0,0,0,.6);
+    box-shadow: 0 20px 50px rgba(0,0,0,.55);
     overflow:auto; position:relative;
-    /* subtle left border neon */
   }
   .sidebar::after{
     content:"";position:absolute;right:0;top:0;bottom:0;width:6px;
-    background:linear-gradient(180deg, rgba(23,120,160,0.12), rgba(110,20,140,0.08));
+    background:linear-gradient(180deg, rgba(23,120,160,0.08), rgba(110,20,140,0.06));
     border-top-left-radius:8px;border-bottom-left-radius:8px;pointer-events:none;
   }
 
-  .brandbar{display:flex;align-items:center;gap:10px;margin-bottom:14px}
-  .brand-logo{width:44px;height:44px;border-radius:50%;object-fit:cover;box-shadow:0 6px 18px rgba(0,0,0,.6)}
-  .brandname{font-weight:700;letter-spacing:.3px}
-  .theme-toggle{margin-left:auto;border:none;border-radius:999px;padding:8px 14px;cursor:pointer;
-    background:linear-gradient(90deg,var(--brand2),var(--brand));color:#001018;font-weight:700}
-  .logo-box{display:flex;justify-content:center;margin:10px 0 8px}
-  .logo-img{width:80px;height:80px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.06);
+  .brandbar{display:flex;align-items:center;gap:8px;margin-bottom:12px}
+  .brand-logo{width:40px;height:40px;border-radius:50%;object-fit:cover;box-shadow:0 6px 18px rgba(0,0,0,.6)}
+  .brandname{font-weight:700;letter-spacing:.3px;font-size:15px}
+  .theme-toggle{margin-left:auto;border:none;border-radius:999px;padding:6px 10px;cursor:pointer;
+    background:linear-gradient(90deg,var(--brand2),var(--brand));color:#001018;font-weight:700;font-size:13px}
+  .logo-box{display:flex;justify-content:center;margin:8px 0 8px}
+  .logo-img{width:72px;height:72px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.06);
     box-shadow: 0 12px 30px rgba(24,40,70,.6);
   }
 
   nav.menu ul{list-style:none;margin:0;padding:0}
-  /* SIDEBAR - MODIFIED: modern glassy pill items with neon gradient active state */
   nav.menu li{
     position:relative;
-    display:flex;align-items:center;justify-content:flex-start;gap:12px;
-    padding:18px 18px;margin:14px 2px;border-radius:20px;cursor:pointer;
-    background: linear-gradient(180deg, rgba(10,14,20,.6), rgba(255,255,255,0.02));
-    border:1px solid rgba(255,255,255,.03);
-    box-shadow: inset 0 -4px 14px rgba(0,0,0,.45), 0 8px 24px rgba(0,0,0,.45);
-    transition: transform .22s cubic-bezier(.2,.9,.2,1), box-shadow .22s, background .22s;
-    color:var(--text); font-size:20px; font-weight:600;
-    overflow:visible;
+    display:flex;align-items:center;justify-content:flex-start;gap:10px;
+    padding:12px 14px;margin:12px 4px;border-radius:16px;cursor:pointer;
+    background: linear-gradient(180deg, rgba(10,14,20,.6), rgba(255,255,255,0.01));
+    border:1px solid rgba(255,255,255,.02);
+    box-shadow: inset 0 -4px 10px rgba(0,0,0,.45), 0 8px 20px rgba(0,0,0,.45);
+    transition: transform .18s cubic-bezier(.2,.9,.2,1), box-shadow .18s, background .18s;
+    color:var(--text); font-size:17px; font-weight:600; overflow:visible;
   }
-  /* small icon */
-  nav.menu li .left{display:flex;align-items:center;gap:12px;min-width:0}
-  nav.menu li .left span{white-space:nowrap; display:inline-block; transform:translateZ(0)}
-  nav.menu li .ico{font-size:22px; margin-right:6px; filter:drop-shadow(0 6px 18px rgba(0,0,0,.6))}
+  nav.menu li .left{display:flex;align-items:center;gap:10px;min-width:0}
+  nav.menu li .left span{white-space:nowrap; display:inline-block}
+  nav.menu li .ico{font-size:20px; margin-right:4px}
 
   nav.menu li:hover{
-    transform:translateY(-4px) scale(1.01);
-    box-shadow: 0 18px 40px rgba(24,48,80,.5);
+    transform:translateY(-3px);
+    box-shadow: 0 14px 36px rgba(24,48,80,.45);
   }
 
-  /* active / selected */
   nav.menu li.menu-active{
     background: linear-gradient(90deg, var(--sb-grad-left), var(--sb-grad-mid), var(--sb-grad-right));
-    color: #fff;
-    box-shadow: 0 18px 48px rgba(120,60,200,.22), 0 6px 30px rgba(24,48,80,.5);
-    transform: translateY(-6px) scale(1.02);
+    color:#fff; transform: translateY(-4px);
+    box-shadow: 0 18px 46px rgba(120,60,200,.18);
   }
-  /* neon glow ring behind active item */
   nav.menu li.menu-active::before{
-    content:"";
-    position:absolute;inset:-6px;
-    background: linear-gradient(90deg, rgba(255,42,122,0.12), rgba(162,76,255,0.12), rgba(22,119,255,0.12));
-    border-radius:24px; filter: blur(10px); z-index:-1; pointer-events:none;
-  }
-  /* small accent pill on right */
-  .badge{
-    font-size:13px;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.08);color:var(--text);
-    margin-left:auto; align-self:center; border:1px solid rgba(255,255,255,.03); font-weight:700;
-  }
-  .menu-active .badge{
-    background: rgba(255,255,255,0.12);
-    color: #001018;
-    background-image: linear-gradient(90deg, rgba(255,255,255,0.9), rgba(255,255,255,0.8));
+    content:"";position:absolute;inset:-6px;border-radius:18px;background:linear-gradient(90deg, rgba(255,42,122,0.08), rgba(162,76,255,0.08), rgba(22,119,255,0.08));filter:blur(8px);z-index:-1;
   }
 
-  .section-title{font-size:12px;opacity:.8;margin:10px 2px 6px;padding-left:6px}
+  .badge{font-size:12px;padding:6px 8px;border-radius:999px;background:rgba(255,255,255,.06);color:var(--text);margin-left:auto;font-weight:700}
+  .menu-active .badge{background:rgba(255,255,255,.9);color:#001018}
 
+  .section-title{font-size:12px;opacity:.8;margin:8px 2px 6px;padding-left:6px}
   .sidebar-bottom{margin-top:12px}
-  .logout{
-    width:100%;padding:12px;border:none;border-radius:12px;cursor:pointer;
-    background:linear-gradient(90deg,#f56,#d33);color:white;font-weight:700;
-    box-shadow:0 8px 30px rgba(213,40,60,.12);
-  }
+  .logout{width:100%;padding:10px;border:none;border-radius:12px;cursor:pointer;background:linear-gradient(90deg,#f56,#d33);color:white;font-weight:700;}
 
   /* Main */
   .main{flex:1;min-width:0;display:flex;flex-direction:column;overflow:hidden}
-  .topbar{
-    display:flex;align-items:center;gap:12px;padding:12px 16px;
-    background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01));
-    border-bottom:1px solid rgba(255,255,255,.03);backdrop-filter: blur(6px);
-  }
+  .topbar{display:flex;align-items:center;gap:12px;padding:12px 16px;background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01));border-bottom:1px solid rgba(255,255,255,.03);backdrop-filter: blur(6px);}
   .menu-btn{display:none}
   .brand-inline{display:flex;align-items:center;gap:10px;font-weight:700}
   .welcome{margin-left:auto;opacity:.9}
@@ -147,39 +121,19 @@
   .section.active{display:block}
   @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 
-  /* Cards / grids */
   .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
-  .card{
-    background:var(--glass);border:1px solid rgba(255,255,255,.04);border-radius:var(--radius);
-    box-shadow:var(--shadow);padding:14px
-  }
-  .card h3{margin:0 0 8px}
+  .card{background:var(--glass);border:1px solid rgba(255,255,255,.04);border-radius:var(--radius);box-shadow:var(--shadow);padding:14px}
   .muted{color:var(--muted)}
-  .btn{
-    border:none;border-radius:12px;padding:10px 14px;font-weight:700;cursor:pointer;
-    background:linear-gradient(90deg,var(--brand2),var(--brand));color:#001018
-  }
+  .btn{border:none;border-radius:12px;padding:10px 14px;font-weight:700;cursor:pointer;background:linear-gradient(90deg,var(--brand2),var(--brand));color:#001018}
   .btn-secondary{background:rgba(255,255,255,.06);color:var(--text);border:1px solid rgba(255,255,255,.08)}
   .row{display:flex;gap:10px;flex-wrap:wrap}
 
-  /* Embeds */
-  .embed-wrap{
-    position:relative;border-radius:var(--radius);overflow:hidden;background:#000;
-    border:1px solid rgba(255,255,255,.06);box-shadow:var(--shadow)
-  }
+  .embed-wrap{position:relative;border-radius:var(--radius);overflow:hidden;background:#000;border:1px solid rgba(255,255,255,.06);box-shadow:var(--shadow)}
   .embed-wrap.ratio-16x9{padding-top:56.25%}
-  .embed-wrap > iframe, .embed-wrap > div.embed-guard{
-    position:absolute;inset:0;width:100%;height:100%;border:0
-  }
-  .embed-guard{
-    pointer-events:none;background:transparent; /* click-through allowed */
-  }
+  .embed-wrap > iframe, .embed-wrap > div.embed-guard{position:absolute;inset:0;width:100%;height:100%;border:0}
+  .embed-guard{pointer-events:none;background:transparent}
 
-  /* Chat */
-  .chat{
-    display:flex;flex-direction:column;height:60vh;background:var(--glass);
-    border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);overflow:hidden
-  }
+  .chat{display:flex;flex-direction:column;height:60vh;background:var(--glass);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);overflow:hidden}
   .chat-head{padding:10px 14px;background:rgba(255,255,255,.04);font-weight:700}
   .chat-body{flex:1;overflow:auto;padding:12px}
   .msg{max-width:70%;margin:8px 0;padding:10px 12px;border-radius:14px;box-shadow:var(--shadow)}
@@ -188,39 +142,28 @@
   .meta{font-size:11px;opacity:.8;margin-bottom:4px}
   .chat-send{display:flex;gap:8px;padding:10px;border-top:1px solid rgba(255,255,255,.08)}
   .chat-send input{flex:1;padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.25);color:var(--text)}
-  .chat-send button{padding:12px 16px}
 
-  /* Upload / forms */
   .form-row{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0}
-  .form-row input, .form-row select, .form-row textarea{
-    flex:1;min-width:220px;padding:10px;border-radius:12px;border:1px solid rgba(255,255,255,.12);
-    background:rgba(255,255,255,.04);color:var(--text)
-  }
+  .form-row input, .form-row select, .form-row textarea{flex:1;min-width:220px;padding:10px;border-radius:12px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04);color:var(--text)}
   textarea{min-height:90px;resize:vertical}
 
-  /* Overlay for mobile sidebar */
   .overlay{display:none}
   .overlay.show{display:block;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:90}
 
-  /* Block / warning */
-  .blocker, .warn{
-    position:fixed;inset:0;background:rgba(10,14,20,.9);color:#fff;display:none;place-items:center;z-index:9999;
-    padding:20px;text-align:center
-  }
+  .blocker, .warn{position:fixed;inset:0;background:rgba(10,14,20,.9);color:#fff;display:none;place-items:center;z-index:9999;padding:20px;text-align:center}
   .blocker.show, .warn.show{display:grid}
   .warn .card{max-width:520px}
 
-  /* Basic “no-download” UX attempts */
   img, video{ -webkit-user-drag:none; user-select:none }
   body{ -webkit-user-select:none; -ms-user-select:none; user-select:none }
   body.disable-select *{ user-select:none !important }
 
-  /* Mobile */
   @media (max-width: 900px){
     .menu-btn{display:inline-flex;border:1px solid rgba(255,255,255,.2);border-radius:10px;padding:8px}
     .sidebar{position:fixed;left:-100%;top:0;bottom:0;z-index:100}
     .sidebar.active{left:0}
   }
+
 </style>
 </head>
 <body oncontextmenu="return false;">
@@ -232,28 +175,29 @@
       <div class="brandname">darklight000999</div>
       <button class="theme-toggle" id="themeBtn" onclick="toggleTheme()">🌑 Dark</button>
     </div>
+
     <div class="logo-box">
       <img class="logo-img" src="1000058324.png" alt="Logo" onerror="this.src='https://via.placeholder.com/80x80?text=DL'">
     </div>
 
-    <nav class="menu">
+    <nav class="menu" aria-label="Main menu">
       <div class="section-title">Menu</div>
       <ul id="menu-items">
         <li data-target="home" onclick="onNav(this)"><div class="left"><span class="ico">🏠</span><span>Dashboard</span></div><span class="badge" id="count-home">1</span></li>
         <li data-target="chat" onclick="onNav(this)"><div class="left"><span class="ico">💬</span><span>Chat</span></div><span class="badge" id="count-chat">0</span></li>
-        <li data-target="upload" onclick="onNav(this)"><div class="left"><span class="ico">📂</span><span>Upload Manager</span></div><span class="badge" id="count-upload">—</span></li>
-        <li data-target="analytics" onclick="onNav(this)"><div class="left"><span class="ico">📊</span><span>Analytics</span></div><span class="badge" id="count-analytics">0</span></li>
+
+        <!-- Admin-only items: hidden by default; shown by JS only for admin email -->
+        <li id="menu-upload" data-target="upload" style="display:none" onclick="onNav(this)"><div class="left"><span class="ico">📂</span><span>Upload Manager</span></div><span class="badge" id="count-upload">—</span></li>
+        <li id="menu-analytics" data-target="analytics" style="display:none" onclick="onNav(this)"><div class="left"><span class="ico">📊</span><span>Analytics</span></div><span class="badge" id="count-analytics">0</span></li>
+        <li id="menu-settings" data-target="settings" style="display:none" onclick="onNav(this)"><div class="left"><span class="ico">⚙️</span><span>Settings</span></div><span class="badge" id="count-settings">—</span></li>
+
         <li data-target="announce" onclick="onNav(this)"><div class="left"><span class="ico">📢</span><span>Announcements</span></div><span class="badge" id="count-announce">0</span></li>
         <li data-target="support" onclick="onNav(this)"><div class="left"><span class="ico">🛠️</span><span>Support</span></div><span class="badge" id="count-support">1</span></li>
-        <li data-target="settings" onclick="onNav(this)"><div class="left"><span class="ico">⚙️</span><span>Settings</span></div><span class="badge" id="count-settings">—</span></li>
       </ul>
 
       <div class="section-title">Admin Panel</div>
       <ul id="admin-items" style="display:none">
-        <li data-target="upload" onclick="onNav(this)"><div class="left"><span class="ico">📂</span><span>Upload Manager</span></div></li>
-        <li data-target="premium" onclick="onNav(this)"><div class="left"><span class="ico">👑</span><span>Premium Plus 🏆</span></div></li>
-        <li data-target="announce" onclick="onNav(this)"><div class="left"><span class="ico">📢</span><span>Announcements</span></div></li>
-        <li data-target="analytics" onclick="onNav(this)"><div class="left"><span class="ico">📊</span><span>Analytics</span></div></li>
+        <li data-target="premium" onclick="onNav(this)"><div class="left"><span class="ico">👑</span><span>Premium Plus</span></div></li>
       </ul>
     </nav>
 
@@ -276,22 +220,19 @@
     <div class="content">
 
       <!-- HOME -->
-<section id="home" class="section active">
-  <h2>🏠 Home</h2>
-  <p class="muted">आपका Blogger पेज सीधे अंदर दिख रहा है (पूरा स्क्रॉल कर सकते हैं)।</p>
+      <section id="home" class="section active">
+        <h2>🏠 Home</h2>
+        <p class="muted">आपका Blogger पेज सीधे अंदर दिख रहा है (पूरा स्क्रॉल कर सकते हैं)।</p>
 
-  <div class="embed-wrap" id="homeEmbed" 
-       style="width:100%; height:90vh; border-radius:12px; overflow:hidden; box-shadow:0 0 15px rgba(0,0,0,0.4);">
-    <iframe
-      sandbox="allow-scripts allow-forms allow-same-origin"
-      referrerpolicy="no-referrer"
-      src="https://darklight000999new205.blogspot.com/2025/08/darklight000999.html"
-      style="width:100%; height:100%; border:none;"
-      allowfullscreen 
-      loading="lazy"></iframe>
-    <div class="embed-guard"></div>
-  </div>
-</section>
+        <div class="embed-wrap" id="homeEmbed" style="width:100%; height:70vh; border-radius:12px; overflow:hidden; box-shadow:0 0 15px rgba(0,0,0,0.4);">
+          <iframe sandbox="allow-scripts allow-forms allow-same-origin"
+                  referrerpolicy="no-referrer"
+                  src="https://darklight000999new205.blogspot.com/2025/08/darklight000999.html"
+                  style="width:100%; height:100%; border:none;"
+                  allowfullscreen loading="lazy"></iframe>
+          <div class="embed-guard"></div>
+        </div>
+      </section>
 
       <!-- YOUTUBE -->
       <section id="youtube" class="section">
@@ -300,11 +241,9 @@
           <div class="card">
             <h3>Official Playlist</h3>
             <div class="embed-wrap ratio-16x9">
-              <iframe
-                src="https://www.youtube.com/embed/videoseries?list=PL9reQPbLfmEXG7m6txArrDbusSm1blBlk"
-                title="YouTube playlist" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                referrerpolicy="no-referrer"
-                allowfullscreen loading="lazy"></iframe>
+              <iframe src="https://www.youtube.com/embed/videoseries?list=PL9reQPbLfmEXG7m6txArrDbusSm1blBlk"
+                      title="YouTube playlist" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      referrerpolicy="no-referrer" allowfullscreen loading="lazy"></iframe>
               <div class="embed-guard"></div>
             </div>
           </div>
@@ -368,7 +307,7 @@
         </div>
       </section>
 
-      <!-- UPLOAD (Admin) -->
+      <!-- UPLOAD (Admin Only) -->
       <section id="upload" class="section">
         <h2>📂 Upload Manager (Admin Only)</h2>
         <div class="card">
@@ -382,17 +321,25 @@
               <option value="support">Support</option>
             </select>
             <input id="upTitle" placeholder="Title" />
-            <input id="upLink" placeholder="Link / URL (YouTube, PDF, Site...)" />
           </div>
+
+          <div class="form-row">
+            <!-- either URL or file -->
+            <input id="upLink" placeholder="Link / URL (YouTube, external link) — optional if uploading file" />
+            <input id="upFile" type="file" accept="image/*,video/*,application/pdf" />
+          </div>
+
           <div class="form-row">
             <textarea id="upDesc" placeholder="Description (optional)"></textarea>
           </div>
+
           <div class="row">
             <button class="btn" onclick="uploadContent()">Upload</button>
             <button class="btn btn-secondary" onclick="refreshAll()">Refresh</button>
           </div>
+
           <p class="muted" style="margin-top:6px">
-            दृश्य-मात्र नीति: डाउनलोड/स्क्रीनशॉट रोकने के सर्वोत्तम प्रयास लगे हैं—पूर्ण रूप से रोकना ब्राउज़र स्तर पर संभव नहीं।
+            ध्यान: फ़ाइल अपलोड करने के बाद उसे Firebase Storage में स्टोर किया जाएगा। डाउनलोड/डिलीट रोकने की सर्वोत्तम कोशिशें की गई हैं — पर ब्राउज़र-साइड से पूर्ण रोकना संभव नहीं। सुनिश्चित करें कि आपने Firebase Storage Rules कन्फ़िगर कर रखी हैं (नीचे comment में उदाहरण दिया गया है)।
           </p>
         </div>
       </section>
@@ -401,8 +348,7 @@
       <section id="premium" class="section">
         <h2>👑 Premium Plus 🏆</h2>
         <div class="card">
-          <p>🔗 <b>यहाँ Google Play Store ऐप लिंक (हिंदी) डालें:</b></p>
-          <p class="muted">उदा: https://play.google.com/store/apps/details?id=your.app</p>
+          <p class="muted">Premium content placeholder</p>
         </div>
       </section>
 
@@ -431,7 +377,7 @@
         </div>
       </section>
 
-      <!-- SETTINGS placeholder -->
+      <!-- SETTINGS -->
       <section id="settings" class="section">
         <h2>⚙️ Settings</h2>
         <div class="card">
@@ -459,7 +405,7 @@
   </div>
 </div>
 
-<!-- Firebase (Modular) -->
+<!-- Firebase (Modular) with Storage -->
 <script type="module">
   /* ---------------- Firebase Setup ---------------- */
   import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
@@ -468,6 +414,7 @@
     getFirestore, collection, addDoc, getDocs, onSnapshot, query, orderBy, serverTimestamp,
     setDoc, doc, getDoc, updateDoc, where
   } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+  import { getStorage, ref as storageRef, uploadBytesResumable, getDownloadURL } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-storage.js";
 
   const firebaseConfig = {
     apiKey: "AIzaSyB8Ydj__jisqUsU1NGTXruCGsTi7wmIw8o",
@@ -481,6 +428,7 @@
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
   const db = getFirestore(app);
+  const storage = getStorage(app);
 
   const ADMIN_EMAIL = "darklightrkshackers@gmail.com";
   let CURRENT_USER = null;
@@ -488,6 +436,7 @@
   /* ---------------- Auth Guard ---------------- */
   onAuthStateChanged(auth, async (user) => {
     if(!user){
+      // user not logged in -> redirect to login page (index.html is your login page)
       window.location.href = "index.html";
       return;
     }
@@ -499,29 +448,26 @@
     const snap = await getDoc(sref);
     if(!snap.exists()){
       await setDoc(sref, { uid:user.uid, email:user.email||"", blocked:false, createdAt: serverTimestamp() });
-    }
-    else{
-      // if blocked -> show overlay + stop interaction
+    } else {
       const data = snap.data();
       if(data.blocked){
         document.getElementById("blocker").classList.add("show");
       }
     }
 
-    // show admin panel
-    if(user.email === ADMIN_EMAIL){
-      document.getElementById("admin-items").style.display = "block";
-    }else{
-      document.getElementById("admin-items").style.display = "none";
-    }
+    // show admin panel items only for admin email
+    const isAdmin = (user.email === ADMIN_EMAIL);
+    document.getElementById("menu-upload").style.display = isAdmin ? "flex" : "none";
+    document.getElementById("menu-analytics").style.display = isAdmin ? "flex" : "none";
+    document.getElementById("menu-settings").style.display = isAdmin ? "flex" : "none";
+    document.getElementById("admin-items").style.display = isAdmin ? "block" : "none";
 
-    // live listeners
+    // start listeners and initial rendering
     listenAnnouncements();
     listenChat();
-    // initial renders
     await refreshAll();
 
-    // ensure sidebar highlights admin-specific item if currently visible
+    // highlight menu item according to active section
     highlightMenuForSection(document.querySelector('.section.active')?.id || 'home');
   });
 
@@ -530,7 +476,7 @@
     const t = document.getElementById("themeBtn");
     if(t.textContent.includes("Dark")){ t.textContent="☀️ Light"; }
     else{ t.textContent="🌑 Dark"; }
-    document.body.classList.toggle("disable-select"); // small visual toggle
+    document.body.classList.toggle("disable-select");
     document.getElementById('warn').classList.add('show');
   };
 
@@ -541,30 +487,25 @@
     else{ sb.classList.remove("active"); ov.classList.remove("show"); }
   };
 
-  /* SIDEBAR JS - MODIFIED: add/remove menu-active class for visual highlight */
+  /* Sidebar selection visual */
   window.onNav = function(el){
-    // toggle section visibility
     document.querySelectorAll(".section").forEach(s => s.classList.remove("active"));
     const targetId = el.dataset.target;
     const targetEl = document.getElementById(targetId);
     if(targetEl) targetEl.classList.add("active");
 
-    // highlight menu item visually
     document.querySelectorAll("#menu-items li").forEach(li => li.classList.remove("menu-active"));
     el.classList.add("menu-active");
 
-    // close mobile sidebar
     toggleSidebar(false);
   };
 
-  // utility to highlight based on section id (used after initial load)
   function highlightMenuForSection(sectionId){
     document.querySelectorAll("#menu-items li").forEach(li => {
       li.classList.toggle('menu-active', li.dataset.target === sectionId);
     });
   }
 
-  // set initial active menu when DOM ready
   document.addEventListener('DOMContentLoaded', ()=>{
     const first = document.querySelector('#menu-items li[data-target="home"]') || document.querySelector('#menu-items li');
     if(first){ first.classList.add('menu-active'); }
@@ -572,20 +513,47 @@
 
   window.logout = function(){ signOut(auth).then(()=> window.location.href="index.html"); };
 
-  /* ---------------- Content Store (Firestore) ----------------
+  /* ---------------- Content Store (Firestore + Storage) ----------------
      Collections used:
-     - content {category, title, link, desc, createdAt, author}
+     - content {category, title, link, desc, createdAt, author, storagePath?}
      - announcements {title, desc, media, createdAt, author}
      - messages {uid, email, text, createdAt}
      - students {uid, email, blocked}
   ------------------------------------------------------------ */
 
-  async function addContent(category, title, link, desc){
+  // Admin-only content add (handles file upload if present)
+  async function addContent(category, title, link, desc, file){
     if(!CURRENT_USER || CURRENT_USER.email!==ADMIN_EMAIL) return alert("Admin only");
-    if(!category || !title || !link) return alert("कृपया जरूरी फ़ील्ड भरें");
+    if(!category || !title) return alert("कृपया जरूरी फ़ील्ड भरें");
+
+    let finalLink = link || "";
+    let storagePath = "";
+
+    if(file){
+      // upload to Firebase Storage under uploads/
+      const ts = Date.now();
+      const safeName = file.name.replace(/[^\w.\-]/g,'_');
+      const path = `uploads/${ts}_${safeName}`;
+      storagePath = path;
+      const sRef = storageRef(storage, path);
+      try{
+        await new Promise((resolve, reject) => {
+          const uploadTask = uploadBytesResumable(sRef, file);
+          uploadTask.on('state_changed', null, (error) => reject(error), async () => {
+            const url = await getDownloadURL(uploadTask.snapshot.ref);
+            finalLink = url;
+            resolve(url);
+          });
+        });
+      }catch(err){
+        console.error("Upload failed", err);
+        return alert("Upload failed: " + (err.message || err));
+      }
+    }
+
     await addDoc(collection(db,"content"), {
-      category, title, link, desc:desc||"", createdAt: serverTimestamp(),
-      author: CURRENT_USER.email
+      category, title, link: finalLink, desc: desc||"", createdAt: serverTimestamp(),
+      author: CURRENT_USER.email, storagePath: storagePath || ""
     });
     alert("Uploaded");
     await refreshAll();
@@ -602,69 +570,65 @@
     const title = document.getElementById("upTitle").value.trim();
     const link = document.getElementById("upLink").value.trim();
     const desc = document.getElementById("upDesc").value.trim();
-    addContent(cat, title, link, desc);
+    const fileInput = document.getElementById("upFile");
+    const file = fileInput && fileInput.files && fileInput.files[0] ? fileInput.files[0] : null;
+
+    // If user tries to upload but is not admin block
+    if(!CURRENT_USER || CURRENT_USER.email !== ADMIN_EMAIL) return alert("Admin only");
+
+    if(!file && !link){
+      return alert("कृपया या तो Link डालें या कोई फ़ाइल चुनें");
+    }
+
+    addContent(cat, title, link, desc, file);
+    // clear file input after attempting upload
+    setTimeout(()=>{ if(fileInput) fileInput.value=""; }, 200);
   };
 
   window.refreshAll = async function(){
-    // YouTube extra
     renderYT(await fetchContent("youtube"));
-    // Notes
     renderNotes(await fetchContent("notes"));
-    // Commands
     renderCommands(await fetchContent("commands"));
-    // Hacking
     renderHacking(await fetchContent("hacking"));
-    // Live (latest first)
     renderLive(await fetchContent("live"));
-    // Support link (take latest one)
     renderSupport(await fetchContent("support"));
-    // Students / Analytics
     renderStudents(await getDocs(collection(db,"students")));
   };
 
+  /* ---------------- Render functions (safe DOM creation) ---------------- */
   function renderYT(items){
     const wrap = document.getElementById("ytList");
     wrap.innerHTML="";
     items.forEach(x=>{
-      const card = document.createElement("div");
-      card.className="card";
-      // safer iframe creation using DOM API
-      const title = document.createElement("h4"); title.textContent = x.title || "Video";
-      const embedWrap = document.createElement("div"); embedWrap.className="embed-wrap ratio-16x9";
-      const ifr = document.createElement("iframe");
-      const embedSrc = toYouTubeEmbed(x.link);
-      ifr.setAttribute('allowfullscreen',''); ifr.setAttribute('loading','lazy'); ifr.setAttribute('referrerpolicy','no-referrer');
-      if(embedSrc) ifr.src = embedSrc; else ifr.src = x.link || "";
-      embedWrap.appendChild(ifr);
-      const guard = document.createElement("div"); guard.className="embed-guard";
-      embedWrap.appendChild(guard);
-      card.appendChild(title);
-      card.appendChild(embedWrap);
-      if(x.desc){
-        const p = document.createElement("p"); p.className="muted"; p.textContent = x.desc;
-        card.appendChild(p);
-      }
+      const card = document.createElement("div"); card.className="card";
+      const h4=document.createElement("h4"); h4.textContent = x.title || "Video";
+      const embed=document.createElement("div"); embed.className="embed-wrap ratio-16x9";
+      const ifr=document.createElement("iframe");
+      const src = toYouTubeEmbed(x.link);
+      ifr.setAttribute('loading','lazy'); ifr.setAttribute('referrerpolicy','no-referrer'); ifr.setAttribute('allowfullscreen','');
+      if(src) ifr.src = src; else ifr.src = x.link || "";
+      embed.appendChild(ifr);
+      const g=document.createElement("div"); g.className="embed-guard"; embed.appendChild(g);
+      card.appendChild(h4); card.appendChild(embed);
+      if(x.desc){ const p=document.createElement("p"); p.className="muted"; p.textContent = x.desc; card.appendChild(p); }
       wrap.appendChild(card);
     });
-    const cnt = items.length;
-    document.getElementById("count-youtube").textContent = String(cnt);
+    document.getElementById("count-youtube").textContent = String(items.length);
   }
 
   function renderNotes(items){
     const wrap = document.getElementById("notesList");
     wrap.innerHTML="";
     items.forEach(x=>{
-      const card = document.createElement("div");
-      card.className="card";
-      const title = document.createElement("h4"); title.textContent = x.title || "Note";
+      const card=document.createElement("div"); card.className="card";
+      const h4=document.createElement("h4"); h4.textContent = x.title || "Note";
       const view = noteViewer(x.link);
-      const embedWrap = document.createElement("div"); embedWrap.className="embed-wrap ratio-16x9";
-      const ifr = document.createElement("iframe");
+      const embed=document.createElement("div"); embed.className="embed-wrap ratio-16x9";
+      const ifr=document.createElement("iframe");
       ifr.setAttribute('sandbox','allow-scripts allow-same-origin'); ifr.setAttribute('referrerpolicy','no-referrer'); ifr.setAttribute('loading','lazy');
-      ifr.src = view;
-      embedWrap.appendChild(ifr);
-      const guard = document.createElement("div"); guard.className="embed-guard"; embedWrap.appendChild(guard);
-      card.appendChild(title); card.appendChild(embedWrap);
+      ifr.src = view || x.link || "";
+      embed.appendChild(ifr); embed.appendChild(document.createElement("div")).className="embed-guard";
+      card.appendChild(h4); card.appendChild(embed);
       if(x.desc){ const p=document.createElement("p"); p.className="muted"; p.textContent=x.desc; card.appendChild(p); }
       wrap.appendChild(card);
     });
@@ -675,8 +639,7 @@
     const wrap = document.getElementById("cmdList");
     wrap.innerHTML="";
     items.forEach(x=>{
-      const card=document.createElement("div");
-      card.className="card";
+      const card=document.createElement("div"); card.className="card";
       const h4=document.createElement("h4"); h4.textContent = x.title || "Command";
       const pre=document.createElement("pre");
       pre.style.whiteSpace="pre-wrap"; pre.style.background="rgba(0,0,0,.25)"; pre.style.padding="10px";
@@ -692,8 +655,7 @@
     const wrap = document.getElementById("hackList");
     wrap.innerHTML="";
     items.forEach(x=>{
-      const card=document.createElement("div");
-      card.className="card";
+      const card=document.createElement("div"); card.className="card";
       const h4=document.createElement("h4"); h4.textContent = x.title || "Hacking";
       card.appendChild(h4);
       if(x.link){
@@ -709,15 +671,14 @@
   function renderLive(items){
     const wrap = document.getElementById("liveWrap");
     wrap.innerHTML="";
-    items.forEach((x,i)=>{
-      const card=document.createElement("div");
-      card.className="card";
+    items.forEach(x=>{
+      const card=document.createElement("div"); card.className="card";
       const h4=document.createElement("h4"); h4.textContent = x.title || "Live";
-      const embedWrap=document.createElement("div"); embedWrap.className="embed-wrap ratio-16x9";
+      const embed=document.createElement("div"); embed.className="embed-wrap ratio-16x9";
       const ifr=document.createElement("iframe"); ifr.setAttribute('loading','lazy'); ifr.setAttribute('allowfullscreen',''); ifr.setAttribute('referrerpolicy','no-referrer');
-      const src = toYouTubeEmbed(x.link); ifr.src = src || x.link || "";
-      embedWrap.appendChild(ifr); embedWrap.appendChild(document.createElement("div")).className="embed-guard";
-      card.appendChild(h4); card.appendChild(embedWrap);
+      ifr.src = toYouTubeEmbed(x.link) || x.link || "";
+      embed.appendChild(ifr); embed.appendChild(document.createElement("div")).className="embed-guard";
+      card.appendChild(h4); card.appendChild(embed);
       if(x.desc){ const p=document.createElement("p"); p.className="muted"; p.textContent = x.desc; card.appendChild(p); }
       wrap.appendChild(card);
     });
@@ -764,11 +725,7 @@
         const a = docu.data();
         const card = document.createElement("div"); card.className="card";
         const h3=document.createElement("h3"); h3.textContent = a.title; card.appendChild(h3);
-        if(a.media){ // use mediaEmbed logic but create DOM safely
-          const wrapper=document.createElement('div');
-          wrapper.innerHTML = mediaEmbed(a.media); // mediaEmbed returns small HTML; acceptable here for varied media types
-          card.appendChild(wrapper);
-        }
+        if(a.media){ const wrapper=document.createElement('div'); wrapper.innerHTML = mediaEmbed(a.media); card.appendChild(wrapper); }
         const p=document.createElement("p"); p.textContent = a.desc; card.appendChild(p);
         const meta=document.createElement("p"); meta.className="muted"; meta.textContent = "by " + (a.author||"Admin"); card.appendChild(meta);
         list.appendChild(card);
@@ -850,48 +807,33 @@
     if(!CURRENT_USER || CURRENT_USER.email!==ADMIN_EMAIL) return;
     await updateDoc(doc(db,"students",uid), { blocked: !currentlyBlocked });
     if(uid===CURRENT_USER.uid && !currentlyBlocked){
-      // admin blocked self? rare, but handle
       document.getElementById("blocker").classList.add("show");
     }
   };
 
   /* ---------------- Small Utils ---------------- */
-  function escapeHtml(str=""){
-    return String(str).replace(/[&<>"']/g, s=>({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;" }[s]));
-  }
-  function toYouTubeEmbed(url=""){
-    try{
-      const m = url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|live\/|shorts\/|embed\/|playlist\?list=|.*[?&]v=))([A-Za-z0-9_\-]{6,})/i);
-      const list = url.match(/[?&]list=([A-Za-z0-9_\-]+)/i);
-      if(list && url.includes("playlist")) return `https://www.youtube.com/embed/videoseries?list=${list[1]}`;
-      if(m) return `https://www.youtube.com/embed/${m[1]}`;
-      return url.includes("youtube.com/embed")?url:"";
-    }catch(e){ return ""; }
-  }
-  function noteViewer(url=""){
-    // Google Drive/viewer fallback
-    if(/\.pdf(\?|$)/i.test(url)) return `https://drive.google.com/viewerng/viewer?embedded=true&url=${encodeURIComponent(url)}`;
-    return url;
-  }
+  function escapeHtml(str=""){ return String(str).replace(/[&<>"']/g, s=>({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;" }[s])); }
+  function toYouTubeEmbed(url=""){ try{ const m = url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|live\/|shorts\/|embed\/|playlist\?list=|.*[?&]v=))([A-Za-z0-9_\-]{6,})/i); const list = url.match(/[?&]list=([A-Za-z0-9_\-]+)/i); if(list && url.includes("playlist")) return `https://www.youtube.com/embed/videoseries?list=${list[1]}`; if(m) return `https://www.youtube.com/embed/${m[1]}`; return url.includes("youtube.com/embed")?url:""; }catch(e){ return ""; } }
+  function noteViewer(url=""){ if(/\.pdf(\?|$)/i.test(url)) return `https://drive.google.com/viewerng/viewer?embedded=true&url=${encodeURIComponent(url)}`; return url; }
   function formatTime(d){ const t=new Date(d); return t.toLocaleString(); }
 
-  // “No-screenshot/record” best effort signals
-  document.addEventListener('keydown', (e)=>{
-    if(e.key==="PrintScreen" || (e.ctrlKey && e.key.toLowerCase()==="p")){ e.preventDefault(); document.getElementById('warn').classList.add('show'); }
-  });
-  document.addEventListener('visibilitychange', ()=>{
-    if(document.hidden){ document.getElementById('warn').classList.add('show'); }
-  });
+  // No-screenshot attempts
+  document.addEventListener('keydown', (e)=>{ if(e.key==="PrintScreen" || (e.ctrlKey && e.key.toLowerCase()==="p")){ e.preventDefault(); document.getElementById('warn').classList.add('show'); } });
+  document.addEventListener('visibilitychange', ()=>{ if(document.hidden){ document.getElementById('warn').classList.add('show'); } });
 
-  /* ---------------- Expose for HTML buttons ---------------- */
   window.postAnnouncement = postAnnouncement;
+
+  // initial count placeholders
+  document.getElementById("count-home").textContent = "1";
+  document.getElementById("count-chat").textContent = "0";
+  document.getElementById("count-support").textContent = "1";
 
 </script>
 
 <!--
-  ==========================
-  Firestore Security Rules (Suggestion)
-  ==========================
+  IMPORTANT: Firebase Storage & Firestore Security Rules (deploy these in your Firebase console)
+  --------------------------------------------------------------------------
+  // Firestore (example)
   rules_version = '2';
   service cloud.firestore {
     match /databases/{database}/documents {
@@ -909,7 +851,8 @@
       }
       match /content/{doc} {
         allow read: if request.auth != null;
-        allow create, update, delete: if isAdmin();
+        allow create: if isAdmin();
+        allow update, delete: if isAdmin(); // restrict edits/deletes to admin only
       }
       match /announcements/{doc} {
         allow read: if request.auth != null;
@@ -917,6 +860,26 @@
       }
     }
   }
+
+  // Storage rules (example)
+  service firebase.storage {
+    match /b/{bucket}/o {
+      // Allow read only for authenticated users via Firebase SDK (no public unauthenticated downloads)
+      match /uploads/{allPaths=**} {
+        allow read: if request.auth != null; // require auth to read file
+        allow write: if request.auth != null && request.auth.token.email == 'darklightrkshackers@gmail.com'; // only admin can upload
+        allow delete: if request.auth != null && request.auth.token.email == 'darklightrkshackers@gmail.com'; // you may restrict delete as needed (recommended: only admin)
+      }
+    }
+  }
+
+  NOTES:
+  - Storage rules above require authentication to read the file; this prevents unauthenticated direct download links.
+  - However, if you give a direct download URL (getDownloadURL), it can be used by anyone with that URL until revoked. To avoid public downloads:
+    1) Avoid exposing raw getDownloadURL to clients. Instead serve files through a secure server endpoint / Cloud Function that checks auth and streams the file.
+    2) Or keep files in storage but serve through authenticated Firebase SDK only (e.g., using downloadTokens carefully).
+  - For simplicity here we store getDownloadURL in Firestore so the web app can embed it — but to harden further, consider serving via secure function.
+  --------------------------------------------------------------------------
 -->
 </body>
 </html>
