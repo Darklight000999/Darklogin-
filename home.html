@@ -1,217 +1,133 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="hi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DarkLight000999 - Securing the Digital Future</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="DarkLight000999 - National Grade Cybersecurity (NGC) Agency. Advanced SOC, Ethical Hacking, Forensics, AI-driven threat detection." />
+  <title>DarkLight000999 — National Cybersecurity Agency</title>
+  <link rel="icon" href="1000058324.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background-color: #0a0a0a;
-      color: #e0e0e0;
-    }
-    header {
-      background: #111;
-      padding: 15px 30px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 2px solid #0f0;
-    }
-    header h1 {
-      color: #0f0;
-      font-size: 24px;
-    }
-    nav a {
-      color: #e0e0e0;
-      text-decoration: none;
-      margin: 0 12px;
-      transition: 0.3s;
-    }
-    nav a:hover {
-      color: #0f0;
-    }
-    .hero {
-      text-align: center;
-      padding: 100px 20px;
-      background: url('https://images.unsplash.com/photo-1508780709619-79562169bc64?auto=format&fit=crop&w=1600&q=80') no-repeat center center/cover;
-      color: #fff;
-    }
-    .hero h2 {
-      font-size: 40px;
-      text-shadow: 0 0 10px #0f0;
-    }
-    .hero p {
-      font-size: 18px;
-      margin: 10px 0 20px;
-    }
-    .btn {
-      padding: 12px 25px;
-      background: #0f0;
-      border: none;
-      color: #000;
-      font-weight: bold;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    section {
-      padding: 60px 20px;
-      max-width: 1000px;
-      margin: auto;
-    }
-    h2.section-title {
-      text-align: center;
-      color: #0f0;
-      margin-bottom: 40px;
-    }
-    .services, .why-us {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
-    .card {
-      background: #111;
-      padding: 20px;
-      border: 1px solid #0f0;
-      border-radius: 8px;
-      transition: 0.3s;
-    }
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 0 15px #0f0;
-    }
-    footer {
-      background: #111;
-      text-align: center;
-      padding: 20px;
-      border-top: 2px solid #0f0;
-    }
-    footer a {
-      color: #0f0;
-      margin: 0 8px;
-      text-decoration: none;
-    }
-    /* Admin/User Panels */
-    #adminPanel, #userPanel {
-      display: none;
-      padding: 20px;
-      margin: 20px;
-      border: 2px dashed #0f0;
-    }
+    * { box-sizing: border-box; }
+    body { margin:0; font-family:'Poppins',sans-serif; background:#000; color:#eafdea; overflow-x:hidden; }
+    #matrix { position:fixed; top:0; left:0; width:100%; height:100%; z-index:-1; background:#000; }
+    header { display:flex; align-items:center; justify-content:space-between; padding:15px 40px; background:rgba(0,0,0,0.8); border-bottom:1px solid #0f0; position:sticky; top:0; z-index:99; }
+    .brand { display:flex; align-items:center; gap:12px; }
+    .brand img { width:52px; height:52px; border-radius:6px; box-shadow:0 0 15px #0f0; }
+    .brand h1 { font-family:'Orbitron',sans-serif; color:#0f0; font-size:22px; }
+    nav a { color:#ddd; margin-left:18px; text-decoration:none; font-weight:600; }
+    nav a:hover { color:#0f0; text-shadow:0 0 6px #0f0; }
+    .hero { text-align:center; padding:140px 20px; position:relative; color:#fff; }
+    .hero h2 { font-size:48px; text-shadow:0 0 20px #0f0; font-family:'Orbitron',sans-serif; }
+    .hero p { font-size:20px; margin:15px auto; max-width:900px; color:#bfffc9; }
+    .btn { padding:12px 26px; background:#0f0; color:#000; border:none; border-radius:8px; font-weight:bold; cursor:pointer; margin:10px; transition:0.3s; }
+    .btn:hover { background:#fff; color:#000; box-shadow:0 0 15px #0f0; }
+    main { max-width:1200px; margin:auto; padding:60px 20px; }
+    section { margin:70px 0; }
+    .section-title { text-align:center; font-size:26px; color:#0f0; text-transform:uppercase; margin-bottom:30px; }
+    .grid { display:grid; gap:20px; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); }
+    .card { background:rgba(10,10,10,0.9); border:1px solid #0f0; border-radius:10px; padding:24px; transition:0.3s; }
+    .card:hover { transform:translateY(-5px); box-shadow:0 0 20px #0f0; }
+    .stats { display:flex; flex-wrap:wrap; justify-content:center; gap:30px; margin-top:30px; }
+    .stat { background:rgba(0,0,0,0.8); border:1px solid #0f0; border-radius:8px; padding:20px; text-align:center; min-width:160px; }
+    .stat .num { font-size:32px; font-weight:700; color:#0f0; }
+    .stat .label { font-size:14px; color:#bfffc9; }
+    #adminPanel,#userPanel { display:none; margin:30px auto; padding:25px; border:2px dashed #0f0; border-radius:12px; max-width:1000px; background:#0a0a0a; }
+    footer { background:#000; padding:25px; text-align:center; border-top:1px solid #0f0; color:#8f8; }
+    footer a { color:#0f0; margin:0 10px; text-decoration:none; }
+    footer a:hover { text-shadow:0 0 6px #0f0; }
   </style>
 </head>
 <body>
-
-  <!-- Header -->
+  <canvas id="matrix"></canvas>
   <header>
-    <h1>DarkLight000999</h1>
+    <div class="brand">
+      <img src="1000058324.png" alt="DarkLight Logo">
+      <h1>DarkLight000999</h1>
+    </div>
     <nav>
-      <a href="#">Home</a>
       <a href="#about">About</a>
       <a href="#services">Services</a>
       <a href="#portfolio">Portfolio</a>
-      <a href="#blog">Blog</a>
       <a href="#contact">Contact</a>
     </nav>
-  </header>
-
-  <!-- Hero Section -->
-  <div class="hero">
-    <h2>Securing the Digital Future</h2>
-    <p>We Protect, You Progress</p>
-    <button class="btn">Get Secured</button>
+  </header>  <section class="hero">
+    <h2>National Grade Cybersecurity (NGC)</h2>
+    <p>We are the frontline against cyber warfare. Protecting enterprises, governments & critical infrastructure with AI-driven defense.</p>
+    <button class="btn">Get Protected</button>
+  </section>  <main>
+    <section id="about">
+      <h2 class="section-title">About Us</h2>
+      <p>DarkLight000999 NGC is a national-grade cybersecurity organization providing ethical hacking, penetration testing, SOC, digital forensics, cyber threat intelligence and 24/7 incident response.</p>
+    </section><section id="services">
+  <h2 class="section-title">Services</h2>
+  <div class="grid">
+    <div class="card">Advanced Penetration Testing</div>
+    <div class="card">Next-Gen SOC & Threat Hunting</div>
+    <div class="card">Critical Infrastructure Security</div>
+    <div class="card">Digital Forensics & Incident Response</div>
+    <div class="card">AI-driven Threat Intelligence</div>
+    <div class="card">Red Team / Blue Team Training</div>
   </div>
+</section>
 
-  <!-- About -->
-  <section id="about">
-    <h2 class="section-title">About Us</h2>
-    <p>We are a team of cybersecurity experts providing ethical hacking, penetration testing, and security consulting.</p>
-  </section>
-
-  <!-- Services -->
-  <section id="services">
-    <h2 class="section-title">Our Services</h2>
-    <div class="services">
-      <div class="card">Penetration Testing</div>
-      <div class="card">Vulnerability Assessment</div>
-      <div class="card">Network Security</div>
-      <div class="card">Web App Security</div>
-      <div class="card">Cyber Forensics</div>
-      <div class="card">Training & Workshops</div>
-    </div>
-  </section>
-
-  <!-- Why Choose Us -->
-  <section>
-    <h2 class="section-title">Why Choose Us?</h2>
-    <div class="why-us">
-      <div class="card">Trusted Experts</div>
-      <div class="card">24/7 Support</div>
-      <div class="card">100% Confidentiality</div>
-      <div class="card">Certified Ethical Hackers</div>
-    </div>
-  </section>
-
-  <!-- Portfolio -->
-  <section id="portfolio">
-    <h2 class="section-title">Portfolio / Case Studies</h2>
-    <p>Secured 50+ Companies, Prevented 5000+ Attacks.</p>
-  </section>
-
-  <!-- Testimonials -->
-  <section>
-    <h2 class="section-title">Testimonials</h2>
-    <p>“DarkLight000999 helped secure our business infrastructure. Highly recommend!”</p>
-    <p>“The training workshop was eye-opening and practical.”</p>
-  </section>
-
-  <!-- Contact -->
-  <section id="contact">
-    <h2 class="section-title">Contact Us</h2>
-    <form>
-      <input type="text" placeholder="Name" required><br><br>
-      <input type="email" placeholder="Email" required><br><br>
-      <textarea placeholder="Message" rows="4" required></textarea><br><br>
-      <button class="btn" type="submit">Send</button>
-    </form>
-  </section>
-
-  <!-- Admin/User Panels -->
-  <div id="adminPanel">
-    <h2>Admin Panel</h2>
-    <button class="btn" onclick="logout()">Logout</button>
+<section id="portfolio">
+  <h2 class="section-title">Portfolio / Case Studies</h2>
+  <div class="stats">
+    <div class="stat"><div class="num">200+</div><div class="label">Gov & Enterprise Clients</div></div>
+    <div class="stat"><div class="num">10K+</div><div class="label">Cyberattacks Prevented</div></div>
+    <div class="stat"><div class="num">24/7</div><div class="label">Continuous Monitoring</div></div>
   </div>
+</section>
 
-  <div id="userPanel">
-    <h2>User Dashboard</h2>
-    <p>Welcome to DarkLight000999 secure portal.</p>
-    <button class="btn" onclick="logout()">Logout</button>
-  </div>
+<section id="contact">
+  <h2 class="section-title">Contact Us</h2>
+  <form>
+    <input type="text" placeholder="Your Name" required>
+    <input type="email" placeholder="Your Email" required>
+    <textarea placeholder="Your Message" rows="5" required></textarea>
+    <button class="btn" type="submit">Send</button>
+  </form>
+</section>
 
-  <!-- Footer -->
-  <footer>
-    <p>© 2025 DarkLight000999 | All Rights Reserved</p>
-    <a href="#">Privacy Policy</a> | <a href="#">Terms</a>
+<div id="adminPanel">
+  <h2>🔐 Admin Control Center</h2>
+  <p>Welcome, Super Admin. Manage DarkLight NGC operations securely.</p>
+  <button class="btn" onclick="logout()">Logout</button>
+</div>
+
+<div id="userPanel">
+  <h2>👤 Secure Client Portal</h2>
+  <p>Welcome to your DarkLight000999 dashboard. Access your reports and monitoring data here.</p>
+  <button class="btn" onclick="logout()">Logout</button>
+</div>
+
+  </main>  <footer>
+    <p>© 2025 DarkLight000999 — National Grade Cybersecurity Agency | All Rights Reserved</p>
     <div>
-      <a href="#">LinkedIn</a> <a href="#">GitHub</a> <a href="#">Twitter</a>
+      <a href="#">Privacy Policy</a> | <a href="#">Terms</a> | <a href="#">LinkedIn</a> | <a href="#">GitHub</a>
     </div>
-  </footer>
-
-  <!-- Firebase Scripts -->
-  <script type="module">
-    // Import Firebase
+  </footer>  <script>
+    // Matrix effect
+    const canvas=document.getElementById("matrix"),ctx=canvas.getContext("2d");
+    canvas.height=window.innerHeight;canvas.width=window.innerWidth;
+    const letters="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*";
+    const fontSize=14;const columns=canvas.width/fontSize;
+    const drops=Array(Math.floor(columns)).fill(1);
+    function draw(){
+      ctx.fillStyle="rgba(0,0,0,0.08)";ctx.fillRect(0,0,canvas.width,canvas.height);
+      ctx.fillStyle="#0f0";ctx.font=fontSize+"px monospace";
+      for(let i=0;i<drops.length;i++){
+        const text=letters.charAt(Math.floor(Math.random()*letters.length));
+        ctx.fillText(text,i*fontSize,drops[i]*fontSize);
+        if(drops[i]*fontSize>canvas.height&&Math.random()>0.975){drops[i]=0;}
+        drops[i]++;
+      }
+    }
+    setInterval(draw,33);
+  </script>  <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-app.js";
-    import { 
-      getAuth, 
-      onAuthStateChanged, 
-      signOut,
-      setPersistence, 
-      browserLocalPersistence 
-    } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-auth.js";
+    import { getAuth, onAuthStateChanged, signOut, setPersistence, browserLocalPersistence } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-auth.js";
 
-    // 🔹 Your Firebase Config (replace with your own)
     const firebaseConfig = {
       apiKey: "YOUR_API_KEY",
       authDomain: "YOUR_PROJECT.firebaseapp.com",
@@ -221,40 +137,27 @@
       appId: "YOUR_APP_ID"
     };
 
-    // Init Firebase
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
-
-    // 🔹 Save login session locally
     setPersistence(auth, browserLocalPersistence);
 
     const adminEmail = "darklightrkshackers@gmail.com";
 
     onAuthStateChanged(auth, (user) => {
-      if (user) {
-        console.log("Logged in:", user.email);
-        if (user.email === adminEmail) {
-          document.getElementById("adminPanel").style.display = "block";
-          document.getElementById("userPanel").style.display = "none";
+      if(user){
+        if(user.email===adminEmail){
+          document.getElementById("adminPanel").style.display="block";
         } else {
-          document.getElementById("userPanel").style.display = "block";
-          document.getElementById("adminPanel").style.display = "none";
+          document.getElementById("userPanel").style.display="block";
         }
       } else {
-        console.log("No user logged in");
-        setTimeout(() => {
-          window.location.href = "index.html"; // back to login
-        }, 1000);
+        window.location.href="index.html";
       }
     });
 
-    // 🔹 Logout function
-    function logout() {
-      signOut(auth).then(() => {
-        window.location.href = "index.html";
-      });
+    function logout(){
+      signOut(auth).then(()=>{window.location.href="index.html";});
     }
-    window.logout = logout;
-  </script>
-</body>
+    window.logout=logout;
+  </script></body>
 </html>
