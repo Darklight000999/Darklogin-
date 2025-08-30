@@ -1,242 +1,324 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>darklight000999 | Home</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
-<style>
-:root{
-  --bg:#0f1220;
-  --card:#14182a;
-  --muted:#8ea0b5;
-  --text:#eaf2ff;
-  --brand:#6dd5ed;
-  --brand2:#2193b0;
-  --accent:#8a7dff;
-  --danger:#ff5757;
-  --success:#1ecb84;
-  --glass:rgba(255,255,255,.06);
-  --glass-strong:rgba(255,255,255,.12);
-  --shadow: 0 10px 30px rgba(0,0,0,.45);
-  --radius:16px;
-}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>darklight000999 | Home</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #e0e0e0;
+      --text: #333;
+      --shadow-light: #ffffff;
+      --shadow-dark: #b3b3b3;
+      --accent: #3498db;
+    }
 
-/* Light Theme */
-.light-theme {
-  --bg: #ffffff;
-  --card: #f0f0f0;
-  --muted: #666666;
-  --text: #000000;
-  --brand: #2193b0;
-  --brand2: #6dd5ed;
-  --accent: #ff0000;
-  --danger: #ff5757;
-  --success: #1ecb84;
-  --glass: rgba(255,255,255,.3);
-  --glass-strong: rgba(255,255,255,.5);
-  --shadow: 0 10px 30px rgba(0,0,0,.2);
-}
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      display: flex;
+      height: 100vh;
+      overflow: hidden;
+    }
 
-*{box-sizing:border-box;}
-html, body {
-  height:100%; margin:0; font-family:'Poppins', sans-serif; background: linear-gradient(270deg,#00ffff,#00ff00,#ffff00,#00aaff,#ff9900,#8000ff,#00ffcc,#66ff66,#0066ff,#aaff00);
-  background-size: 1000% 1000%;
-  animation: aliveBackground 60s ease infinite;
-  color: var(--text);
-  font-weight:700; /* सभी टेक्स्ट बोल्ड */
-}
+    /* Sidebar */
+    aside.sidebar {
+      width: 250px;
+      background: var(--bg);
+      box-shadow: inset 8px 8px 16px var(--shadow-dark),
+                  inset -8px -8px 16px var(--shadow-light);
+      display: flex;
+      flex-direction: column;
+      padding: 20px 10px;
+      transition: all 0.3s ease;
+      z-index: 100;
+    }
 
-@keyframes aliveBackground {
-  0% {background-position:0% 50%;}
-  25% {background-position:50% 100%;}
-  50% {background-position:100% 50%;}
-  75% {background-position:50% 0%;}
-  100% {background-position:0% 50%;}
-}
+    .brand {
+      text-align: center;
+      font-weight: 600;
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
 
-body::before{
-  content:"";position:fixed;inset:-20%;z-index:-1;
-  background: conic-gradient(from 180deg,#1c2760,#0f2346,#0c3d5a,#10253d,#1c2760);
-  filter: blur(140px) saturate(120%); opacity:.25; animation: drift 30s linear infinite;
-}
-@keyframes drift{ to{ transform: rotate(1turn);} }
+    nav.menu ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
 
-.app{display:flex;height:100%;min-width:0}
+    nav.menu li {
+      background: var(--bg);
+      margin: 8px 0;
+      padding: 12px;
+      border-radius: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      box-shadow: 6px 6px 12px var(--shadow-dark),
+                  -6px -6px 12px var(--shadow-light);
+      transition: all 0.2s ease;
+    }
 
-/* Sidebar */
-.sidebar{
-  width:280px;min-width:260px;max-width:90vw;padding:16px;
-  background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-  backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
-  border-right:1px solid rgba(255,255,255,.08);
-  box-shadow: var(--shadow);
-  overflow:auto;
-}
+    nav.menu li:hover {
+      transform: scale(1.02);
+      color: var(--accent);
+    }
 
-.brandbar{display:flex;align-items:center;gap:10px;margin-bottom:14px}
-.brand-logo{width:40px;height:40px;border-radius:50%;object-fit:cover;box-shadow:0 4px 14px rgba(0,0,0,.5)}
-.brandname{font-weight:700;letter-spacing:.3px}
-.theme-toggle{margin-left:auto;border:none;border-radius:999px;padding:8px 14px;cursor:pointer;
-    background:linear-gradient(90deg,var(--brand2),var(--brand));color:#001018;font-weight:700}
-.logo-box{display:flex;justify-content:center;margin:10px 0 8px}
-.logo-img{width:72px;height:72px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.2)}
+    nav.menu li .left span {
+      margin-left: 6px;
+    }
 
-nav.menu ul{list-style:none;margin:0;padding:0}
-nav.menu li{
-  display:flex;align-items:center;justify-content:space-between;gap:10px;
-  padding:11px 12px;margin:7px 0;border-radius:12px;cursor:pointer;
-  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);
-  transition:.2s transform, .2s background;
-}
-nav.menu li:hover{transform:translateY(-2px);background:rgba(255,255,255,.07)}
-nav.menu li .left{display:flex;align-items:center;gap:8px}
-.badge{font-size:12px;padding:2px 8px;border-radius:999px;background:red;color:black} /* आउटलाइन कलाउट रेड */
+    .badge {
+      background: var(--accent);
+      color: #fff;
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-size: 12px;
+    }
 
-.sidebar-bottom{margin-top:12px}
-.logout{
-  width:100%;padding:10px;border:none;border-radius:12px;cursor:pointer;
-  background:linear-gradient(90deg,#f56,#d33);color:white;font-weight:700;
-}
+    .sidebar-bottom {
+      margin-top: auto;
+      text-align: center;
+    }
 
-/* Main */
-.main{flex:1;min-width:0;display:flex;flex-direction:column;overflow:hidden}
-.topbar{
-  display:flex;align-items:center;gap:12px;padding:12px 16px;
-  background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-  border-bottom:1px solid rgba(255,255,255,.08);backdrop-filter: blur(12px);
-}
-.menu-btn{display:none}
-.brand-inline{display:flex;align-items:center;gap:10px;font-weight:700}
-.welcome{margin-left:auto;opacity:.9}
+    .logout {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      background: var(--bg);
+      box-shadow: 6px 6px 12px var(--shadow-dark),
+                  -6px -6px 12px var(--shadow-light);
+    }
 
-.content{flex:1;overflow:auto;padding:18px;display:block}
-.section{display:none;animation:fade .25s ease}
-.section.active{display:block}
-@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+    /* Overlay (mobile) */
+    .overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 90;
+    }
 
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
-.card{
-  background:var(--glass);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);
-  box-shadow:var(--shadow);padding:14px;font-weight:700;color:black;
-}
-.card h3, .card h4, p, span, li, input, select, textarea, button{
-  font-weight:700;
-  color:black;
-  -webkit-text-stroke:1px red; /* आउटलाइन क्लाउट रेड */
-}
+    /* Main Content */
+    main.main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+    }
 
-/* Footer Branding */
-.footer-brand{
-  font-size:20px;
-  font-weight:700;
-  color: rgb(0,0,0); /* Fill Black */
-  text-shadow: 0 0 8px deepskyblue, 0 0 12px deepskyblue; /* Glow Sky Blue */
-  text-align:center;
-  margin:20px 0;
-}
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 20px;
+      background: var(--bg);
+      box-shadow: 6px 6px 12px var(--shadow-dark),
+                  -6px -6px 12px var(--shadow-light);
+    }
 
-@media (max-width:900px){
-  .menu-btn{display:inline-flex;border:1px solid rgba(255,255,255,.2);border-radius:10px;padding:8px}
-  .sidebar{position:fixed;left:-100%;top:0;bottom:0;z-index:100}
-  .sidebar.active{left:0}
-}
-</style>
+    .menu-btn {
+      font-size: 20px;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .brand span {
+      margin: 0 6px;
+    }
+
+    .content {
+      padding: 20px;
+      flex: 1;
+    }
+
+    .section {
+      display: none;
+    }
+    .section.active {
+      display: block;
+      animation: fadeIn 0.4s ease;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(10px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    h2 {
+      margin-top: 0;
+    }
+
+    /* Chat */
+    .chat-wrap {
+      display: flex;
+      flex-direction: column;
+      height: 70vh;
+      background: var(--bg);
+      border-radius: 16px;
+      box-shadow: inset 8px 8px 16px var(--shadow-dark),
+                  inset -8px -8px 16px var(--shadow-light);
+      overflow: hidden;
+    }
+    .chat-header {
+      padding: 10px;
+      font-weight: 600;
+      background: var(--accent);
+      color: #fff;
+      text-align: center;
+    }
+    .chat-messages {
+      flex: 1;
+      padding: 10px;
+      overflow-y: auto;
+    }
+    .chat-input {
+      display: flex;
+      border-top: 1px solid #ccc;
+    }
+    .chat-input input {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      outline: none;
+      background: var(--bg);
+    }
+    .chat-input button {
+      padding: 10px;
+      border: none;
+      background: var(--accent);
+      color: #fff;
+      cursor: pointer;
+    }
+
+    /* Responsive */
+    @media(max-width: 768px) {
+      aside.sidebar {
+        position: fixed;
+        left: -260px;
+        top: 0; bottom: 0;
+        height: 100%;
+      }
+      aside.sidebar.active {
+        left: 0;
+      }
+      .overlay.show {
+        display: block;
+      }
+    }
+  </style>
 </head>
 <body>
-<div class="app">
+  <!-- Sidebar -->
   <aside class="sidebar" id="sidebar">
-    <div class="brandbar">
-      <img class="brand-logo" src="1000058324.png" alt="logo" onerror="this.src='https://via.placeholder.com/80x80?text=DL'">
-      <div class="brandname">darklight000999</div>
-      <button class="theme-toggle" id="themeBtn" onclick="toggleTheme()">🌑 Dark</button>
-    </div>
-    <div class="logo-box">
-      <img class="logo-img" src="1000058324.png" alt="Logo" onerror="this.src='https://via.placeholder.com/80x80?text=DL'">
-    </div>
-
+    <div class="brand">🌑 darklight000999</div>
     <nav class="menu">
-      <div class="section-title">Menu</div>
       <ul id="menu-items">
-        <li data-target="home" onclick="onNav(this)"><div class="left">🏠 <span>Home</span></div></li>
-        <li data-target="youtube" onclick="onNav(this)"><div class="left">🎬 <span>YouTube Videos</span></div></li>
-        <li data-target="notes" onclick="onNav(this)"><div class="left">📑 <span>PDF & Notes</span></div></li>
-        <li data-target="commands" onclick="onNav(this)"><div class="left">🧰 <span>Hacking Commands</span></div></li>
-        <li data-target="hacking" onclick="onNav(this)"><div class="left">🧪 <span>Hacking</span></div></li>
-        <li data-target="live" onclick="onNav(this)"><div class="left">🎥 <span>Live Class</span></div></li>
-        <li data-target="support" onclick="onNav(this)"><div class="left">🆘 <span>Contact & Support</span></div></li>
+        <li data-target="home" onclick="onNav(this)"><div class="left">🏠 <span>Home</span></div><span class="badge" id="count-home">0</span></li>
+        <li data-target="youtube" onclick="onNav(this)"><div class="left">🎬 <span>YouTube Videos</span></div><span class="badge" id="count-youtube">0</span></li>
+        <li data-target="notes" onclick="onNav(this)"><div class="left">📑 <span>PDF & Notes</span></div><span class="badge" id="count-notes">0</span></li>
+        <li data-target="commands" onclick="onNav(this)"><div class="left">🧰 <span>Hacking Commands</span></div><span class="badge" id="count-commands">0</span></li>
+        <li data-target="hacking" onclick="onNav(this)"><div class="left">🧪 <span>Hacking</span></div><span class="badge" id="count-hacking">0</span></li>
+        <li data-target="live" onclick="onNav(this)"><div class="left">🎥 <span>Live Class</span></div><span class="badge" id="count-live">0</span></li>
+        <li data-target="support" onclick="onNav(this)"><div class="left">🆘 <span>Contact & Support</span></div><span class="badge" id="count-support">0</span></li>
+        <li data-target="chat" onclick="onNav(this)"><div class="left">💬 <span>Chat</span></div><span class="badge" id="count-chat">0</span></li>
+      </ul>
+
+      <h3 style="margin:10px 0 6px;">Admin Panel</h3>
+      <ul id="admin-items" style="display:none">
+        <li data-target="upload" onclick="onNav(this)"><div class="left">📂 <span>Upload Manager</span></div><span class="badge" id="count-upload">0</span></li>
+        <li data-target="students" onclick="onNav(this)"><div class="left">👥 <span>Manage Students</span></div><span class="badge" id="count-students">10</span></li>
+        <li data-target="announce" onclick="onNav(this)"><div class="left">📢 <span>Announcements</span></div><span class="badge" id="count-announce">0</span></li>
+        <li data-target="analytics" onclick="onNav(this)"><div class="left">📊 <span>Analytics</span></div><span class="badge" id="count-analytics">0</span></li>
       </ul>
     </nav>
+    <div class="sidebar-bottom">
+      <button class="logout" onclick="logout()">🚪 Logout</button>
+    </div>
   </aside>
 
+  <!-- overlay -->
   <div id="overlay" class="overlay" onclick="toggleSidebar(false)"></div>
 
+  <!-- Main -->
   <main class="main" id="main">
     <div class="topbar">
       <button class="menu-btn" onclick="toggleSidebar(true)">☰</button>
-      <div class="brand-inline"><span>darklight000999</span></div>
+      <div class="brand">darklight000999</div>
       <span class="welcome" id="welcome">Welcome Guest</span>
     </div>
 
     <div class="content">
-      <section id="home" class="section active">
-        <h2>🏠 Home</h2>
-        <p class="muted">आपका Blogger पेज सीधे अंदर दिख रहा है (पूरा स्क्रॉल कर सकते हैं)।</p>
-        <div class="embed-wrap" id="homeEmbed">
-          <iframe
-            sandbox="allow-scripts allow-forms allow-same-origin"
-            referrerpolicy="no-referrer"
-            src="https://darklight000999new205.blogspot.com/2025/08/darklight000999.html"
-            style="width:100%; height:90vh; border:none;"
-            allowfullscreen 
-            loading="lazy"></iframe>
-          <div class="embed-guard"></div>
+      <section id="home" class="section active"><h2>Welcome to darklight000999</h2></section>
+      <section id="youtube" class="section"><h2>🎬 YouTube Videos</h2><div id="youtube-list" class="grid"></div></section>
+      <section id="notes" class="section"><h2>📑 PDF & Notes</h2><div id="notes-list" class="grid"></div></section>
+      <section id="commands" class="section"><h2>🧰 Hacking Commands</h2><div id="commands-list" class="grid"></div></section>
+      <section id="hacking" class="section"><h2>🧪 Hacking Section</h2></section>
+      <section id="live" class="section"><h2>🎥 Live Class</h2><div id="live-list" class="grid"></div></section>
+      <section id="support" class="section"><h2>🆘 Contact & Support</h2><div id="support-list" class="grid"></div></section>
+
+      <section id="upload" class="section">
+        <h2>📂 Upload Manager (Admin Only)</h2>
+        <div id="upload-form" style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px">
+          <select id="upload-category">
+            <option value="youtube">YouTube</option>
+            <option value="notes">Notes</option>
+            <option value="commands">Commands</option>
+            <option value="live">Live</option>
+            <option value="support">Support</option>
+          </select>
+          <input id="upload-title" placeholder="Title">
+          <input id="upload-link" placeholder="Link / URL">
+          <button onclick="uploadContent()">Upload</button>
         </div>
       </section>
 
-      <section id="youtube" class="section">
-        <h2>🎬 YouTube Videos</h2>
-        <div class="grid">
-          <div class="card">
-            <h3>Official Playlist</h3>
-            <div class="embed-wrap ratio-16x9">
-              <iframe
-                src="https://www.youtube.com/embed/videoseries?list=PL9reQPbLfmEXG7m6txArrDbusSm1blBlk"
-                title="YouTube playlist" allowfullscreen loading="lazy" referrerpolicy="no-referrer"></iframe>
-              <div class="embed-guard"></div>
-            </div>
+      <section id="students" class="section"><h2>👥 Manage Students</h2><ul id="student-list"></ul></section>
+      <section id="announce" class="section"><h2>📢 Announcements</h2></section>
+      <section id="analytics" class="section"><h2>📊 Analytics</h2><p id="stats" class="muted"></p></section>
+
+      <section id="chat" class="section">
+        <div class="chat-wrap">
+          <div class="chat-header">Chat</div>
+          <div id="messages" class="chat-messages"></div>
+          <div class="chat-input">
+            <input id="msgBox" placeholder="Type a message..." onkeydown="if(event.key==='Enter')sendMessage()">
+            <button onclick="sendMessage()">Send</button>
           </div>
         </div>
       </section>
     </div>
-    <div class="footer-brand">darklight000999</div>
   </main>
-</div>
 
-<script>
-window.toggleTheme = function(){
-  const t = document.getElementById("themeBtn");
-  if(document.body.classList.contains("light-theme")){
-    document.body.classList.remove("light-theme");
-    t.textContent="🌑 Dark";
-  } else {
-    document.body.classList.add("light-theme");
-    t.textContent="🌞 Light";
-  }
-};
-
-window.toggleSidebar = function(open){
-  const sb=document.getElementById("sidebar");
-  const ov=document.getElementById("overlay");
-  if(open){ sb.classList.add("active"); ov.classList.add("show"); }
-  else{ sb.classList.remove("active"); ov.classList.remove("show"); }
-};
-
-window.onNav = function(el){
-  document.querySelectorAll(".section").forEach(s => s.classList.remove("active"));
-  document.getElementById(el.dataset.target).classList.add("active");
-  toggleSidebar(false);
-};
-</script>
+  <script>
+    function toggleSidebar(show){
+      document.getElementById('sidebar').classList.toggle('active', show);
+      document.getElementById('overlay').classList.toggle('show', show);
+    }
+    function onNav(el){
+      document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
+      document.getElementById(el.dataset.target).classList.add('active');
+      toggleSidebar(false);
+    }
+    function logout(){
+      alert("Logging out...");
+      window.location.href="index.html";
+    }
+    function sendMessage(){
+      const box = document.getElementById("msgBox");
+      if(!box.value.trim()) return;
+      const msg = document.createElement("div");
+      msg.textContent = box.value;
+      document.getElementById("messages").appendChild(msg);
+      box.value="";
+    }
+  </script>
 </body>
 </html>
