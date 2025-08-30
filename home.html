@@ -3,172 +3,258 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DarkLight000999 - Home</title>
+  <title>DarkLight000999 - Securing the Digital Future</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
       font-family: 'Poppins', sans-serif;
-      background-color: #0d0d0d;
+      background-color: #0a0a0a;
       color: #e0e0e0;
     }
     header {
       background: #111;
-      padding: 15px;
-      text-align: center;
-      font-size: 22px;
-      font-weight: bold;
-      color: #00ff99;
-      letter-spacing: 2px;
-      box-shadow: 0 2px 10px rgba(0,255,153,0.3);
-    }
-    nav {
+      padding: 15px 30px;
       display: flex;
-      justify-content: center;
-      gap: 20px;
-      background: #1a1a1a;
-      padding: 10px;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #0f0;
+    }
+    header h1 {
+      color: #0f0;
+      font-size: 24px;
     }
     nav a {
+      color: #e0e0e0;
       text-decoration: none;
-      color: #00ffcc;
-      font-weight: 500;
+      margin: 0 12px;
+      transition: 0.3s;
     }
     nav a:hover {
+      color: #0f0;
+    }
+    .hero {
+      text-align: center;
+      padding: 100px 20px;
+      background: url('https://images.unsplash.com/photo-1508780709619-79562169bc64?auto=format&fit=crop&w=1600&q=80') no-repeat center center/cover;
       color: #fff;
     }
-    section {
-      padding: 50px 20px;
-      text-align: center;
+    .hero h2 {
+      font-size: 40px;
+      text-shadow: 0 0 10px #0f0;
     }
-    h1, h2 {
-      color: #00ffcc;
+    .hero p {
+      font-size: 18px;
+      margin: 10px 0 20px;
     }
-    .panel {
-      display: none;
-      padding: 30px;
-      margin: 20px auto;
-      max-width: 800px;
-      border: 1px solid #00ff99;
-      border-radius: 10px;
-      background: #1a1a1a;
-      box-shadow: 0 0 15px rgba(0,255,153,0.3);
-    }
-    footer {
-      background: #111;
-      padding: 20px;
-      text-align: center;
-      color: #888;
-      margin-top: 40px;
-      font-size: 14px;
-    }
-    button {
-      padding: 10px 20px;
+    .btn {
+      padding: 12px 25px;
+      background: #0f0;
       border: none;
-      background: #00ff99;
       color: #000;
       font-weight: bold;
       border-radius: 5px;
       cursor: pointer;
     }
-    button:hover {
-      background: #00cc77;
+    section {
+      padding: 60px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    h2.section-title {
+      text-align: center;
+      color: #0f0;
+      margin-bottom: 40px;
+    }
+    .services, .why-us {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: #111;
+      padding: 20px;
+      border: 1px solid #0f0;
+      border-radius: 8px;
+      transition: 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 15px #0f0;
+    }
+    footer {
+      background: #111;
+      text-align: center;
+      padding: 20px;
+      border-top: 2px solid #0f0;
+    }
+    footer a {
+      color: #0f0;
+      margin: 0 8px;
+      text-decoration: none;
+    }
+    /* Admin/User Panels */
+    #adminPanel, #userPanel {
+      display: none;
+      padding: 20px;
+      margin: 20px;
+      border: 2px dashed #0f0;
     }
   </style>
 </head>
 <body>
 
-  <header>DarkLight000999</header>
+  <!-- Header -->
+  <header>
+    <h1>DarkLight000999</h1>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#blog">Blog</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
 
-  <nav>
-    <a href="#">Home</a>
-    <a href="#">About</a>
-    <a href="#">Services</a>
-    <a href="#">Portfolio</a>
-    <a href="#">Blog</a>
-    <a href="#">Contact</a>
-  </nav>
+  <!-- Hero Section -->
+  <div class="hero">
+    <h2>Securing the Digital Future</h2>
+    <p>We Protect, You Progress</p>
+    <button class="btn">Get Secured</button>
+  </div>
 
-  <section>
-    <h1>Welcome to DarkLight000999</h1>
-    <p>Securing the Digital Future. We Protect, You Progress.</p>
+  <!-- About -->
+  <section id="about">
+    <h2 class="section-title">About Us</h2>
+    <p>We are a team of cybersecurity experts providing ethical hacking, penetration testing, and security consulting.</p>
   </section>
 
-  <!-- Admin Panel -->
-  <div id="adminPanel" class="panel">
-    <h2>🔐 Admin Panel</h2>
-    <p>Welcome, Admin! Manage your website here.</p>
-    <button onclick="logout()">Logout</button>
+  <!-- Services -->
+  <section id="services">
+    <h2 class="section-title">Our Services</h2>
+    <div class="services">
+      <div class="card">Penetration Testing</div>
+      <div class="card">Vulnerability Assessment</div>
+      <div class="card">Network Security</div>
+      <div class="card">Web App Security</div>
+      <div class="card">Cyber Forensics</div>
+      <div class="card">Training & Workshops</div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us -->
+  <section>
+    <h2 class="section-title">Why Choose Us?</h2>
+    <div class="why-us">
+      <div class="card">Trusted Experts</div>
+      <div class="card">24/7 Support</div>
+      <div class="card">100% Confidentiality</div>
+      <div class="card">Certified Ethical Hackers</div>
+    </div>
+  </section>
+
+  <!-- Portfolio -->
+  <section id="portfolio">
+    <h2 class="section-title">Portfolio / Case Studies</h2>
+    <p>Secured 50+ Companies, Prevented 5000+ Attacks.</p>
+  </section>
+
+  <!-- Testimonials -->
+  <section>
+    <h2 class="section-title">Testimonials</h2>
+    <p>“DarkLight000999 helped secure our business infrastructure. Highly recommend!”</p>
+    <p>“The training workshop was eye-opening and practical.”</p>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <h2 class="section-title">Contact Us</h2>
+    <form>
+      <input type="text" placeholder="Name" required><br><br>
+      <input type="email" placeholder="Email" required><br><br>
+      <textarea placeholder="Message" rows="4" required></textarea><br><br>
+      <button class="btn" type="submit">Send</button>
+    </form>
+  </section>
+
+  <!-- Admin/User Panels -->
+  <div id="adminPanel">
+    <h2>Admin Panel</h2>
+    <button class="btn" onclick="logout()">Logout</button>
   </div>
 
-  <!-- User Panel -->
-  <div id="userPanel" class="panel">
-    <h2>👤 User Dashboard</h2>
-    <p>Welcome! You are logged in as a client.</p>
-    <button onclick="logout()">Logout</button>
+  <div id="userPanel">
+    <h2>User Dashboard</h2>
+    <p>Welcome to DarkLight000999 secure portal.</p>
+    <button class="btn" onclick="logout()">Logout</button>
   </div>
 
+  <!-- Footer -->
   <footer>
-    © 2025 DarkLight000999 | All Rights Reserved
+    <p>© 2025 DarkLight000999 | All Rights Reserved</p>
+    <a href="#">Privacy Policy</a> | <a href="#">Terms</a>
+    <div>
+      <a href="#">LinkedIn</a> <a href="#">GitHub</a> <a href="#">Twitter</a>
+    </div>
   </footer>
 
   <!-- Firebase Scripts -->
   <script type="module">
-    // Import Firebase SDK
+    // Import Firebase
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-app.js";
     import { 
       getAuth, 
       onAuthStateChanged, 
-      signOut, 
+      signOut,
       setPersistence, 
       browserLocalPersistence 
     } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-auth.js";
 
-    // 🔥 Your Firebase Config (already inserted)
+    // 🔹 Your Firebase Config (replace with your own)
     const firebaseConfig = {
-      apiKey: "AIzaSyB8Ydj__jisqUsU1NGTXruCGsTi7wmIw8o",
-      authDomain: "elegant-moment-470412-h3.firebaseapp.com",
-      projectId: "elegant-moment-470412-h3",
-      storageBucket: "elegant-moment-470412-h3.firebasestorage.app",
-      messagingSenderId: "948629350861",
-      appId: "1:948629350861:web:5d9e141e3bce27dd657c84"
+      apiKey: "YOUR_API_KEY",
+      authDomain: "YOUR_PROJECT.firebaseapp.com",
+      projectId: "YOUR_PROJECT_ID",
+      storageBucket: "YOUR_PROJECT.appspot.com",
+      messagingSenderId: "YOUR_SENDER_ID",
+      appId: "YOUR_APP_ID"
     };
 
-    // Initialize Firebase
+    // Init Firebase
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
 
-    // ✅ Fix Auto Logout (Persistence)
-    setPersistence(auth, browserLocalPersistence)
-      .then(() => {
-        console.log("Persistence set to LOCAL storage");
-      })
-      .catch((error) => {
-        console.error("Persistence error:", error);
-      });
+    // 🔹 Save login session locally
+    setPersistence(auth, browserLocalPersistence);
 
     const adminEmail = "darklightrkshackers@gmail.com";
 
-    // ✅ Auth State Listener
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        console.log("User logged in:", user.email);
+        console.log("Logged in:", user.email);
         if (user.email === adminEmail) {
           document.getElementById("adminPanel").style.display = "block";
+          document.getElementById("userPanel").style.display = "none";
         } else {
           document.getElementById("userPanel").style.display = "block";
+          document.getElementById("adminPanel").style.display = "none";
         }
       } else {
-        console.log("No user logged in → redirecting");
-        window.location.href = "index.html"; // redirect login
+        console.log("No user logged in");
+        setTimeout(() => {
+          window.location.href = "index.html"; // back to login
+        }, 1000);
       }
     });
 
-    // ✅ Logout Function
-    window.logout = function() {
+    // 🔹 Logout function
+    function logout() {
       signOut(auth).then(() => {
         window.location.href = "index.html";
       });
     }
+    window.logout = logout;
   </script>
 </body>
 </html>
