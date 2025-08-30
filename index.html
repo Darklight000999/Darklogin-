@@ -137,11 +137,12 @@
       signInWithEmailAndPassword
     } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
 
+    // -------- Firebase Config --------
     const firebaseConfig = {
       apiKey: "AIzaSyB8Ydj__jisqUsU1NGTXruCGsTi7wmIw8o",
       authDomain: "elegant-moment-470412-h3.firebaseapp.com",
       projectId: "elegant-moment-470412-h3",
-      storageBucket: "elegant-moment-470412-h3.appspot.com",  // ✅ fixed
+      storageBucket: "elegant-moment-470412-h3.appspot.com",
       messagingSenderId: "948629350861",
       appId: "1:948629350861:web:5d9e141e3bce27dd657c84"
     };
@@ -165,7 +166,7 @@
 
       try {
         setStatus("Signing in...");
-        await setPersistence(auth, browserLocalPersistence);
+        await setPersistence(auth, browserLocalPersistence); // save login even after refresh
         const result = await signInWithEmailAndPassword(auth, email, password);
         setStatus("✅ Signed in: " + result.user.email);
         location.href = "home.html"; // redirect on success
@@ -183,7 +184,7 @@
         await setPersistence(auth, browserLocalPersistence);
         const result = await signInWithPopup(auth, provider);
         setStatus("Signed in: " + (result.user?.email || 'unknown'));
-        location.href = "home.html"; // ✅ redirect added
+        location.href = "home.html"; // redirect on success
       } catch (err) {
         console.error("Sign-in error:", err);
         setStatus("Sign-in failed: " + (err?.code || err?.message || err));
@@ -195,8 +196,9 @@
     onAuthStateChanged(auth, (user) => {
       if (user) {
         setStatus("Already logged in: " + (user.email || ""));
-        if (location.pathname.endsWith('index.html') || location.pathname === "/" ) {
-          location.href = 'home.html';
+        // ✅ सिर्फ login page पर ही redirect करेगा
+        if (window.location.pathname.includes("index.html") || window.location.pathname === "/" ) {
+          window.location.href = "home.html";
         }
       } else {
         setStatus("Not logged in");
