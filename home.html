@@ -3,83 +3,137 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DarkLight000999 - Cyber Security Experts</title>
-
-  <!-- Google Fonts -->
+  <title>DarkLight000999 - Securing the Digital Future</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
-
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-
   <style>
     body {
+      margin: 0;
       font-family: 'Poppins', sans-serif;
       background-color: #0a0a0a;
       color: #e0e0e0;
     }
-    .neon {
-      color: #00ffcc;
-      text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc;
+    header {
+      background: #111;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #0f0;
+    }
+    header h1 {
+      color: #0f0;
+      font-size: 24px;
+    }
+    nav a {
+      color: #e0e0e0;
+      text-decoration: none;
+      margin: 0 12px;
+      transition: 0.3s;
+    }
+    nav a:hover {
+      color: #0f0;
+    }
+    .hero {
+      text-align: center;
+      padding: 100px 20px;
+      background: url('https://images.unsplash.com/photo-1508780709619-79562169bc64?auto=format&fit=crop&w=1600&q=80') no-repeat center center/cover;
+      color: #fff;
+    }
+    .hero h2 {
+      font-size: 40px;
+      text-shadow: 0 0 10px #0f0;
+    }
+    .hero p {
+      font-size: 18px;
+      margin: 10px 0 20px;
+    }
+    .btn {
+      padding: 12px 25px;
+      background: #0f0;
+      border: none;
+      color: #000;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    section {
+      padding: 60px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    h2.section-title {
+      text-align: center;
+      color: #0f0;
+      margin-bottom: 40px;
+    }
+    .services, .why-us {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
     }
     .card {
       background: #111;
-      border: 1px solid #00ffcc33;
-      border-radius: 12px;
       padding: 20px;
-      transition: transform 0.3s;
-    }
-    .card:hover {
-      transform: translateY(-5px);
-      border-color: #00ffcc;
-    }
-    .btn-neon {
-      background: #00ffcc;
-      color: #000;
-      font-weight: bold;
-      padding: 10px 20px;
+      border: 1px solid #0f0;
       border-radius: 8px;
       transition: 0.3s;
     }
-    .btn-neon:hover {
-      background: #00ffaa;
-      box-shadow: 0 0 20px #00ffaa;
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 15px #0f0;
+    }
+    footer {
+      background: #111;
+      text-align: center;
+      padding: 20px;
+      border-top: 2px solid #0f0;
+    }
+    footer a {
+      color: #0f0;
+      margin: 0 8px;
+      text-decoration: none;
+    }
+    /* Admin/User Panels */
+    #adminPanel, #userPanel {
+      display: none;
+      padding: 20px;
+      margin: 20px;
+      border: 2px dashed #0f0;
     }
   </style>
 </head>
 <body>
 
-  <!-- 🔹 Navbar -->
-  <header class="flex justify-between items-center p-5 bg-black fixed top-0 w-full shadow-lg z-50">
-    <h1 class="text-2xl font-bold neon">DarkLight000999</h1>
-    <nav class="space-x-6">
-      <a href="#home" class="hover:text-teal-400">Home</a>
-      <a href="#about" class="hover:text-teal-400">About</a>
-      <a href="#services" class="hover:text-teal-400">Services</a>
-      <a href="#portfolio" class="hover:text-teal-400">Portfolio</a>
-      <a href="#blog" class="hover:text-teal-400">Blog</a>
-      <a href="#contact" class="hover:text-teal-400">Contact</a>
+  <!-- Header -->
+  <header>
+    <h1>DarkLight000999</h1>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#blog">Blog</a>
+      <a href="#contact">Contact</a>
     </nav>
   </header>
 
-  <!-- 🔹 Hero Section -->
-  <section id="home" class="h-screen flex flex-col justify-center items-center text-center bg-gradient-to-b from-black to-gray-900">
-    <h2 class="text-5xl font-bold neon">Securing the Digital Future</h2>
-    <p class="mt-4 text-lg text-gray-300">We Protect, You Progress</p>
-    <button class="btn-neon mt-6">Get Secured</button>
+  <!-- Hero Section -->
+  <div class="hero">
+    <h2>Securing the Digital Future</h2>
+    <p>We Protect, You Progress</p>
+    <button class="btn">Get Secured</button>
+  </div>
+
+  <!-- About -->
+  <section id="about">
+    <h2 class="section-title">About Us</h2>
+    <p>We are a team of cybersecurity experts providing ethical hacking, penetration testing, and security consulting.</p>
   </section>
 
-  <!-- 🔹 About -->
-  <section id="about" class="py-20 px-10 text-center">
-    <h2 class="text-3xl font-bold neon mb-6">About Us</h2>
-    <p class="max-w-2xl mx-auto text-gray-400">
-      We are a team of cybersecurity experts providing ethical hacking, penetration testing, and security consulting.
-    </p>
-  </section>
-
-  <!-- 🔹 Services -->
-  <section id="services" class="py-20 px-10 bg-gray-950">
-    <h2 class="text-3xl font-bold neon text-center mb-10">Our Services</h2>
-    <div class="grid md:grid-cols-3 gap-8">
+  <!-- Services -->
+  <section id="services">
+    <h2 class="section-title">Our Services</h2>
+    <div class="services">
       <div class="card">Penetration Testing</div>
       <div class="card">Vulnerability Assessment</div>
       <div class="card">Network Security</div>
@@ -89,10 +143,10 @@
     </div>
   </section>
 
-  <!-- 🔹 Why Choose Us -->
-  <section class="py-20 px-10 text-center">
-    <h2 class="text-3xl font-bold neon mb-10">Why Choose Us?</h2>
-    <div class="grid md:grid-cols-4 gap-6">
+  <!-- Why Choose Us -->
+  <section>
+    <h2 class="section-title">Why Choose Us?</h2>
+    <div class="why-us">
       <div class="card">Trusted Experts</div>
       <div class="card">24/7 Support</div>
       <div class="card">100% Confidentiality</div>
@@ -100,108 +154,107 @@
     </div>
   </section>
 
-  <!-- 🔹 Portfolio -->
-  <section id="portfolio" class="py-20 px-10 bg-gray-950 text-center">
-    <h2 class="text-3xl font-bold neon mb-6">Portfolio</h2>
-    <p>Secured 50+ Companies, Prevented 5000+ Attacks</p>
+  <!-- Portfolio -->
+  <section id="portfolio">
+    <h2 class="section-title">Portfolio / Case Studies</h2>
+    <p>Secured 50+ Companies, Prevented 5000+ Attacks.</p>
   </section>
 
-  <!-- 🔹 Testimonials -->
-  <section class="py-20 px-10 text-center">
-    <h2 class="text-3xl font-bold neon mb-6">Testimonials</h2>
-    <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-      <div class="card">"DarkLight000999 saved our company from a huge cyber attack!" – Client A</div>
-      <div class="card">"Professional, fast, and reliable cybersecurity services." – Client B</div>
-    </div>
+  <!-- Testimonials -->
+  <section>
+    <h2 class="section-title">Testimonials</h2>
+    <p>“DarkLight000999 helped secure our business infrastructure. Highly recommend!”</p>
+    <p>“The training workshop was eye-opening and practical.”</p>
   </section>
 
-  <!-- 🔹 Contact -->
-  <section id="contact" class="py-20 px-10 bg-gray-950">
-    <h2 class="text-3xl font-bold neon text-center mb-6">Contact Us</h2>
-    <form class="max-w-xl mx-auto space-y-4">
-      <input type="text" placeholder="Name" class="w-full p-3 rounded bg-black border border-gray-700">
-      <input type="email" placeholder="Email" class="w-full p-3 rounded bg-black border border-gray-700">
-      <textarea placeholder="Message" rows="4" class="w-full p-3 rounded bg-black border border-gray-700"></textarea>
-      <button type="submit" class="btn-neon w-full">Send Message</button>
+  <!-- Contact -->
+  <section id="contact">
+    <h2 class="section-title">Contact Us</h2>
+    <form>
+      <input type="text" placeholder="Name" required><br><br>
+      <input type="email" placeholder="Email" required><br><br>
+      <textarea placeholder="Message" rows="4" required></textarea><br><br>
+      <button class="btn" type="submit">Send</button>
     </form>
   </section>
 
-  <!-- 🔹 Admin & User Panel -->
-  <section class="py-20 px-10 text-center">
-    <div id="userPanel" style="display:none;">
-      <h2 class="text-2xl font-bold neon mb-4">Available Courses</h2>
-      <div id="coursesList"></div>
-    </div>
+  <!-- Admin/User Panels -->
+  <div id="adminPanel">
+    <h2>Admin Panel</h2>
+    <button class="btn" onclick="logout()">Logout</button>
+  </div>
 
-    <div id="adminPanel" style="display:none;">
-      <h2 class="text-2xl font-bold neon mb-4">Admin Panel</h2>
-      <button class="btn-neon" onclick="addCourse()">Add Course</button>
-      <button class="btn-neon" onclick="logout()">Logout</button>
-    </div>
-  </section>
+  <div id="userPanel">
+    <h2>User Dashboard</h2>
+    <p>Welcome to DarkLight000999 secure portal.</p>
+    <button class="btn" onclick="logout()">Logout</button>
+  </div>
 
-  <!-- 🔹 Footer -->
-  <footer class="py-6 bg-black text-center text-gray-400">
-    <div class="mb-3">
-      <a href="#home" class="mx-2 hover:text-teal-400">Home</a>|
-      <a href="#about" class="mx-2 hover:text-teal-400">About</a>|
-      <a href="#services" class="mx-2 hover:text-teal-400">Services</a>|
-      <a href="#contact" class="mx-2 hover:text-teal-400">Contact</a>
-    </div>
+  <!-- Footer -->
+  <footer>
     <p>© 2025 DarkLight000999 | All Rights Reserved</p>
+    <a href="#">Privacy Policy</a> | <a href="#">Terms</a>
+    <div>
+      <a href="#">LinkedIn</a> <a href="#">GitHub</a> <a href="#">Twitter</a>
+    </div>
   </footer>
 
-  <!-- 🔹 Firebase SDK -->
+  <!-- Firebase Scripts -->
   <script type="module">
+    // Import Firebase
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-app.js";
-    import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-auth.js";
-    import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-firestore.js";
+    import { 
+      getAuth, 
+      onAuthStateChanged, 
+      signOut,
+      setPersistence, 
+      browserLocalPersistence 
+    } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-auth.js";
 
-    // ⚡ तुम्हारा Firebase Config यहां डालो
+    // 🔹 Your Firebase Config (replace with your own)
     const firebaseConfig = {
       apiKey: "YOUR_API_KEY",
-      authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+      authDomain: "YOUR_PROJECT.firebaseapp.com",
       projectId: "YOUR_PROJECT_ID",
-      storageBucket: "YOUR_PROJECT_ID.appspot.com",
+      storageBucket: "YOUR_PROJECT.appspot.com",
       messagingSenderId: "YOUR_SENDER_ID",
       appId: "YOUR_APP_ID"
     };
 
+    // Init Firebase
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
-    const db = getFirestore(app);
+
+    // 🔹 Save login session locally
+    setPersistence(auth, browserLocalPersistence);
 
     const adminEmail = "darklightrkshackers@gmail.com";
 
-    onAuthStateChanged(auth, async (user) => {
+    onAuthStateChanged(auth, (user) => {
       if (user) {
+        console.log("Logged in:", user.email);
         if (user.email === adminEmail) {
           document.getElementById("adminPanel").style.display = "block";
+          document.getElementById("userPanel").style.display = "none";
         } else {
           document.getElementById("userPanel").style.display = "block";
-          // Courses Firestore से लाना
-          const querySnapshot = await getDocs(collection(db, "courses"));
-          let list = "";
-          querySnapshot.forEach((doc) => {
-            const data = doc.data();
-            list += `<div class="card my-4"><h3 class="text-xl font-bold">${data.title}</h3><p>${data.description}</p><a href="${data.link}" target="_blank" class="btn-neon mt-2 inline-block">Start</a></div>`;
-          });
-          document.getElementById("coursesList").innerHTML = list;
+          document.getElementById("adminPanel").style.display = "none";
         }
       } else {
-        window.location.href = "index.html";
+        console.log("No user logged in");
+        setTimeout(() => {
+          window.location.href = "index.html"; // back to login
+        }, 1000);
       }
     });
 
+    // 🔹 Logout function
     function logout() {
       signOut(auth).then(() => {
         window.location.href = "index.html";
       });
     }
-
-    function addCourse() {
-      alert("Admin course adding functionality यहाँ implement होगा।");
-    }
+    window.logout = logout;
   </script>
 </body>
 </html>
