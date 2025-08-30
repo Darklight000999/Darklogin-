@@ -141,7 +141,7 @@
       apiKey: "AIzaSyB8Ydj__jisqUsU1NGTXruCGsTi7wmIw8o",
       authDomain: "elegant-moment-470412-h3.firebaseapp.com",
       projectId: "elegant-moment-470412-h3",
-      storageBucket: "elegant-moment-470412-h3.firebasestorage.app",
+      storageBucket: "elegant-moment-470412-h3.appspot.com",  // ✅ fixed
       messagingSenderId: "948629350861",
       appId: "1:948629350861:web:5d9e141e3bce27dd657c84"
     };
@@ -179,11 +179,11 @@
     // -------- Google Login --------
     document.getElementById('btnGoogle').addEventListener('click', async () => {
       try {
-        setStatus("Setting persistence...");
-        await setPersistence(auth, browserLocalPersistence);
         setStatus("Opening Google sign-in...");
+        await setPersistence(auth, browserLocalPersistence);
         const result = await signInWithPopup(auth, provider);
         setStatus("Signed in: " + (result.user?.email || 'unknown'));
+        location.href = "home.html"; // ✅ redirect added
       } catch (err) {
         console.error("Sign-in error:", err);
         setStatus("Sign-in failed: " + (err?.code || err?.message || err));
@@ -195,7 +195,7 @@
     onAuthStateChanged(auth, (user) => {
       if (user) {
         setStatus("Already logged in: " + (user.email || ""));
-        if (!location.pathname.endsWith('home.html')) {
+        if (location.pathname.endsWith('index.html') || location.pathname === "/" ) {
           location.href = 'home.html';
         }
       } else {
