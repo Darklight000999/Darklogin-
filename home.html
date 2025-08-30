@@ -50,20 +50,22 @@
     }
 
   @keyframes drift{ to{ transform: rotate(1turn);} }
-
-  .app{display:flex;height:100%;min-width:0}
-
   /* Sidebar */
 .sidebar {
   width: 260px;
+  height: 100vh;              /* पूरी स्क्रीन की ऊँचाई लेगा */
+  position: fixed;            /* हमेशा left side पर fixed रहेगा */
+  top: 0;
+  left: 0;
   background: #111827;
   color: #fff;
   display: flex;
   flex-direction: column;
   padding: 20px;
   box-shadow: 4px 0 15px rgba(0, 0, 0, 0.6);
-  transform: translateX(-270px);
+  transform: translateX(-270px);   /* लोड होते समय hidden */
   animation: slideIn 0.8s forwards;
+  z-index: 1000;              /* बाकी content के ऊपर */
 }
 
 .sidebar h2 {
@@ -82,7 +84,8 @@
   color: #fff;
   text-decoration: none;
   background: #1f2937;
-  box-shadow: inset 2px 2px 5px #0d121a, inset -2px -2px 5px #2a3242;
+  box-shadow: inset 2px 2px 5px #0d121a,
+              inset -2px -2px 5px #2a3242;
   transition: all 0.3s ease;
 }
 
@@ -92,25 +95,16 @@
   transform: translateX(5px);
 }
 
+/* Animations */
 @keyframes slideIn {
   from { transform: translateX(-270px); opacity: 0; }
-  to { transform: translateX(0); opacity: 1; }
+  to   { transform: translateX(0); opacity: 1; }
 }
-  .
-  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 
-  /* Cards / grids */
-  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
-  .card{
-    background:var(--glass);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);
-    box-shadow:var(--shadow);padding:14px
-  }
-  .card h3{margin:0 0 8px}
-  .muted{color:var(--muted)}
-  .btn{
-    border:none;border-radius:12px;padding:10px 14px;font-weight:700;cursor:pointer;
-    background:linear-gradient(90deg,var(--brand2),var(--brand));color:#001018
-  }
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
   .btn-secondary{background:rgba(255,255,255,.1);color:var(--text);border:1px solid rgba(255,255,255,.15)}
   .row{display:flex;gap:10px;flex-wrap:wrap}
 
